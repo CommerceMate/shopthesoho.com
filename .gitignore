@@ -1,0 +1,4 @@
+# Ignore additional project related assets (like mockups, images, docs, etc.)
+/additional_assets/
+
+config.yml
