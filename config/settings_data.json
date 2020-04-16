@@ -70,8 +70,20 @@
     "sections": {
       "sidebar-menu": {
         "type": "sidebar-menu",
+        "blocks": {
+          "1586869504333": {
+            "type": "menu_item_image",
+            "settings": {
+              "navigation_menu_title": "Gameday Couture",
+              "menu_item_image": "shopify:\/\/shop_images\/GC-Logo-S.png"
+            }
+          }
+        },
+        "block_order": [
+          "1586869504333"
+        ],
         "settings": {
-          "primary_menu": "main-menu",
+          "primary_menu": "main-01",
           "secondary_menu": "",
           "show_social_media": true
         }
@@ -89,6 +101,26 @@
       },
       "header": {
         "type": "header",
+        "blocks": {
+          "1586866917279": {
+            "type": "mega_menu",
+            "settings": {
+              "navigation_mega_menu": "Gameday Couture",
+              "menu_item_image": "shopify:\/\/shop_images\/GC-Logo-S.png",
+              "push_1_image": "shopify:\/\/shop_images\/14c120bc9595908caea2a6a2a2ff6f25af8bec6b794df60f77eb36e05ecf6fbe.jpeg",
+              "push_1_heading": "Example heading",
+              "push_1_subheading": "Example sub-heading",
+              "push_1_url": "",
+              "push_2_image": "shopify:\/\/shop_images\/14c120bc9595908caea2a6a2a2ff6f25af8bec6b794df60f77eb36e05ecf6fbe.jpeg",
+              "push_2_heading": "Example heading",
+              "push_2_subheading": "Example sub-heading",
+              "push_2_url": ""
+            }
+          }
+        },
+        "block_order": [
+          "1586866917279"
+        ],
         "settings": {
           "use_sticky_header": true,
           "logo": "shopify:\/\/shop_images\/sh_logo_m.png",
@@ -443,6 +475,8 @@
           "show_vendor": false,
           "show_sku": false,
           "description_below_add_to_cart": true,
+          "description_collapsible": true,
+          "description_collapsible_opened": true,
           "selector_mode": "block",
           "show_color_swatch": true,
           "show_color_carousel": false,
@@ -456,6 +490,7 @@
           "show_thumbnails": false,
           "enable_image_zoom": true,
           "enable_video_looping": false,
+          "tabs_below_add_to_cart": true,
           "tab_page_1_handle": "shipping-information",
           "tab_page_2_handle": "",
           "reviews_enabled": false,

@@ -8476,7 +8476,13 @@ $vertical-spacing-two-products-per-row  : 0px;
  * Desktop nav
  * ----------------------------------------------------------------------------
  */
-
+.Header__LinkImage {
+  vertical-align: middle;
+  max-height: 1em;
+}
+.Header__LinkRelative {
+  position: relative;
+}
 .Header__LinkSpacer {
   position: absolute;
   display: block;
@@ -8487,7 +8493,10 @@ $vertical-spacing-two-products-per-row  : 0px;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-
+  .Header__LinkRelative & {
+    max-width: 100%;
+    bottom: -1.4em;
+  }
   &::after {
     position: absolute;
     content: '';
@@ -10060,8 +10069,13 @@ $vertical-spacing-two-products-per-row  : 0px;
 
 .Product__Tabs {
   margin: 50px 0;
+  .ProductMeta__Description & {
+    margin: 0;
+  }
 }
-
+.Collapsible__WithoutBottomBorder {
+  border-bottom: none;
+}
 @include av-mq('phone') {
   .Product__Tabs .Collapsible__Content {
     padding-top: 6px;
@@ -10072,6 +10086,9 @@ $vertical-spacing-two-products-per-row  : 0px;
 @include av-mq('pocket') {
   .Product__Tabs .Collapsible {
     padding: 0 24px;
+    .ProductMeta__Description & {
+      padding: 0;
+    }
   }
 }
 

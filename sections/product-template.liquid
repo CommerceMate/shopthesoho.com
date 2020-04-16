@@ -284,15 +284,34 @@
 
           {%- if section.settings.description_below_add_to_cart -%}
             <div class="ProductMeta__Description">
-              <div class="Rte">
-                {%- comment -%}
-                We have figured out that some merchants were copy-pasting huge chunk of code into the product description,
-                which can make the theme crashes if it contains some special attributes used by the theme. We therefore make sure to process this
-                {%- endcomment -%}
+              {%- if section.settings.description_collapsible -%}
+                <div class="Collapsible Collapsible__ProductDescription {% if product_aside != blank and section.settings.tabs_below_add_to_cart %}Collapsible__WithoutBottomBorder{% endif %}">
+                  <button class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="{% if section.settings.description_collapsible_opened %}true{% else %}false{% endif %}">
+                    {{ 'product.description.title' | t }} <span class="Collapsible__Plus"></span>
+                  </button>
 
-                {{ product.description | replace: 'data-section-type', 'data-section-type-placeholder' }}
-              </div>
+                  <div class="Collapsible__Inner" {% if section.settings.description_collapsible_opened %}style="height: auto;"{% endif %}>
+                    <div class="Collapsible__Content">
+                      <div class="Rte">
+                        {{ product.description | replace: 'data-section-type', 'data-section-type-placeholder' }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {%- else -%}
+                <div class="Rte">
+                  {%- comment -%}
+                  We have figured out that some merchants were copy-pasting huge chunk of code into the product description,
+                  which can make the theme crashes if it contains some special attributes used by the theme. We therefore make sure to process this
+                  {%- endcomment -%}
 
+                  {{ product.description | replace: 'data-section-type', 'data-section-type-placeholder' }}
+                </div>
+              {%- endif -%}
+
+              {%- if product_aside != blank and section.settings.tabs_below_add_to_cart -%}
+                {{- product_aside -}}
+              {%- endif -%}
               {%- if section.settings.show_share_buttons -%}
                 <div class="ProductMeta__ShareButtons hidden-pocket">
                   <span class="ProductMeta__ShareTitle Heading Text--subdued u-h7">{{ 'product.form.share' | t }}</span>
@@ -312,7 +331,7 @@
             </div>
           {%- endif -%}
 
-          {%- if section.settings.stack_images and product_aside != blank and media_count > 0 -%}
+          {%- if section.settings.stack_images and product_aside != blank and media_count > 0 and section.settings.tabs_below_add_to_cart == false -%}
             <div class="Product__QuickNav hidden-pocket">
               <div class="Product__QuickNavWrapper">
                 <a href="#ProductAside" class="Heading Link Link--secondary u-h7">{{ 'product.form.view_info' | t }} {% render 'icon' with 'select-arrow-right' %}</a>
@@ -324,7 +343,7 @@
       </div>
     </div>
 
-    {%- if product_aside != blank -%}
+    {%- if product_aside != blank and section.settings.tabs_below_add_to_cart == false -%}
       <div class="Product__Aside">
         <span id="ProductAside" class="Anchor"></span>
         {{- product_aside -}}
@@ -445,6 +464,20 @@ This is the root container for the zoom functionality. Must not be removed, as o
       "id": "description_below_add_to_cart",
       "label": "Description below add to cart",
       "default": false
+    },
+    {
+      "type":"checkbox",
+      "id":"description_collapsible",
+      "label":"Display description as collapsible",
+      "default":true,
+      "info":"Only works when description is below add to cart."
+    },
+    {
+      "type":"checkbox",
+      "id":"description_collapsible_opened",
+      "label":"Display collapsible description opened?",
+      "default":true,
+      "info":"Only works when description is displayed as collapsible"
     },
     {
       "type": "select",
@@ -571,6 +604,12 @@ This is the root container for the zoom functionality. Must not be removed, as o
     {
       "type": "header",
       "content": "Tabs"
+    },
+    {
+      "type":"checkbox",
+      "id":"tabs_below_add_to_cart",
+      "label":"Display tabs below add to cart?",
+      "default":true
     },
     {
       "type": "page",

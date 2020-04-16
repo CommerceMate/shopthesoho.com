@@ -68,7 +68,7 @@
 {%- if first_page.handle != blank or second_page.handle != blank or has_unique_tab_1 or has_unique_tab_2 or has_unique_tab_3 or section.settings.reviews_enabled -%}
   <div class="Product__Tabs">
     {%- if has_unique_tab_1 -%}
-      <div class="Collapsible Collapsible--large">
+      <div class="Collapsible {% unless section.settings.tabs_below_add_to_cart %}Collapsible--large{% endunless %}">
         <button class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
           {{- unique_tab_1_title -}} <span class="Collapsible__Plus"></span>
         </button>
@@ -84,7 +84,7 @@
     {%- endif -%}
 
     {%- if has_unique_tab_2 -%}
-      <div class="Collapsible Collapsible--large">
+      <div class="Collapsible {% unless section.settings.tabs_below_add_to_cart %}Collapsible--large{% endunless %}">
         <button class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
           {{- unique_tab_2_title -}} <span class="Collapsible__Plus"></span>
         </button>
@@ -100,7 +100,7 @@
     {%- endif -%}
 
     {%- if has_unique_tab_3 -%}
-      <div class="Collapsible Collapsible--large">
+      <div class="Collapsible {% unless section.settings.tabs_below_add_to_cart %}Collapsible--large{% endunless %}">
         <button class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
           {{- unique_tab_3_title -}} <span class="Collapsible__Plus"></span>
         </button>
@@ -116,7 +116,7 @@
     {%- endif -%}
 
     {%- if first_page != empty -%}
-      <div class="Collapsible Collapsible--large">
+      <div class="Collapsible {% unless section.settings.tabs_below_add_to_cart %}Collapsible--large{% endunless %}">
         <button class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
           {{- first_page.title -}} <span class="Collapsible__Plus"></span>
         </button>
@@ -132,7 +132,7 @@
     {%- endif -%}
 
     {%- if second_page != empty -%}
-      <div class="Collapsible Collapsible--large">
+      <div class="Collapsible {% unless section.settings.tabs_below_add_to_cart %}Collapsible--large{% endunless %}">
         <button class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
           {{- second_page.title -}} <span class="Collapsible__Plus"></span>
         </button>
@@ -148,7 +148,7 @@
     {%- endif -%}
 
     {%- if section.settings.reviews_enabled -%}
-      <div class="Collapsible Collapsible--large">
+      <div class="Collapsible {% unless section.settings.tabs_below_add_to_cart %}Collapsible--large{% endunless %}">
         {%- comment -%}We parse from metafields the number of reviews. First we try to use the old way, and then the updated way{%- endcomment -%}
         {%- if product.metafields.spr.reviews contains 'itemprop="reviewCount"' -%}
           {%- assign reviews_count = product.metafields.spr.reviews | split: '<meta itemprop="reviewCount" content="' | last | split: '">' | first | times: 1 -%}

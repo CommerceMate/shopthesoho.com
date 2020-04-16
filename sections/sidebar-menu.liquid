@@ -1,6 +1,17 @@
 {%- assign main_menu_handle = section.settings.primary_menu | default: 'main-menu' -%}
 {%- assign main_menu = linklists[main_menu_handle] -%}
 
+{%- assign menu_names = '' -%}
+
+{%- for block in section.blocks -%}
+  {%- if block.type == 'menu_item_image' -%}
+    {%- assign trim_menu_name = block.settings.navigation_menu_title | strip -%}
+    {%- assign menu_names = menu_names | append: trim_menu_name | append: ',' -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- assign menu_names = menu_names | downcase | split: ',' | compact -%}
+
 <section id="sidebar-menu" class="SidebarMenu Drawer Drawer--small Drawer--fromLeft" aria-hidden="true" data-section-id="{{ section.id }}" data-section-type="sidebar-menu">
     <header class="Drawer__Header" data-drawer-animated-left>
       <button class="Drawer__Close Icon-Wrapper--clickable" data-action="close-drawer" data-drawer-id="sidebar-menu" aria-label="{{ 'header.navigation.close_sidebar' | t }}">
@@ -13,10 +24,32 @@
         <div class="Drawer__Container">
           <nav class="SidebarMenu__Nav SidebarMenu__Nav--primary" aria-label="{{ 'header.navigation.sidebar_title' | t }}">
             {%- for link in main_menu.links -%}
+              {%- assign downcased_link_title = link.title | downcase | strip -%}
+              {%- assign use_image_instead_of_title = false -%}
+
+              {%- if menu_names contains downcased_link_title -%}
+                {%- for block in section.blocks -%}
+                  {%- assign downcased_menu_name = block.settings.navigation_menu_title | downcase -%}
+
+                  {%- if downcased_menu_name != downcased_link_title -%}
+                    {%- continue -%}
+                  {%- endif -%}
+
+                  {%- if block.settings.menu_item_image != blank -%}
+                    {%- assign use_image_instead_of_title = true -%}
+                    {%- assign menu_item_image = block.settings.menu_item_image -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endif -%}
               <div class="Collapsible">
                 {%- if link.links != blank -%}
                   <button class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" {% if link.links != blank %}aria-expanded="false"{% endif %}>
-                    {{- link.title | escape -}} <span class="Collapsible__Plus"></span>
+                    {%- if use_image_instead_of_title -%}
+                      <img class="Header__LinkImage" src="{{ menu_item_image | img_url: 'master' }}">
+                    {%- else -%}
+                      {{- link.title | escape -}}
+                    {%- endif -%}
+                     <span class="Collapsible__Plus"></span>
                   </button>
 
                   <div class="Collapsible__Inner">
@@ -47,7 +80,11 @@
                     </div>
                   </div>
                 {%- else -%}
-                  <a href="{{ link.url }}" class="Collapsible__Button Heading Link Link--primary u-h6">{{ link.title | escape }}</a>
+                  <a href="{{ link.url }}" class="Collapsible__Button Heading Link Link--primary u-h6">{%- if use_image_instead_of_title -%}
+                      <img class="Header__LinkImage" src="{{ menu_item_image | img_url: 'master' }}">
+                    {%- else -%}
+                      {{- link.title | escape -}}
+                    {%- endif -%}</a>
                 {%- endif -%}
               </div>
             {%- endfor -%}
@@ -112,6 +149,26 @@
       "id": "show_social_media",
       "label": "Show social media",
       "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu_item_image",
+      "name": "Menu item image",
+      "settings": [
+        {
+          "type": "text",
+          "id": "navigation_menu_title",
+          "label": "Menu item",
+          "info": "Enter menu item to apply an image."
+        },
+        {
+          "type":"image_picker",
+          "id":"menu_item_image",
+          "label":"Menu item image",
+          "info":"If selected, menu item text will be replaced with selected image."
+        }
+      ]
     }
   ]
 }

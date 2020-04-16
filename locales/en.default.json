@@ -342,6 +342,9 @@
     },
     "buy_it_with": {
       "title": "Buy it with"
+    },
+    "description": {
+      "title": "Description"
     }
   },
   "gift_card": {
