@@ -8,6 +8,112 @@
     "theme_support_url": "https:\/\/support.maestrooo.com\/article\/203-contact-us"
   },
   {
+    "name": "Klaviyo Back-in-Stock",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_klaviyo_bis",
+        "label": "Enable Klaviyo Back-in-Stock?",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "klaviyo_bis_account",
+        "label": "Public API Key \/ Site ID",
+        "info": "Should not be blank in order to work. Follow this [link](https:\/\/www.klaviyo.com\/account#api-keys-tab) to find Your API Key \/ Site ID",
+        "default": "Lz9jzv"
+      },
+      {
+        "type": "textarea",
+        "id": "klaviyo_bis_button_text",
+        "label": "Back-in-Stock button text",
+        "default": "Notify Me When Available"
+      },
+      {
+        "type": "header",
+        "content": "Modal settings"
+      },
+      {
+        "type": "textarea",
+        "id": "klaviyo_bis_modal_body_content",
+        "label": "Body content",
+        "default": "Register to receive a notification when this item comes back in stock."
+      },
+      {
+        "type": "textarea",
+        "id": "klaviyo_bis_modal_button_label",
+        "label": "Button text",
+        "default": "Notify me when available"
+      },
+      {
+        "type": "textarea",
+        "id": "klaviyo_bis_modal_subscription_success_label",
+        "label": "Subscription success messsage",
+        "default": "You're in! We'll let you know when it's back."
+      },
+      {
+        "type": "textarea",
+        "id": "klaviyo_bis_modal_footer_content",
+        "label": "Footer content",
+        "info": "(optional) Text that will appear in the footer, below the submit button"
+      },
+      {
+        "type": "color",
+        "id": "klaviyo_bis_modal_background_color",
+        "label": "Background color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "klaviyo_bis_modal_text_color",
+        "label": "Text color",
+        "default": "#222"
+      },
+      {
+        "type": "color",
+        "id": "klaviyo_bis_modal_button_text_color",
+        "label": "Button text color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "klaviyo_bis_modal_button_background_color",
+        "label": "Button background color",
+        "default": "#439fdb"
+      },
+      {
+        "type": "color",
+        "id": "klaviyo_bis_modal_close_button_color",
+        "label": "Close button color",
+        "default": "#ccc"
+      },
+      {
+        "type": "color",
+        "id": "klaviyo_bis_modal_error_background_color",
+        "label": "Error background color",
+        "default": "#fcd6d7"
+      },
+      {
+        "type": "color",
+        "id": "klaviyo_bis_modal_error_text_color",
+        "label": "Error text color",
+        "default": "#C72E2F"
+      },
+      {
+        "type": "color",
+        "id": "klaviyo_bis_modal_success_background_color",
+        "label": "Success background color",
+        "default": "#d3efcd"
+      },
+      {
+        "type": "color",
+        "id": "klaviyo_bis_modal_success_text_color",
+        "label": "Success text color",
+        "default": "#1B9500"
+      }
+    ]
+  },
+  {
     "name": "Colors",
     "settings": [
       {

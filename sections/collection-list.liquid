@@ -29,25 +29,48 @@
 </section>
 
 <style>
-  #section-{{ section.id }} .CollectionItem .Heading,
+
   #section-{{ section.id }} .flickity-page-dots {
-    color: {{ section.settings.text_color }};
+    color: {{ section.settings.dots_color }};
   }
 
-  #section-{{ section.id }} .CollectionItem__Link {
-    color: {{ section.settings.button_color }};
-    border-color: {{ section.settings.text_color }};
+  #section-{{ section.id }} .SectionHeader__SubHeading {
+    font-family: var(--subheading_font_family);
+    font-size: var(--subheading_font_size);
+    font-weight: var(--subheading_font_weight);
+    font-style: var(--subheading_font_style);
+    color: var(--subheading_color);
+    margin: 0;
   }
 
-  #section-{{ section.id }} .CollectionItem__Link::before {
-    background-color: {{ section.settings.text_color }};
+  #section-{{ section.id }} .SectionHeader__Heading {
+    font-family: var(--title_font_family);
+    font-size: var(--title_font_size);
+    font-weight: var(--title_font_weight);
+    font-style: var(--title_font_style);
+    color: var(--title_color);
   }
 
-  @media (-moz-touch-enabled: 0), (hover: hover) {
-    #section-{{ section.id }} .CollectionItem__Link:hover {
-      color: {{ section.settings.text_color }};
+  #section-{{ section.id }} .Button {
+    font-family: var(--button_font_family);
+    font-size: var(--button_font_size);
+    font-weight: var(--button_font_weight);
+    font-style: var(--button_font_style);
+    color: var(--button_color);
+    border-color: var(--button_background_color);
+  }
+
+  #section-{{ section.id }} .Button::before {
+    background-color: var(--button_background_color);
+  }
+
+  {%- if settings.show_button_transition -%}
+    @media (-moz-touch-enabled: 0), (hover: hover) {
+      #section-{{ section.id }} .Button:hover {
+        color: var(--button_background_color);
+      }
     }
-  }
+  {%- endif -%}
 </style>
 
 {% schema %}
@@ -95,15 +118,10 @@
     },
     {
       "type": "color",
-      "id": "text_color",
-      "label": "Text",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "button_color",
-      "label": "Button text",
-      "default": "#363636"
+      "id": "dots_color",
+      "label": "Dots",
+      "default": "#ffffff",
+      "info":"Used if stack on mobile is disabled"
     }
   ],
   "blocks": [
@@ -167,6 +185,16 @@
           "default": "center center"
         },
         {
+          "type":"header",
+          "content":"Content settings"
+        },
+        {
+          "type":"checkbox",
+          "id":"show_content_below_image",
+          "label":"Show content below image?",
+          "default":true
+        },
+        {
           "type": "select",
           "id": "content_position",
           "label": "Content position",
@@ -196,7 +224,29 @@
               "label": "Bottom center"
             }
           ],
-          "default": "bottomLeft"
+          "default": "bottomLeft",
+          "info":"Only works if content is shown on the image."
+        },
+        {
+          "type":"select",
+          "id":"text_align",
+          "label":"Content alignment",
+          "options": [
+            {
+              "value":"left",
+              "label":"Left"
+            },
+            {
+              "value":"center",
+              "label":"Center"
+            },
+            {
+              "value":"right",
+              "label":"Right"
+            }
+          ],
+          "default":"center",
+          "info":"Only works if content is below the image."
         },
         {
           "type": "text",
@@ -205,10 +255,42 @@
           "default": "Sub-heading"
         },
         {
+          "type":"font_picker",
+          "id":"subheading_font",
+          "label":"Subheading font",
+          "default":"avenir_next_n7"
+        },
+        {
+          "type":"range",
+          "id":"subheading_font_size",
+          "label":"Subheading font size",
+          "default":24,
+          "min":8,
+          "max":200,
+          "step":2,
+          "unit":"px"
+        },
+        {
           "type": "text",
           "id": "title",
           "label": "Heading",
           "default": "Collection name"
+        },
+        {
+          "type":"font_picker",
+          "id":"title_font",
+          "label":"Heading font",
+          "default":"avenir_next_n8"
+        },
+        {
+          "type":"range",
+          "id":"title_font_size",
+          "label":"Subheading font size",
+          "default":38,
+          "min":8,
+          "max":200,
+          "step":2,
+          "unit":"px"
         },
         {
           "type": "text",
@@ -223,11 +305,62 @@
           "info": "If none is set, collection URL is used."
         },
         {
+          "type":"font_picker",
+          "id":"button_font",
+          "label":"Button font",
+          "default":"avenir_next_n6"
+        },
+        {
+          "type":"range",
+          "id":"button_font_size",
+          "label":"Button font size",
+          "default":14,
+          "min":8,
+          "max":200,
+          "step":2,
+          "unit":"px"
+        },
+        {
           "type": "checkbox",
           "id": "apply_overlay",
           "label": "Apply overlay on image",
           "info": "This can improve text visibility.",
           "default": true
+        },
+        {
+          "type":"header",
+          "content":"Colors"
+        },
+        {
+          "type":"color",
+          "id":"content_background_color",
+          "label":"Content background color",
+          "default":"#fff",
+          "info":"Only works if content is below the image."
+        },
+        {
+          "type":"color",
+          "id":"subheading_color",
+          "label":"Subheading color",
+          "default":"#fff"
+        },
+        {
+          "type":"color",
+          "id":"title_color",
+          "label":"Heading color",
+          "default":"#fff"
+        },
+        {
+          "type":"color",
+          "id":"button_color",
+          "label":"Button text color",
+          "default":"#fff"
+        },
+        {
+          "type":"color",
+          "id":"button_background_color",
+          "label":"Button background color",
+          "default":"#000"
         }
       ]
     }

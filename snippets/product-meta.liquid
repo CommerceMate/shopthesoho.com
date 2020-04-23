@@ -36,6 +36,27 @@
         <span class="ProductMeta__Price Price Text--subdued u-h4">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</span>
       {%- endif -%}
     </div>
+
+    {% if section.settings.enable_sale_message and section.settings.sale_message != blank %}
+      {% assign sale_message_threshold = section.settings.sale_message_threshold %}
+
+      {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+        {% assign compare_at_price = product.selected_or_first_available_variant.compare_at_price %}
+        {% assign price_difference = compare_at_price | minus: product.selected_or_first_available_variant.price %}
+
+        {% assign price_difference_in_percent = price_difference | times: 100 | divided_by: compare_at_price %}
+        {% if price_difference_in_percent >= sale_message_threshold %}
+          {% assign hide_sale_message = false %}
+        {% else %}
+          {% assign hide_sale_message = true %}
+        {% endif %}
+      {% else %}
+        {% assign hide_sale_message = true %}
+      {% endif %}
+      <div class="ProductMeta__SaleMessageContainer" {% if hide_sale_message %}style="display: none;"{% endif %}>
+        {{ section.settings.sale_message }}
+      </div>
+    {% endif %}
     <div class="limoniapps-discountninja-promotioncard-productpage"></div>
   {%- endif -%}
 

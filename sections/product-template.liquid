@@ -11,7 +11,9 @@
   "showPriceInButton": {{ section.settings.show_price_in_button | json }},
   "enableImageZoom": {{ section.settings.enable_image_zoom | json }},
   "showPaymentButton": {{ section.settings.show_payment_button | json }},
-  "useAjaxCart": {% if settings.cart_type == 'drawer' %}true{% else %}false{% endif %}
+  "useAjaxCart": {% if settings.cart_type == 'drawer' %}true{% else %}false{% endif %},
+  "enableSaleMessage": {% if section.settings.enable_sale_message and section.settings.sale_message != blank %}true{% else %}false{% endif %},
+  "saleMessageThreshold": {{ section.settings.sale_message_threshold }}
 }
 {%- endcapture -%}
 
@@ -436,11 +438,78 @@ This is the root container for the zoom functionality. Must not be removed, as o
   </div>
 {%- endif -%}
 
+{% if section.settings.enable_sale_message and section.settings.sale_message != blank %}
+  {% assign sale_message_font = section.settings.sale_message_font  %}
+  <style>
+    {{ sale_message_font | font_face }}
+    #shopify-section-{{ section.id }} {
+      --sale_message_font_family: {{ sale_message_font.family }}, {{ sale_message_font.fallback_families }};
+      --sale_message_font_weight: {{ sale_message_font.weight }};
+      --sale_message_font_style: {{ sale_message_font.style }};
+      --sale_message_font_size: {{ section.settings.sale_message_font_size }}px;
+      --sale_message_color: {{ section.settings.sale_message_color }};
+    }
+  </style>
+{% endif %}
+
 {% schema %}
 {
   "name": "Product page",
   "class": "shopify-section--bordered",
   "settings": [
+    {
+      "type":"header",
+      "content":"Sale message settings"
+    },
+    {
+      "type":"checkbox",
+      "id":"enable_sale_message",
+      "label":"Show sale message?",
+      "default":true
+    },
+    {
+      "type":"range",
+      "id":"sale_message_threshold",
+      "label":"Sale message threshold",
+      "min":0,
+      "max":100,
+      "step":1,
+      "default":40,
+      "unit":"%",
+      "info":"Sale message will be shown if discount equals or more than this threshold."
+    },
+    {
+      "type":"richtext",
+      "id":"sale_message",
+      "label":"Sale message",
+      "default":"<p>ALL SALES ARE FINAL!</p>"
+    },
+    {
+      "type":"font_picker",
+      "id":"sale_message_font",
+      "label":"Sale message font",
+      "default":"avenir_next_n6"
+    },
+    {
+      "type":"range",
+      "id":"sale_message_font_size",
+      "label":"Sale message font size",
+      "min":8,
+      "max":200,
+      "step":2,
+      "unit":"px",
+      "default":16
+    },
+    {
+      "type":"color",
+      "id":"sale_message_color",
+      "label":"Sale message color",
+      "default":"#000"
+    },
+    {
+      "type":"header",
+      "content":"Product page settings"
+    },
     {
       "type": "checkbox",
       "id": "show_share_buttons",

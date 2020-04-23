@@ -90,7 +90,7 @@ $show-element-staggering: {% if settings.show_element_staggering %}true{% else %
 /* Other */
 
 $header-base-height: 80px; /* We use this value for browsers that do not support CSS variables */
-$color-swatch-circle: false;
+$color-swatch-circle: true;
 
 /**
  * ----------------------------------------------------------------------------------------------
@@ -2008,6 +2008,10 @@ body {
   text-align: center;
 }
 
+// Overwrite klaviyo back-in-stock button
+.Button--klaviyo-bis-trigger {
+  display: block;
+}
 /* We allow those buttons to have secondary state. The secondary state is displayed (for instance during loading time) when
    the class "Button--secondaryState" is added */
 
@@ -4287,8 +4291,9 @@ select::-ms-expand {
 }
 
 .ColorSwatch--white {
-  outline: 1px solid $border-color;
-  outline-offset: -1px;
+  // outline: 1px solid $border-color;
+  // outline-offset: -1px;
+  box-shadow: inset 0 0 2px 0 $border-color;
 }
 
 .ColorSwatch.is-active::after,
@@ -4549,10 +4554,18 @@ select::-ms-expand {
   text-align: center;
   font-size: to-size(10px);
   z-index: 1;
+  display: flex;
+  opacity: 0;
+  transition: all 0.3s;
+  &.flickity-enabled {
+    display: block;
+    opacity: 1;
+  }
 }
 
 .AnnouncementBar__Wrapper {
   padding: 12px 15px;
+  width: 100%;
 }
 
 .AnnouncementBar__Content {
@@ -7029,6 +7042,14 @@ select::-ms-expand {
   text-align: left;
 }
 
+.CollectionItem__StaticContent {
+  position: static;
+  transform: none;
+  padding: 24px 0;
+  text-align: var(--text_align);
+  background: var(--background);
+}
+
 .CollectionItem__Content--bottomCenter,
 .CollectionItem__Content--middleCenter {
   text-align: center;
@@ -7116,6 +7137,9 @@ select::-ms-expand {
   .CollectionItem__Content--bottomCenter {
     bottom: 40px;
   }
+  .CollectionItem__StaticContent {
+    padding: 24px 0;
+  }
 }
 
 @include av-mq('desk') {
@@ -7137,6 +7161,9 @@ select::-ms-expand {
 
   .CollectionItem__Content {
     padding: 0 50px;
+  }
+  .CollectionItem__StaticContent {
+    padding: 24px 0;
   }
 
   .CollectionItem__Content--bottomLeft,

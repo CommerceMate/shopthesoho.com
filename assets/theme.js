@@ -1,13 +1,13 @@
-/* 
+/*
          IMPORTANT NOTE:
-         
+
          This file is the unminified JS that is used by the theme. This file is therefore not included into the "theme.liquid" Liquid. It is bundled only
          for developers who would like to add their own JavaScript or edit the existing JavaScript. Re-minifying the ile and make sure you include it into
          the "theme.liquid" is up to the developers responsibility.
-         
+
          Because we are using WebPack internally to bundle our JavaScript code, even the unminified file can be quite hard to read or edit due to all the
          code added by WebPack.
-         
+
          Please note that we do not provide any assistance for changes made here that may break the theme: it's at your own risk :).
       */
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1425,6 +1425,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         // 4th: the add to cart button
         this._updateAddToCartButton(newVariant, previousVariant);
 
+        // 5th: check if variant satisfies sale message condition
+        if (this.options.enableSaleMessage) {
+          this._updateSaleMessage(newVariant);
+        }
+
         // Finally, we send an event so that other system could hook and do their own logic
         this.element.dispatchEvent(new CustomEvent('variant:changed', {
           bubbles: true,
@@ -1436,6 +1441,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
        * Update the prices (optionally showing compare at price)
        */
 
+    }, {
+      key: '_updateSaleMessage',
+      value: function _updateSaleMessage(newVariant) {
+        var saleMessageContainer = this.element.querySelector('.ProductMeta__SaleMessageContainer');
+        if (newVariant.compare_at_price > newVariant.price) {
+          var saleMessageThreshold = this.options.saleMessageThreshold;
+          var priceDifference = newVariant.compare_at_price - newVariant.price;
+          var priceDifferenceInPercent = priceDifference * 100 / newVariant.compare_at_price;
+          priceDifferenceInPercent = Math.floor(priceDifferenceInPercent);
+          if (priceDifferenceInPercent >= saleMessageThreshold) {
+            saleMessageContainer.style.display = 'block';
+          } else {
+            saleMessageContainer.style.display = 'none';
+          }
+
+        } else {
+          saleMessageContainer.style.display = 'none';
+        }
+      }
     }, {
       key: '_updateProductPrices',
       value: function _updateProductPrices(newVariant, previousVariant) {

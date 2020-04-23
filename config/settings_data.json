@@ -1,27 +1,43 @@
 {
   "current": {
+    "enable_klaviyo_bis": true,
+    "klaviyo_bis_account": "Lz9jzv",
+    "klaviyo_bis_button_text": "Notify Me When Available",
+    "klaviyo_bis_modal_body_content": "Register to receive a notification when this item comes back in stock.",
+    "klaviyo_bis_modal_button_label": "Notify me when available",
+    "klaviyo_bis_modal_subscription_success_label": "You're in! We'll let you know when it's back.",
+    "klaviyo_bis_modal_footer_content": "",
+    "klaviyo_bis_modal_background_color": "#ffffff",
+    "klaviyo_bis_modal_text_color": "#222",
+    "klaviyo_bis_modal_button_text_color": "#fff",
+    "klaviyo_bis_modal_button_background_color": "#439fdb",
+    "klaviyo_bis_modal_close_button_color": "#ccc",
+    "klaviyo_bis_modal_error_background_color": "#fcd6d7",
+    "klaviyo_bis_modal_error_text_color": "#c72e2f",
+    "klaviyo_bis_modal_success_background_color": "#d3efcd",
+    "klaviyo_bis_modal_success_text_color": "#1b9500",
     "heading_color": "#000000",
-    "text_color": "#5c5c5c",
-    "text_light_color": "#939393",
+    "text_color": "#000000",
+    "text_light_color": "#000000",
     "link_color": "#323232",
     "background": "#ffffff",
     "light_background": "#ffffff",
     "product_on_sale_color": "#f94c43",
-    "button_background": "#5c5c5c",
+    "button_background": "#000000",
     "button_text_color": "#ffffff",
     "header_background": "#ffffff",
-    "header_heading_color": "#5c5c5c",
+    "header_heading_color": "#000000",
     "header_light_color": "#939393",
     "footer_background": "#ffffff",
-    "footer_heading_color": "#5c5c5c",
-    "footer_text_color": "#939393",
+    "footer_heading_color": "#000000",
+    "footer_text_color": "#000000",
     "navigation_background": "#ffffff",
-    "navigation_text_color": "#5c5c5c",
+    "navigation_text_color": "#000000",
     "newsletter_popup_background": "#ffffff",
     "newsletter_popup_text_color": "#1c1b1b",
     "secondary_elements_background": "#5c5c5c",
     "secondary_elements_text_color": "#ffffff",
-    "heading_font": "avenir_next_n4",
+    "heading_font": "avenir_next_n5",
     "heading_size": "large",
     "uppercase_heading": false,
     "text_font": "avenir_next_n4",
@@ -42,10 +58,10 @@
     "cart_show_free_shipping_threshold": true,
     "cart_free_shipping_threshold": "75",
     "share_image": "",
-    "social_facebook": "",
-    "social_twitter": "",
-    "social_pinterest": "",
-    "social_instagram": "",
+    "social_facebook": "#",
+    "social_twitter": "#",
+    "social_pinterest": "#",
+    "social_instagram": "#",
     "social_vimeo": "",
     "social_tumblr": "",
     "social_youtube": "",
@@ -67,6 +83,7 @@
     "checkout_accent_color": "#323232",
     "checkout_button_color": "#5c5c5c",
     "checkout_error_color": "#e32c2b",
+    "klaviyo_bis_modal_drop_background_color": "#ff0000",
     "sections": {
       "sidebar-menu": {
         "type": "sidebar-menu",
@@ -75,7 +92,7 @@
             "type": "menu_item_image",
             "settings": {
               "navigation_menu_title": "Gameday Couture",
-              "menu_item_image": "shopify:\/\/shop_images\/GC-Logo-S.png"
+              "menu_item_image": ""
             }
           }
         },
@@ -83,35 +100,205 @@
           "1586869504333"
         ],
         "settings": {
-          "primary_menu": "main-01",
+          "primary_menu": "",
           "secondary_menu": "",
           "show_social_media": true
         }
       },
       "announcement": {
         "type": "announcement",
+        "blocks": {
+          "1587115007375": {
+            "type": "announcement",
+            "settings": {
+              "content": "Text \"Shopthesoho\" to 29071 for exclusive offers",
+              "link": "shopify:\/\/pages\/about-us"
+            }
+          },
+          "1587117096908": {
+            "type": "announcement",
+            "settings": {
+              "content": "Now offering: FREE SHIPPING on all U.S. Orders",
+              "link": "shopify:\/\/pages\/careers"
+            }
+          }
+        },
+        "block_order": [
+          "1587115007375",
+          "1587117096908"
+        ],
         "settings": {
           "enable_bar": true,
           "home_page_only": false,
           "background": "#b9ced5",
           "text_color": "#40798e",
-          "content": "Announce something here",
-          "link": ""
+          "enable_autoplay": true,
+          "autoplay_speed": 4
         }
       },
       "header": {
         "type": "header",
         "blocks": {
+          "1587166530393": {
+            "type": "mega_menu",
+            "settings": {
+              "navigation_mega_menu": "Clothing",
+              "menu_item_image": "",
+              "push_1_image": "",
+              "push_1_heading": "Example heading",
+              "push_1_subheading": "Example sub-heading",
+              "push_1_url": "",
+              "push_2_image": "",
+              "push_2_heading": "Example heading",
+              "push_2_subheading": "Example sub-heading",
+              "push_2_url": ""
+            }
+          },
           "1586866917279": {
             "type": "mega_menu",
             "settings": {
               "navigation_mega_menu": "Gameday Couture",
               "menu_item_image": "shopify:\/\/shop_images\/GC-Logo-S.png",
-              "push_1_image": "shopify:\/\/shop_images\/14c120bc9595908caea2a6a2a2ff6f25af8bec6b794df60f77eb36e05ecf6fbe.jpeg",
+              "push_1_image": "",
               "push_1_heading": "Example heading",
               "push_1_subheading": "Example sub-heading",
               "push_1_url": "",
-              "push_2_image": "shopify:\/\/shop_images\/14c120bc9595908caea2a6a2a2ff6f25af8bec6b794df60f77eb36e05ecf6fbe.jpeg",
+              "push_2_image": "",
+              "push_2_heading": "Example heading",
+              "push_2_subheading": "Example sub-heading",
+              "push_2_url": ""
+            }
+          },
+          "1587176064619": {
+            "type": "mega_menu",
+            "settings": {
+              "navigation_mega_menu": "Dresses",
+              "menu_item_image": "",
+              "push_1_image": "",
+              "push_1_heading": "Example heading",
+              "push_1_subheading": "Example sub-heading",
+              "push_1_url": "",
+              "push_2_image": "",
+              "push_2_heading": "Example heading",
+              "push_2_subheading": "Example sub-heading",
+              "push_2_url": ""
+            }
+          },
+          "1587180277531": {
+            "type": "mega_menu",
+            "settings": {
+              "navigation_mega_menu": "Shoes",
+              "menu_item_image": "",
+              "push_1_image": "",
+              "push_1_heading": "Example heading",
+              "push_1_subheading": "Example sub-heading",
+              "push_1_url": "",
+              "push_2_image": "",
+              "push_2_heading": "Example heading",
+              "push_2_subheading": "Example sub-heading",
+              "push_2_url": ""
+            }
+          },
+          "1587192799576": {
+            "type": "mega_menu",
+            "settings": {
+              "navigation_mega_menu": "Accessories",
+              "menu_item_image": "",
+              "push_1_image": "",
+              "push_1_heading": "Example heading",
+              "push_1_subheading": "Example sub-heading",
+              "push_1_url": "",
+              "push_2_image": "",
+              "push_2_heading": "Example heading",
+              "push_2_subheading": "Example sub-heading",
+              "push_2_url": ""
+            }
+          },
+          "1587193342230": {
+            "type": "mega_menu",
+            "settings": {
+              "navigation_mega_menu": "Trending Now",
+              "menu_item_image": "",
+              "push_1_image": "shopify:\/\/shop_images\/Untitled-1_565497a7-db4c-4afd-9922-8ce15f459fd7.png",
+              "push_1_heading": "",
+              "push_1_subheading": "",
+              "push_1_url": "",
+              "push_2_image": "",
+              "push_2_heading": "Example heading",
+              "push_2_subheading": "Example sub-heading",
+              "push_2_url": ""
+            }
+          },
+          "1587200462612": {
+            "type": "mega_menu",
+            "settings": {
+              "navigation_mega_menu": "Jewelry & Accessories",
+              "menu_item_image": "",
+              "push_1_image": "",
+              "push_1_heading": "Example heading",
+              "push_1_subheading": "Example sub-heading",
+              "push_1_url": "",
+              "push_2_image": "",
+              "push_2_heading": "Example heading",
+              "push_2_subheading": "Example sub-heading",
+              "push_2_url": ""
+            }
+          },
+          "1587452811793": {
+            "type": "mega_menu",
+            "settings": {
+              "navigation_mega_menu": "Sale",
+              "menu_item_image": "",
+              "push_1_image": "",
+              "push_1_heading": "Example heading",
+              "push_1_subheading": "Example sub-heading",
+              "push_1_url": "",
+              "push_2_image": "",
+              "push_2_heading": "Example heading",
+              "push_2_subheading": "Example sub-heading",
+              "push_2_url": ""
+            }
+          },
+          "1587492127513": {
+            "type": "mega_menu",
+            "settings": {
+              "navigation_mega_menu": "Gifts",
+              "menu_item_image": "",
+              "push_1_image": "",
+              "push_1_heading": "Example heading",
+              "push_1_subheading": "Example sub-heading",
+              "push_1_url": "",
+              "push_2_image": "",
+              "push_2_heading": "Example heading",
+              "push_2_subheading": "Example sub-heading",
+              "push_2_url": ""
+            }
+          },
+          "1587500732426": {
+            "type": "mega_menu",
+            "settings": {
+              "navigation_mega_menu": "Best Sellers",
+              "menu_item_image": "",
+              "push_1_image": "",
+              "push_1_heading": "Example heading",
+              "push_1_subheading": "Example sub-heading",
+              "push_1_url": "",
+              "push_2_image": "",
+              "push_2_heading": "Example heading",
+              "push_2_subheading": "Example sub-heading",
+              "push_2_url": ""
+            }
+          },
+          "1587502089268": {
+            "type": "mega_menu",
+            "settings": {
+              "navigation_mega_menu": "Swim",
+              "menu_item_image": "",
+              "push_1_image": "",
+              "push_1_heading": "Example heading",
+              "push_1_subheading": "Example sub-heading",
+              "push_1_url": "",
+              "push_2_image": "",
               "push_2_heading": "Example heading",
               "push_2_subheading": "Example sub-heading",
               "push_2_url": ""
@@ -119,7 +306,17 @@
           }
         },
         "block_order": [
-          "1586866917279"
+          "1587500732426",
+          "1587176064619",
+          "1587166530393",
+          "1587180277531",
+          "1587192799576",
+          "1587193342230",
+          "1587200462612",
+          "1587452811793",
+          "1587492127513",
+          "1586866917279",
+          "1587502089268"
         ],
         "settings": {
           "use_sticky_header": true,
@@ -128,7 +325,7 @@
           "mobile_logo_max_width": 90,
           "show_currency_selector": true,
           "show_locale_selector": true,
-          "navigation_menu": "main-01",
+          "navigation_menu": "prestige-main",
           "navigation_style": "center",
           "show_icons": true,
           "enable_transparent_header": false,
@@ -141,32 +338,53 @@
       "footer": {
         "type": "footer",
         "blocks": {
-          "footer-0": {
-            "type": "text",
-            "settings": {
-              "title": "About the shop",
-              "content": "<p>Use this text area to tell your customers about your brand and vision. You can change it in the theme settings.<\/p>",
-              "show_social_media": true
-            }
-          },
-          "footer-1": {
-            "type": "links",
-            "settings": {
-              "menu": "footer"
-            }
-          },
           "footer-2": {
             "type": "newsletter",
             "settings": {
               "title": "Newsletter",
               "content": "<p>Subscribe to receive updates, access to exclusive deals, and more.<\/p>"
             }
+          },
+          "1587442858282": {
+            "type": "links",
+            "settings": {
+              "menu": "help"
+            }
+          },
+          "footer-1": {
+            "type": "links",
+            "settings": {
+              "menu": "about-us"
+            }
+          },
+          "1586885673753": {
+            "type": "links",
+            "settings": {
+              "menu": "extras"
+            }
+          },
+          "1586885693542": {
+            "type": "links",
+            "settings": {
+              "menu": ""
+            }
+          },
+          "footer-0": {
+            "type": "text",
+            "settings": {
+              "title": "",
+              "content": "",
+              "show_social_media": true
+            }
           }
         },
         "block_order": [
-          "footer-0",
+          "footer-2",
+          "1587442858282",
           "footer-1",
-          "footer-2"
+          "1586885673753",
+          "1586885693542",
+          "footer-0"
         ],
         "settings": {
           "show_payment_methods": true,
@@ -180,13 +398,13 @@
           "slide-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/14c120bc9595908caea2a6a2a2ff6f25af8bec6b794df60f77eb36e05ecf6fbe.jpeg",
-              "mobile_image": "",
+              "image": "shopify:\/\/shop_images\/Hero-Banner.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/Main_Banner_-_Mobile.jpg",
               "apply_overlay": false,
               "content_position": "middleCenter",
-              "subheading": "Shop",
-              "title": "SHOES",
-              "button_1_text": "Shop Now",
+              "subheading": "",
+              "title": "Get Cozy",
+              "button_1_text": "Shop Lounge",
               "button_1_link": "",
               "button_2_text": "",
               "button_2_link": ""
@@ -197,7 +415,7 @@
           "slide-0"
         ],
         "settings": {
-          "show_fullscreen": true,
+          "show_fullscreen": false,
           "show_arrow": false,
           "autoplay": false,
           "cycle_speed": 5,
@@ -212,7 +430,7 @@
           "featured-collection-0": {
             "type": "collection",
             "settings": {
-              "collection": "",
+              "collection": "brunch-club",
               "title": "",
               "grid_items_count": 8,
               "button_text": "View all products"
@@ -223,8 +441,8 @@
           "featured-collection-0"
         ],
         "settings": {
-          "title": "Featured collection",
-          "layout_mode": "grid",
+          "title": "",
+          "layout_mode": "carousel",
           "show_product_info": true,
           "show_vendor": false,
           "show_color_swatch": false,
@@ -238,43 +456,43 @@
           "collection-0": {
             "type": "collection",
             "settings": {
-              "collection": "",
-              "image": "",
+              "collection": "graphic-tees-4",
+              "image": "shopify:\/\/shop_images\/Collection-01.jpg",
               "image_alignment": "center center",
-              "content_position": "bottomLeft",
-              "subheading": "Sub-heading",
-              "title": "Collection name",
-              "button_text": "View products",
+              "content_position": "bottomCenter",
+              "subheading": "",
+              "title": "",
+              "button_text": "Shop Graphic Tees",
               "button_link": "",
-              "apply_overlay": true
+              "apply_overlay": false
             }
           },
           "collection-1": {
             "type": "collection",
             "settings": {
               "collection": "",
-              "image": "",
+              "image": "shopify:\/\/shop_images\/Collection-02.jpg",
               "image_alignment": "center center",
-              "content_position": "bottomLeft",
-              "subheading": "Sub-heading",
-              "title": "Collection name",
-              "button_text": "View products",
+              "content_position": "bottomCenter",
+              "subheading": "",
+              "title": "Athleisure",
+              "button_text": "Shop Athleisure",
               "button_link": "",
-              "apply_overlay": true
+              "apply_overlay": false
             }
           },
           "collection-2": {
             "type": "collection",
             "settings": {
               "collection": "",
-              "image": "",
+              "image": "shopify:\/\/shop_images\/Collection-03.jpg",
               "image_alignment": "center center",
-              "content_position": "bottomLeft",
-              "subheading": "Sub-heading",
-              "title": "Collection name",
-              "button_text": "View products",
+              "content_position": "bottomCenter",
+              "subheading": "",
+              "title": "WFH?",
+              "button_text": "Shop Zoom Ready Tops",
               "button_link": "",
-              "apply_overlay": true
+              "apply_overlay": false
             }
           }
         },
@@ -290,140 +508,6 @@
           "stack_on_mobile": true,
           "text_color": "#ffffff",
           "button_color": "#363636"
-        }
-      },
-      "featured-product": {
-        "type": "featured-product",
-        "settings": {
-          "subheading": "",
-          "title": "Featured product",
-          "show_headings_on_mobile": true,
-          "product": "",
-          "show_vendor": true,
-          "show_sku": false,
-          "show_description": true,
-          "description_below_add_to_cart": false,
-          "selector_mode": "dropdown",
-          "show_color_swatch": false,
-          "show_color_carousel": false,
-          "show_quantity_selector": true,
-          "show_inventory_quantity": false,
-          "inventory_quantity_threshold": 3,
-          "show_price_in_button": false,
-          "show_payment_button": true
-        }
-      },
-      "timeline": {
-        "type": "timeline",
-        "blocks": {
-          "item-0": {
-            "type": "item",
-            "settings": {
-              "image": "",
-              "apply_overlay": true,
-              "title": "2000",
-              "subheading": "Sub-heading",
-              "heading": "Heading",
-              "content": "<p>Add your own custom content to give more information about your store, availability details...<\/p>"
-            }
-          },
-          "item-1": {
-            "type": "item",
-            "settings": {
-              "image": "",
-              "apply_overlay": true,
-              "title": "2001",
-              "subheading": "Sub-heading",
-              "heading": "Heading",
-              "content": "<p>Add your own custom content to give more information about your store, availability details...<\/p>"
-            }
-          },
-          "item-2": {
-            "type": "item",
-            "settings": {
-              "image": "",
-              "apply_overlay": true,
-              "title": "2002",
-              "subheading": "Sub-heading",
-              "heading": "Heading",
-              "content": "<p>Add your own custom content to give more information about your store, availability details...<\/p>"
-            }
-          }
-        },
-        "block_order": [
-          "item-0",
-          "item-1",
-          "item-2"
-        ],
-        "settings": {
-          "text_color": "#ffffff"
-        }
-      },
-      "blog-posts": {
-        "type": "blog-posts",
-        "blocks": {
-          "blog-0": {
-            "type": "blog",
-            "settings": {
-              "blog": "news"
-            }
-          }
-        },
-        "block_order": [
-          "blog-0"
-        ],
-        "settings": {
-          "subheading": "",
-          "title": "Featured article",
-          "show_category": false,
-          "button_link": "",
-          "button_text": "View all articles"
-        }
-      },
-      "shop-the-look": {
-        "type": "shop-the-look",
-        "blocks": {
-          "look-0": {
-            "type": "look",
-            "settings": {
-              "image": "",
-              "dot_style": "light",
-              "product_1": "",
-              "product_1_horizontal_position": 30,
-              "product_1_vertical_position": 40,
-              "product_2": "",
-              "product_2_horizontal_position": 45,
-              "product_2_vertical_position": 65,
-              "product_3": "",
-              "product_3_horizontal_position": 70,
-              "product_3_vertical_position": 50
-            }
-          },
-          "look-1": {
-            "type": "look",
-            "settings": {
-              "image": "",
-              "dot_style": "light",
-              "product_1": "",
-              "product_1_horizontal_position": 25,
-              "product_1_vertical_position": 45,
-              "product_2": "",
-              "product_2_horizontal_position": 55,
-              "product_2_vertical_position": 30,
-              "product_3": "",
-              "product_3_horizontal_position": 65,
-              "product_3_vertical_position": 60
-            }
-          }
-        },
-        "block_order": [
-          "look-0",
-          "look-1"
-        ],
-        "settings": {
-          "subheading": "Shop",
-          "title": "Our looks",
-          "show_mobile_product_info": false
         }
       },
       "collection-template": {
@@ -491,7 +575,7 @@
           "enable_image_zoom": true,
           "enable_video_looping": false,
           "tabs_below_add_to_cart": true,
-          "tab_page_1_handle": "shipping-information",
+          "tab_page_1_handle": "",
           "tab_page_2_handle": "",
           "reviews_enabled": false,
           "featured_image_size": "normal"
@@ -536,11 +620,7 @@
     "content_for_index": [
       "slideshow",
       "featured-collections",
-      "collection-list",
-      "featured-product",
-      "timeline",
-      "blog-posts",
-      "shop-the-look"
+      "collection-list"
     ]
   },
   "presets": {

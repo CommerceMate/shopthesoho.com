@@ -16,6 +16,31 @@
     <div class="Slideshow__Carousel {% if section.settings.show_arrow %}Slideshow__Carousel--withScrollButton{% endif %} Carousel Carousel--fadeIn {% if section.settings.show_fullscreen %}Carousel--fixed{% endif %} Carousel--insideDots"
          data-flickity-config='{{ flickity_options }}'>
       {%- for block in section.blocks -%}
+
+        {% assign title_font = block.settings.title_font %}
+        {% assign subheading_font = block.settings.subheading_font %}
+        {% assign buttons_font = block.settings.buttons_font %}
+        {%- capture block_styles -%}
+          --title_font_family: {{ title_font.family }}, {{ title_font.fallback_families }};
+          --title_font_weight: {{ title_font.weight }};
+          --title_font_style: {{ title_font.style }};
+          --title_font_size: {{ block.settings.title_font_size }}px;
+          --title_color: {{ block.settings.title_color }};
+
+          --subheading_font_family: {{ subheading_font.family }}, {{ subheading_font.fallback_families }};
+          --subheading_font_weight: {{ subheading_font.weight }};
+          --subheading_font_style: {{ subheading_font.style }};
+          --subheading_font_size: {{ block.settings.subheading_font_size }}px;
+          --subheading_color: {{ block.settings.subheading_color }};
+
+          --buttons_font_family: {{ buttons_font.family }}, {{ buttons_font.fallback_families }};
+          --buttons_font_weight: {{ buttons_font.weight }};
+          --buttons_font_style: {{ buttons_font.style }};
+          --buttons_font_size: {{ block.settings.buttons_font_size }}px;
+          --buttons_color: {{ block.settings.buttons_color }};
+          --buttons_background_color: {{ block.settings.buttons_background_color }};
+        {%- endcapture -%}
+
         {%- capture slide_content -%}
           {%- comment -%}
             Implementation note: this is an art driven image selection so it would have been better to be able to use the "picture" tag instead. However,
@@ -94,9 +119,14 @@
 
           {%- if slideshow_content != blank -%}
             <div class="Slideshow__Content Slideshow__Content--{{ block.settings.content_position }}">
-              <header class="SectionHeader">
+              <header class="SectionHeader" style='{{ block_styles }}'>
                 {{ slideshow_content }}
               </header>
+              <style>
+                {{ title_font | font_face }}
+                {{ subheading_font | font_face }}
+                {{ buttons_font | font_face }}
+              </style>
             </div>
           {%- endif -%}
         {%- endcapture -%}
@@ -126,24 +156,45 @@
 </section>
 
 <style>
-  #section-{{ section.id }} .Heading,
-   #section-{{ section.id }} .flickity-page-dots {
-    color: {{ section.settings.text_color }};
+
+  #section-{{ section.id }} .flickity-page-dots {
+    color: {{ section.settings.dots_color }};
+  }
+
+  #section-{{ section.id }} .SectionHeader__SubHeading {
+    font-family: var(--subheading_font_family);
+    font-size: var(--subheading_font_size);
+    font-weight: var(--subheading_font_weight);
+    font-style: var(--subheading_font_style);
+    color: var(--subheading_color);
+    margin: 0;
+  }
+
+  #section-{{ section.id }} .SectionHeader__Heading {
+    font-family: var(--title_font_family);
+    font-size: var(--title_font_size);
+    font-weight: var(--title_font_weight);
+    font-style: var(--title_font_style);
+    color: var(--title_color);
   }
 
   #section-{{ section.id }} .Button {
-    color: {{ section.settings.button_color }};
-    border-color: {{ section.settings.button_background }};
+    font-family: var(--buttons_font_family);
+    font-size: var(--buttons_font_size);
+    font-weight: var(--buttons_font_weight);
+    font-style: var(--buttons_font_style);
+    color: var(--buttons_color);
+    border-color: var(--buttons_background_color);
   }
 
   #section-{{ section.id }} .Button::before {
-    background-color: {{ section.settings.button_background }};
+    background-color: var(--buttons_background_color);
   }
 
   {%- if settings.show_button_transition -%}
     @media (-moz-touch-enabled: 0), (hover: hover) {
       #section-{{ section.id }} .Button:hover {
-        color: {{ section.settings.button_background }};
+        color: var(--buttons_background_color);
       }
     }
   {%- endif -%}
@@ -186,20 +237,8 @@
     },
     {
       "type": "color",
-      "id": "text_color",
-      "label": "Text",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "button_color",
-      "label": "Button text",
-      "default": "#363636"
-    },
-    {
-      "type": "color",
-      "id": "button_background",
-      "label": "Button background",
+      "id": "dots_color",
+      "label": "Dots color",
       "default": "#ffffff"
     }
   ],
@@ -266,10 +305,42 @@
           "default": "Slide title"
         },
         {
+          "type":"font_picker",
+          "id":"subheading_font",
+          "label":"Subheading font",
+          "default":"avenir_next_n7"
+        },
+        {
+          "type":"range",
+          "id":"subheading_font_size",
+          "label":"Subheading font size",
+          "default":48,
+          "min":8,
+          "max":200,
+          "step":2,
+          "unit":"px"
+        },
+        {
           "type": "text",
           "id": "title",
           "label": "Heading",
           "default": "Tell your story"
+        },
+        {
+          "type":"font_picker",
+          "id":"title_font",
+          "label":"Heading font",
+          "default":"avenir_next_n8"
+        },
+        {
+          "type":"range",
+          "id":"title_font_size",
+          "label":"Subheading font size",
+          "default":96,
+          "min":8,
+          "max":200,
+          "step":2,
+          "unit":"px"
         },
         {
           "type": "header",
@@ -298,6 +369,50 @@
           "type": "url",
           "id": "button_2_link",
           "label": "Link"
+        },
+        {
+          "type":"font_picker",
+          "id":"buttons_font",
+          "label":"Buttons font",
+          "default":"avenir_next_n6"
+        },
+        {
+          "type":"range",
+          "id":"buttons_font_size",
+          "label":"Buttons font size",
+          "default":14,
+          "min":8,
+          "max":200,
+          "step":2,
+          "unit":"px"
+        },
+        {
+          "type":"header",
+          "content":"Colors"
+        },
+        {
+          "type":"color",
+          "id":"subheading_color",
+          "label":"Subheading color",
+          "default":"#fff"
+        },
+        {
+          "type":"color",
+          "id":"title_color",
+          "label":"Heading color",
+          "default":"#fff"
+        },
+        {
+          "type":"color",
+          "id":"buttons_color",
+          "label":"Buttons text color",
+          "default":"#363636"
+        },
+        {
+          "type":"color",
+          "id":"buttons_background_color",
+          "label":"Buttons background color",
+          "default":"#fff"
         }
       ]
     }
