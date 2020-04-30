@@ -118,14 +118,18 @@
           {%- endcapture -%}
 
           {%- if slideshow_content != blank -%}
-            <div class="Slideshow__Content Slideshow__Content--{{ block.settings.content_position }}">
-              <header class="SectionHeader" style='{{ block_styles }}'>
+            <div class="Slideshow__Content Slideshow__Content--{{ block.settings.content_position }}" id="block-{{ block.id }}">
+              <header class="SectionHeader">
                 {{ slideshow_content }}
               </header>
               <style>
                 {{ title_font | font_face }}
                 {{ subheading_font | font_face }}
                 {{ buttons_font | font_face }}
+
+                #block-{{ block.id }} {
+                  {{ block_styles }}
+                }
               </style>
             </div>
           {%- endif -%}

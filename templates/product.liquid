@@ -1,3 +1,5 @@
+{% include 'shogun-products', content: product %}
+{{product.metafields.shogun.above}}
 {% section 'product-template' %}
 <div id="ShopTheLook-section" class="Product"></div>
 {% section 'product-recommendations' %}
@@ -7,3 +9,7 @@
   window.ShopifyXR=window.ShopifyXR||function(){(ShopifyXR.q=ShopifyXR.q||[]).push(arguments)};
   ShopifyXR('addModels', {{ product.media | where: 'media_type', 'model' | json }});
 </script>
+
+
+{{product.metafields.shogun.below}}
+
