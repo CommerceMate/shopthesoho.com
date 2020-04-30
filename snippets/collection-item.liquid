@@ -28,7 +28,7 @@
 {%- endcapture -%}
 
 
-<div {{ block.shopify_attributes }} class="CollectionItem {% if section.settings.expand_collection %}CollectionItem--expand{% endif %} {% if template == 'index' %}Carousel__Cell {% if forloop.first %}is-selected{% endif %}{% endif %}" data-slide-index="{{ forloop.index0 }}" style='{{ block_styles }}'>
+<div {{ block.shopify_attributes }} class="CollectionItem {% if section.settings.expand_collection %}CollectionItem--expand{% endif %} {% if template == 'index' %}Carousel__Cell {% if forloop.first %}is-selected{% endif %}{% endif %}" data-slide-index="{{ forloop.index0 }}" id="block-{{ block.id }}">
   {%- capture mobile_size -%}750x{% if collection_image.height >= 960 %}960{% else %}{{ collection_image.height }}{% endif %}{%- endcapture -%}
   {%- assign image_crop = block.settings.image_alignment | split: ' ' | last -%}
 
@@ -99,5 +99,8 @@
     {{ title_font | font_face }}
     {{ subheading_font | font_face }}
     {{ button_font | font_face }}
+    #block-{{ block.id }} {
+      {{ block_styles }}
+    }
   </style>
 </div>

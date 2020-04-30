@@ -234,22 +234,47 @@ HEADER CONTENT
                       {%- assign should_space_evenly = true -%}
                     {%- endif -%}
 
-                    <div class="MegaMenu {% if push_image_count != 0 and link.links.size == 0 %}MegaMenu--spacingCenter{% elsif should_space_evenly %}MegaMenu--spacingEvenly{% endif %} {% if push_image_count == 0 and link.links.size > 4 %}MegaMenu--grid{% endif %}" aria-hidden="true" {{ block.shopify_attributes }}>
-                      <div class="MegaMenu__Inner">
-                        {%- for sub_link in link.links -%}
-                          <div class="MegaMenu__Item MegaMenu__Item--fit">
-                            <a href="{{ sub_link.url }}" class="MegaMenu__Title Heading Text--subdued u-h7">{{ sub_link.title | title }}</a>
+                    {%- assign sublinks_without_children = '' -%}
+                    {%- for sublink in link.links -%}
+                      {%- if sublink.links == blank -%}
+                        {%- assign sublinks_without_children = sublinks_without_children | append: ',' | append: sublink.title -%}
+                      {%- endif -%}
+                    {%- endfor -%}
 
-                            {%- if sub_link.links != blank -%}
-                              <ul class="Linklist">
-                                {%- for sub_sub_link in sub_link.links -%}
-                                  <li class="Linklist__Item">
-                                    <a href="{{ sub_sub_link.url }}" class="Link Link--secondary">{{ sub_sub_link.title | escape }}</a>
-                                  </li>
-                                {%- endfor -%}
-                              </ul>
-                            {%- endif -%}
+                    {%- assign sublinks_without_children_array = sublinks_without_children | remove_first: ',' | split: ',' -%}
+                    {%- if sublinks_without_children_array.size == link.links.size -%}
+                      {%- assign only_sublinks_without_children = true -%}
+                    {%- else -%}
+                      {%- assign only_sublinks_without_children = false -%}
+                    {%- endif -%}
+                    <div class="MegaMenu {% if push_image_count != 0 and link.links.size == 0 %}MegaMenu--spacingCenter{% elsif should_space_evenly or only_sublinks_without_children %}MegaMenu--spacingEvenly{% endif %} {% if push_image_count == 0 and link.links.size > 4 and only_sublinks_without_children == false %}MegaMenu--grid{% endif %}" aria-hidden="true" {{ block.shopify_attributes }}>
+                      <div class="MegaMenu__Inner">
+                        {%- if sublinks_without_children != blank -%}
+                          <div class="MegaMenu__Item MegaMenu__Item--fit">
+                            {%- for sub_link in link.links -%}
+                              {%- if sublinks_without_children contains sub_link.title -%}
+                                <a href="{{ sub_link.url }}" class="MegaMenu__Title Heading Text--subdued u-h7">{{ sub_link.title | title }}</a>
+                              {%- endif -%}
+                            {%- endfor -%}
                           </div>
+                        {%- endif -%}
+
+                        {%- for sub_link in link.links -%}
+                          {% if sub_link.links != blank %}
+                            <div class="MegaMenu__Item MegaMenu__Item--fit">
+                              <a href="{{ sub_link.url }}" class="MegaMenu__Title Heading Text--subdued u-h7">{{ sub_link.title | title }}</a>
+
+                              {%- if sub_link.links != blank -%}
+                                <ul class="Linklist">
+                                  {%- for sub_sub_link in sub_link.links -%}
+                                    <li class="Linklist__Item">
+                                      <a href="{{ sub_sub_link.url }}" class="Link Link--secondary">{{ sub_sub_link.title | escape }}</a>
+                                    </li>
+                                  {%- endfor -%}
+                                </ul>
+                              {%- endif -%}
+                            </div>
+                          {% endif %}
                         {%- endfor -%}
 
                         {%- if push_image_count > 0 -%}
@@ -344,7 +369,12 @@ HEADER CONTENT
               {%- endcapture -%}
 
               <li class="HorizontalList__Item {% if link.links == blank and link.active %}is-active{% endif %}" {% if menu_item_dropdown != blank %}aria-haspopup="true"{% endif %}>
-                <a href="{{ link.url }}" class="Heading u-h6 {% if use_image_instead_of_title %}Header__LinkRelative{% endif %}">
+                {% if link.url == '/' %}
+                  {% assign link_html_tag = 'div'%}
+                {% else %}
+                  {% assign link_html_tag = 'a'%}
+                {% endif %}
+                <{{link_html_tag}} {% if link.url != '/' %}href="{{ link.url }}"{% endif %} class="Heading u-h6 {% if use_image_instead_of_title %}Header__LinkRelative{% endif %}">
                   {%- if use_image_instead_of_title -%}
                     <img class="Header__LinkImage" src="{{ menu_item_image | img_url: 'master' }}">
                   {%- else -%}
@@ -355,7 +385,7 @@ HEADER CONTENT
                   {%- if use_mega_menu or menu_item_dropdown == blank -%}
                     <span class="Header__LinkSpacer">{{ link.title | escape }}</span>
                   {%- endif -%}
-                </a>
+                </{{link_html_tag}}>
 
                 {{- menu_item_dropdown -}}
               </li>

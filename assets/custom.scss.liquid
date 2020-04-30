@@ -3,7 +3,11 @@
   font-size: 12px;
   text-transform: uppercase;
   font-weight: 700;
-  color: #ff0055;
+  color: #000;
+}
+
+.ProductItem__Label--onSale {
+  color: #FF0055;
 }
 
 /* Header */
@@ -15,7 +19,7 @@
 /* MegaMenu */
 .MegaMenu__Title {
 	font-size: 12px;
-  font-weight: 700;
+  	font-weight: 700;
 	color: #000;
 }
 
@@ -24,29 +28,6 @@
 	border: 1px solid currentColor !important;
 }
 
-
-/* Slideshow */
-.Header .Text--subdued, .Header .Link--primary, .Header .Link--secondary:hover {
-  color: #000;
-}
-
-#section-collection-list .CollectionItem .Heading, #section-collection-list .flickity-page-dots {
-  // color: #ffffff;
-  // font-size: 38px;
-	// font-weight: 700;
-	// text-transform: uppercase;
-	text-shadow: 0 0 12px rgba(0, 0, 0, .5);
-}
-
-.flickity-slider {
-.SectionHeader__Heading--emphasize {
-  font-size: 96px;
-	// font-weight: 700;
-	// text-transform: uppercase;
-	margin: 0 16px 16px 0;
-	text-shadow: 0 0 12px rgba(0, 0, 0, .5);
-}
-}
 
 /* Buttons */
 .Button {
@@ -83,4 +64,69 @@
   font-size: var(--sale_message_font_size);
   color: var(--sale_message_color);
   margin: 24px 0 0;
+}
+
+/* Newsletter message */
+.ImageHero__ContentOverlay {
+    text-shadow: none;
+}
+
+.Header__MainNav .HorizontalList li:nth-child(7) > .Heading {
+    color: #ff0055;
+}
+
+
+/* Cart Drawer */
+.Cart__ShippingNotice {
+    border-bottom: none;
+}
+
+.Drawer__Header--bordered {
+    box-shadow: none;
+}
+
+.Cart .Drawer__Footer {
+    padding: 0 30px 30px 30px;
+}
+
+.Drawer__Footer {
+    box-shadow: none;
+}
+
+/* Slideshow */
+.flickity-slider {
+.SectionHeader__Heading--emphasize {
+	margin: 0 16px 16px 0;
+	text-shadow: 0 0 12px rgba(0, 0, 0, .5);
+}
+}
+
+
+/* Collection Tile*/
+.CollectionItem__Content--bottomCenter {
+    bottom: 20px;
+}
+
+/* #section-collection-list .Button {
+    font-size: 14px;
+    font-size: .875rem;
+    font-weight: 700;
+    letter-spacing: .5px;
+    letter-spacing: .035em;
+    color: #000;
+    text-transform: none;
+    text-decoration: none;
+    line-height: 1.9;
+    padding: 0;
+    background-color: none;
+    margin: .8em 0;
+    border: 0;
+    border-bottom: 2px solid #000;
+    height: auto;
+    cursor: pointer;
+    white-space: nowrap;
+} */
+
+.Header__CartDot {
+    background-color: #7ED321;
 }

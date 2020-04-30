@@ -1547,7 +1547,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         } else {
           if (newVariant['available']) {
             newButton.removeAttribute('disabled');
-            newButton.classList.add(this.options['showPaymentButton'] ? 'Button--secondary' : 'Button--primary');
+            newButton.classList.add(this.options['showPaymentButton'] ? 'Button--primary' : 'Button--primary');
             newButton.setAttribute('data-action', 'add-to-cart');
 
             if (undefined === this.options['showPriceInButton'] || this.options['showPriceInButton']) {

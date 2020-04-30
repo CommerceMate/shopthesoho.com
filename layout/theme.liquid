@@ -118,6 +118,11 @@
   {% include 'limoniapps-discountninja-header' %}
 
   {% include 'shogun-head' %}
+<script>var scaaffCheck = false;</script>
+{{ 'sca_affiliate.js' | asset_url | script_tag }}
+  {% include 'qikify-navigator' %}
+  {% include 'qikify-smartmenu-data' %}
+  <script type="text/javascript" src="https://sdk.qikify.com/tmenu/app-v5.js?token=iuiV2IhSvlZvwvD9NmpND3nsir3PUcNx&shop=gameday-couture-beta.myshopify.com" defer="defer"></script>
 </head>
 
   <body class="prestige--v4 {% if template.directory %}template-{{ template.directory | handle }}{% endif %} template-{{ template.name | handle }}">
@@ -147,7 +152,7 @@
   {% include 'limoniapps-discountninja-body' %}
 
   {% include 'swymSnippet' %}
-
+    
   {% if settings.enable_klaviyo_bis and settings.klaviyo_bis_account != blank %}
     <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
     <script>
@@ -186,6 +191,8 @@
       });
     </script>
   {% endif %}
+ {% include 'smile-initializer' %}
+
 </body>
 </html>
 

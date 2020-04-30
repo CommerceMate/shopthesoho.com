@@ -19,15 +19,15 @@
     "heading_color": "#000000",
     "text_color": "#000000",
     "text_light_color": "#000000",
-    "link_color": "#323232",
+    "link_color": "#000000",
     "background": "#ffffff",
     "light_background": "#ffffff",
-    "product_on_sale_color": "#f94c43",
+    "product_on_sale_color": "#ff0055",
     "button_background": "#000000",
     "button_text_color": "#ffffff",
     "header_background": "#ffffff",
     "header_heading_color": "#000000",
-    "header_light_color": "#939393",
+    "header_light_color": "#000000",
     "footer_background": "#ffffff",
     "footer_heading_color": "#000000",
     "footer_text_color": "#000000",
@@ -37,10 +37,10 @@
     "newsletter_popup_text_color": "#1c1b1b",
     "secondary_elements_background": "#5c5c5c",
     "secondary_elements_text_color": "#ffffff",
-    "heading_font": "avenir_next_n5",
+    "heading_font": "helvetica_n7",
     "heading_size": "large",
     "uppercase_heading": false,
-    "text_font": "avenir_next_n4",
+    "text_font": "helvetica_n4",
     "base_text_font_size": 15,
     "show_page_transition": false,
     "show_button_transition": false,
@@ -54,7 +54,7 @@
     "product_list_horizontal_spacing": "small",
     "product_list_vertical_spacing": "small",
     "cart_type": "drawer",
-    "cart_enable_notes": true,
+    "cart_enable_notes": false,
     "cart_show_free_shipping_threshold": true,
     "cart_free_shipping_threshold": "75",
     "share_image": "",
@@ -92,7 +92,7 @@
             "type": "menu_item_image",
             "settings": {
               "navigation_menu_title": "Gameday Couture",
-              "menu_item_image": ""
+              "menu_item_image": "shopify:\/\/shop_images\/GC-Logo-S_009b2740-fca9-4550-ace3-e78892ee9965.png"
             }
           }
         },
@@ -100,7 +100,7 @@
           "1586869504333"
         ],
         "settings": {
-          "primary_menu": "",
+          "primary_menu": "prestige-main",
           "secondary_menu": "",
           "show_social_media": true
         }
@@ -118,20 +118,20 @@
           "1587117096908": {
             "type": "announcement",
             "settings": {
-              "content": "Now offering: FREE SHIPPING on all U.S. Orders",
+              "content": "🎉 FREE SHIPPING THROUGH SUNDAY WITH CODE: SHIP20",
               "link": "shopify:\/\/pages\/careers"
             }
           }
         },
         "block_order": [
-          "1587115007375",
-          "1587117096908"
+          "1587117096908",
+          "1587115007375"
         ],
         "settings": {
           "enable_bar": true,
           "home_page_only": false,
-          "background": "#b9ced5",
-          "text_color": "#40798e",
+          "background": "#fcd6d7",
+          "text_color": "#ff0055",
           "enable_autoplay": true,
           "autoplay_speed": 4
         }
@@ -139,6 +139,21 @@
       "header": {
         "type": "header",
         "blocks": {
+          "1587193342230": {
+            "type": "mega_menu",
+            "settings": {
+              "navigation_mega_menu": "Trending Now",
+              "menu_item_image": "",
+              "push_1_image": "shopify:\/\/shop_images\/MM-Trending-Now_f36570b0-7559-4d7d-998c-caad189fd534.jpg",
+              "push_1_heading": "",
+              "push_1_subheading": "",
+              "push_1_url": "",
+              "push_2_image": "",
+              "push_2_heading": "Example heading",
+              "push_2_subheading": "Example sub-heading",
+              "push_2_url": ""
+            }
+          },
           "1587166530393": {
             "type": "mega_menu",
             "settings": {
@@ -154,14 +169,14 @@
               "push_2_url": ""
             }
           },
-          "1586866917279": {
+          "1587686537290": {
             "type": "mega_menu",
             "settings": {
-              "navigation_mega_menu": "Gameday Couture",
-              "menu_item_image": "shopify:\/\/shop_images\/GC-Logo-S.png",
-              "push_1_image": "",
-              "push_1_heading": "Example heading",
-              "push_1_subheading": "Example sub-heading",
+              "navigation_mega_menu": "Graphic Tees",
+              "menu_item_image": "",
+              "push_1_image": "shopify:\/\/shop_images\/MM-Graphic-Tees.jpg",
+              "push_1_heading": "",
+              "push_1_subheading": "",
               "push_1_url": "",
               "push_2_image": "",
               "push_2_heading": "Example heading",
@@ -169,14 +184,14 @@
               "push_2_url": ""
             }
           },
-          "1587176064619": {
+          "1587962866706": {
             "type": "mega_menu",
             "settings": {
-              "navigation_mega_menu": "Dresses",
+              "navigation_mega_menu": "Kids",
               "menu_item_image": "",
-              "push_1_image": "",
-              "push_1_heading": "Example heading",
-              "push_1_subheading": "Example sub-heading",
+              "push_1_image": "shopify:\/\/shop_images\/MM-Kids.jpg",
+              "push_1_heading": "",
+              "push_1_subheading": "",
               "push_1_url": "",
               "push_2_image": "",
               "push_2_heading": "Example heading",
@@ -189,37 +204,7 @@
             "settings": {
               "navigation_mega_menu": "Shoes",
               "menu_item_image": "",
-              "push_1_image": "",
-              "push_1_heading": "Example heading",
-              "push_1_subheading": "Example sub-heading",
-              "push_1_url": "",
-              "push_2_image": "",
-              "push_2_heading": "Example heading",
-              "push_2_subheading": "Example sub-heading",
-              "push_2_url": ""
-            }
-          },
-          "1587192799576": {
-            "type": "mega_menu",
-            "settings": {
-              "navigation_mega_menu": "Accessories",
-              "menu_item_image": "",
-              "push_1_image": "",
-              "push_1_heading": "Example heading",
-              "push_1_subheading": "Example sub-heading",
-              "push_1_url": "",
-              "push_2_image": "",
-              "push_2_heading": "Example heading",
-              "push_2_subheading": "Example sub-heading",
-              "push_2_url": ""
-            }
-          },
-          "1587193342230": {
-            "type": "mega_menu",
-            "settings": {
-              "navigation_mega_menu": "Trending Now",
-              "menu_item_image": "",
-              "push_1_image": "shopify:\/\/shop_images\/Untitled-1_565497a7-db4c-4afd-9922-8ce15f459fd7.png",
+              "push_1_image": "shopify:\/\/shop_images\/MM-Shoes.jpg",
               "push_1_heading": "",
               "push_1_subheading": "",
               "push_1_url": "",
@@ -232,11 +217,11 @@
           "1587200462612": {
             "type": "mega_menu",
             "settings": {
-              "navigation_mega_menu": "Jewelry & Accessories",
+              "navigation_mega_menu": "Accessories",
               "menu_item_image": "",
-              "push_1_image": "",
-              "push_1_heading": "Example heading",
-              "push_1_subheading": "Example sub-heading",
+              "push_1_image": "shopify:\/\/shop_images\/MM-Accessories.jpg",
+              "push_1_heading": "",
+              "push_1_subheading": "",
               "push_1_url": "",
               "push_2_image": "",
               "push_2_heading": "Example heading",
@@ -249,9 +234,9 @@
             "settings": {
               "navigation_mega_menu": "Sale",
               "menu_item_image": "",
-              "push_1_image": "",
-              "push_1_heading": "Example heading",
-              "push_1_subheading": "Example sub-heading",
+              "push_1_image": "shopify:\/\/shop_images\/MM-SALE_d3f5d399-e927-43a6-b739-d2556375d8e5.jpg",
+              "push_1_heading": "",
+              "push_1_subheading": "",
               "push_1_url": "",
               "push_2_image": "",
               "push_2_heading": "Example heading",
@@ -259,44 +244,14 @@
               "push_2_url": ""
             }
           },
-          "1587492127513": {
+          "1587712429491": {
             "type": "mega_menu",
             "settings": {
-              "navigation_mega_menu": "Gifts",
-              "menu_item_image": "",
-              "push_1_image": "",
-              "push_1_heading": "Example heading",
-              "push_1_subheading": "Example sub-heading",
-              "push_1_url": "",
-              "push_2_image": "",
-              "push_2_heading": "Example heading",
-              "push_2_subheading": "Example sub-heading",
-              "push_2_url": ""
-            }
-          },
-          "1587500732426": {
-            "type": "mega_menu",
-            "settings": {
-              "navigation_mega_menu": "Best Sellers",
-              "menu_item_image": "",
-              "push_1_image": "",
-              "push_1_heading": "Example heading",
-              "push_1_subheading": "Example sub-heading",
-              "push_1_url": "",
-              "push_2_image": "",
-              "push_2_heading": "Example heading",
-              "push_2_subheading": "Example sub-heading",
-              "push_2_url": ""
-            }
-          },
-          "1587502089268": {
-            "type": "mega_menu",
-            "settings": {
-              "navigation_mega_menu": "Swim",
-              "menu_item_image": "",
-              "push_1_image": "",
-              "push_1_heading": "Example heading",
-              "push_1_subheading": "Example sub-heading",
+              "navigation_mega_menu": "Gameday Couture",
+              "menu_item_image": "shopify:\/\/shop_images\/GC-Logo-S_009b2740-fca9-4550-ace3-e78892ee9965.png",
+              "push_1_image": "shopify:\/\/shop_images\/MM-College.jpg",
+              "push_1_heading": "",
+              "push_1_subheading": "",
               "push_1_url": "",
               "push_2_image": "",
               "push_2_heading": "Example heading",
@@ -306,17 +261,14 @@
           }
         },
         "block_order": [
-          "1587500732426",
-          "1587176064619",
-          "1587166530393",
-          "1587180277531",
-          "1587192799576",
           "1587193342230",
+          "1587166530393",
+          "1587686537290",
+          "1587962866706",
+          "1587180277531",
           "1587200462612",
           "1587452811793",
-          "1587492127513",
-          "1586866917279",
-          "1587502089268"
+          "1587712429491"
         ],
         "settings": {
           "use_sticky_header": true,
@@ -338,13 +290,6 @@
       "footer": {
         "type": "footer",
         "blocks": {
-          "footer-2": {
-            "type": "newsletter",
-            "settings": {
-              "title": "Newsletter",
-              "content": "<p>Subscribe to receive updates, access to exclusive deals, and more.<\/p>"
-            }
-          },
           "1587442858282": {
             "type": "links",
             "settings": {
@@ -379,7 +324,6 @@
           }
         },
         "block_order": [
-          "footer-2",
           "1587442858282",
           "footer-1",
           "1586885673753",
@@ -398,16 +342,26 @@
           "slide-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Hero-Banner.jpg",
+              "image": "shopify:\/\/shop_images\/Main_Banner-Desktop-04.26.20_af547caf-588f-494e-89d6-8c213a923d2e.jpg",
               "mobile_image": "shopify:\/\/shop_images\/Main_Banner_-_Mobile.jpg",
               "apply_overlay": false,
               "content_position": "middleCenter",
-              "subheading": "",
-              "title": "Get Cozy",
-              "button_1_text": "Shop Lounge",
-              "button_1_link": "",
+              "subheading": "NEW",
+              "subheading_font": "baskerville_no_2_n4",
+              "subheading_font_size": 26,
+              "title": "In Bloom Collection",
+              "title_font": "bauer_bodoni_n7",
+              "title_font_size": 64,
+              "button_1_text": "Shop New Deals",
+              "button_1_link": "shopify:\/\/collections\/in-bloom",
               "button_2_text": "",
-              "button_2_link": ""
+              "button_2_link": "",
+              "buttons_font": "helvetica_n4",
+              "buttons_font_size": 14,
+              "subheading_color": "#ffffff",
+              "title_color": "#ffffff",
+              "buttons_color": "#363636",
+              "buttons_background_color": "#ffffff"
             }
           }
         },
@@ -419,9 +373,7 @@
           "show_arrow": false,
           "autoplay": false,
           "cycle_speed": 5,
-          "text_color": "#ffffff",
-          "button_color": "#363636",
-          "button_background": "#ffffff"
+          "dots_color": "#ffffff"
         }
       },
       "featured-collections": {
@@ -430,7 +382,7 @@
           "featured-collection-0": {
             "type": "collection",
             "settings": {
-              "collection": "brunch-club",
+              "collection": "in-bloom",
               "title": "",
               "grid_items_count": 8,
               "button_text": "View all products"
@@ -456,43 +408,82 @@
           "collection-0": {
             "type": "collection",
             "settings": {
-              "collection": "graphic-tees-4",
-              "image": "shopify:\/\/shop_images\/Collection-01.jpg",
+              "collection": "match-ya-mama",
+              "image": "shopify:\/\/shop_images\/Homepage-Collection-01_4236d9f6-6a92-4560-a29b-c78e59f584b7.jpg",
               "image_alignment": "center center",
+              "show_content_below_image": false,
               "content_position": "bottomCenter",
+              "text_align": "left",
               "subheading": "",
-              "title": "",
-              "button_text": "Shop Graphic Tees",
+              "subheading_font": "helvetica_n4",
+              "subheading_font_size": 8,
+              "title": "Match Ya Mama Collection",
+              "title_font": "bauer_bodoni_n4",
+              "title_font_size": 28,
+              "button_text": "Shop The Collection",
               "button_link": "",
-              "apply_overlay": false
+              "button_font": "helvetica_n4",
+              "button_font_size": 14,
+              "apply_overlay": false,
+              "content_background_color": "#ffffff",
+              "subheading_color": "#000000",
+              "title_color": "#000000",
+              "button_color": "#ffffff",
+              "button_background_color": "#000000"
             }
           },
           "collection-1": {
             "type": "collection",
             "settings": {
-              "collection": "",
-              "image": "shopify:\/\/shop_images\/Collection-02.jpg",
+              "collection": "athlesiure",
+              "image": "shopify:\/\/shop_images\/Homepage-Collection-02.jpg",
               "image_alignment": "center center",
+              "show_content_below_image": false,
               "content_position": "bottomCenter",
+              "text_align": "center",
               "subheading": "",
+              "subheading_font": "helvetica_n7",
+              "subheading_font_size": 24,
               "title": "Athleisure",
+              "title_font": "bauer_bodoni_n4",
+              "title_font_size": 28,
               "button_text": "Shop Athleisure",
               "button_link": "",
-              "apply_overlay": false
+              "button_font": "helvetica_n4",
+              "button_font_size": 14,
+              "apply_overlay": false,
+              "content_background_color": "#fff",
+              "subheading_color": "#fff",
+              "title_color": "#000000",
+              "button_color": "#ffffff",
+              "button_background_color": "#000000"
             }
           },
           "collection-2": {
             "type": "collection",
             "settings": {
-              "collection": "",
-              "image": "shopify:\/\/shop_images\/Collection-03.jpg",
+              "collection": "all-tops",
+              "image": "shopify:\/\/shop_images\/Homepage-Collection-03.jpg",
               "image_alignment": "center center",
+              "show_content_below_image": false,
               "content_position": "bottomCenter",
+              "text_align": "center",
               "subheading": "",
+              "subheading_font": "helvetica_n4",
+              "subheading_font_size": 8,
               "title": "WFH?",
+              "title_font": "bauer_bodoni_n4",
+              "title_font_size": 28,
               "button_text": "Shop Zoom Ready Tops",
               "button_link": "",
-              "apply_overlay": false
+              "button_font": "helvetica_n4",
+              "button_font_size": 14,
+              "apply_overlay": false,
+              "content_background_color": "#fff",
+              "subheading_color": "#fff",
+              "title_color": "#000000",
+              "button_color": "#ffffff",
+              "button_background_color": "#000000"
             }
           }
         },
@@ -506,8 +497,7 @@
           "add_spacing": true,
           "expand_collection": false,
           "stack_on_mobile": true,
-          "text_color": "#ffffff",
-          "button_color": "#363636"
+          "dots_color": "#ffffff"
         }
       },
       "collection-template": {
@@ -519,8 +509,8 @@
           "show_color_swatch": true,
           "show_vendor": false,
           "collection_image_size": "normal",
-          "show_sort_by": true,
-          "show_layout_switch": true,
+          "show_sort_by": false,
+          "show_layout_switch": false,
           "toolbar_position": "top",
           "filter_position": "sidebar",
           "filter_mode": "group",
@@ -555,6 +545,12 @@
       "product-template": {
         "type": "product-template",
         "settings": {
+          "enable_sale_message": true,
+          "sale_message_threshold": 40,
+          "sale_message": "<p>FINAL SALE!<\/p>",
+          "sale_message_font": "helvetica_n4",
+          "sale_message_font_size": 16,
+          "sale_message_color": "#ff0055",
           "show_share_buttons": false,
           "show_vendor": false,
           "show_sku": false,
@@ -564,9 +560,9 @@
           "selector_mode": "block",
           "show_color_swatch": true,
           "show_color_carousel": false,
-          "show_quantity_selector": true,
+          "show_quantity_selector": false,
           "show_inventory_quantity": false,
-          "inventory_quantity_threshold": 3,
+          "inventory_quantity_threshold": 0,
           "show_price_in_button": true,
           "show_payment_button": true,
           "image_size": "large",
@@ -575,9 +571,9 @@
           "enable_image_zoom": true,
           "enable_video_looping": false,
           "tabs_below_add_to_cart": true,
-          "tab_page_1_handle": "",
+          "tab_page_1_handle": "shipping-info-1",
           "tab_page_2_handle": "",
-          "reviews_enabled": false,
+          "reviews_enabled": true,
           "featured_image_size": "normal"
         }
       },
@@ -615,12 +611,66 @@
           "text_color": "#ffffff",
           "button_color": "#363636"
         }
+      },
+      "1587608850251": {
+        "type": "newsletter",
+        "settings": {
+          "section_size": "small",
+          "image": "shopify:\/\/shop_images\/Newsletter-Background_76ac99a2-f062-430c-b625-f9226115a5bb.png",
+          "text_color": "#8e7440",
+          "button_color": "#ffffff",
+          "subheading": "Sign up for our newsletter",
+          "title": "Enter Your Email To Receive 10% Coupon Immediately!",
+          "content": ""
+        }
+      },
+      "1587965690223": {
+        "type": "slideshow",
+        "blocks": {
+          "1587965690223-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/SALE-Background_cd99416f-d7b9-44b8-993a-c01a6565e45d.jpg",
+              "mobile_image": "",
+              "apply_overlay": false,
+              "content_position": "middleCenter",
+              "subheading": "",
+              "subheading_font": "helvetica_n4",
+              "subheading_font_size": 24,
+              "title": "Shop Final Sale!",
+              "title_font": "bauer_bodoni_n4",
+              "title_font_size": 96,
+              "button_1_text": "Shop Final Sale",
+              "button_1_link": "shopify:\/\/collections\/all-sale",
+              "button_2_text": "",
+              "button_2_link": "",
+              "buttons_font": "avenir_next_n6",
+              "buttons_font_size": 14,
+              "subheading_color": "#fff",
+              "title_color": "#ffffff",
+              "buttons_color": "#363636",
+              "buttons_background_color": "#fff"
+            }
+          }
+        },
+        "block_order": [
+          "1587965690223-0"
+        ],
+        "settings": {
+          "show_fullscreen": true,
+          "show_arrow": false,
+          "autoplay": false,
+          "cycle_speed": 5,
+          "dots_color": "#ffffff"
+        }
       }
     },
     "content_for_index": [
       "slideshow",
       "featured-collections",
-      "collection-list"
+      "collection-list",
+      "1587965690223",
+      "1587608850251"
     ]
   },
   "presets": {
@@ -682,8 +732,7 @@
           "type": "announcement",
           "settings": {
             "background": "#000000",
-            "text_color": "#ffffff",
-            "content": "Announce something here"
+            "text_color": "#ffffff"
           }
         },
         "header": {
@@ -761,9 +810,7 @@
             "show_fullscreen": true,
             "show_arrow": false,
             "autoplay": true,
-            "cycle_speed": 5,
-            "text_color": "#ffffff",
-            "button_color": "#363636"
+            "cycle_speed": 5
           }
         },
         "featured-collections": {
@@ -826,9 +873,7 @@
           ],
           "settings": {
             "add_spacing": true,
-            "expand_collection": false,
-            "text_color": "#ffffff",
-            "button_color": "#363636"
+            "expand_collection": false
           }
         },
         "featured-product": {
@@ -1070,8 +1115,7 @@
           "type": "announcement",
           "settings": {
             "background": "#f3f3f3",
-            "text_color": "#5c5c5c",
-            "content": "Announce something here"
+            "text_color": "#5c5c5c"
           }
         },
         "header": {
@@ -1149,9 +1193,7 @@
             "show_fullscreen": true,
             "show_arrow": false,
             "autoplay": true,
-            "cycle_speed": 5,
-            "text_color": "#ffffff",
-            "button_color": "#363636"
+            "cycle_speed": 5
           }
         },
         "featured-collections": {
@@ -1214,9 +1256,7 @@
           ],
           "settings": {
             "add_spacing": true,
-            "expand_collection": false,
-            "text_color": "#ffffff",
-            "button_color": "#363636"
+            "expand_collection": false
           }
         },
         "featured-product": {
@@ -1459,8 +1499,7 @@
           "type": "announcement",
           "settings": {
             "background": "#f1e4d8",
-            "text_color": "#343434",
-            "content": "Announce something here"
+            "text_color": "#343434"
           }
         },
         "header": {
@@ -1538,9 +1577,7 @@
             "show_fullscreen": true,
             "show_arrow": false,
             "autoplay": true,
-            "cycle_speed": 5,
-            "text_color": "#ffffff",
-            "button_color": "#363636"
+            "cycle_speed": 5
           }
         },
         "featured-collections": {
@@ -1603,9 +1640,7 @@
           ],
           "settings": {
             "add_spacing": true,
-            "expand_collection": false,
-            "text_color": "#ffffff",
-            "button_color": "#363636"
+            "expand_collection": false
           }
         },
         "featured-product": {

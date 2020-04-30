@@ -40,6 +40,7 @@
 
         {%- assign newsletter_id = 'footer-' | append: section.id -%}
 
+        {% comment %}
         {%- form 'customer', id: newsletter_id, class: 'Newsletter Form' -%}
           {%- if form.posted_successfully? -%}
             <p class="Form__Alert Alert Alert--success">{{ 'home_page.newsletter.success' | t }}</p>
@@ -48,13 +49,15 @@
               <p class="Form__Alert Alert Alert--error">{{ form.errors.messages['email'] }}</p>
             {%- endif -%}
 
-            <div class="Newsletter__Inner">
+      			<div class="Newsletter__Inner">
               <input type="hidden" name="contact[tags]" value="newsletter">
               <input type="email" name="contact[email]" class="Form__Input" aria-label="{{ 'home_page.newsletter.input' | t }}" placeholder="{{ 'home_page.newsletter.input' | t }}" required>
               <button type="submit" class="Form__Submit Button Button--primary">{{ 'home_page.newsletter.submit' | t }}</button>
-            </div>
+      	 		</div>
           {%- endif -%}
         {%- endform -%}
+        {% endcomment %}
+        <div class="klaviyo-form-TnDAhv"></div>
       </div>
     </div>
   </div>
