@@ -130,6 +130,9 @@
     <span class="LoadingBar"></span>
     <div class="PageOverlay"></div>
     <div class="PageTransition"></div>
+    {% if page.handle == 'mascot' %}
+      {% render 'page-mascot' %}
+    {% endif %}
 
     {% section 'popup' %}
     {% section 'sidebar-menu' %}

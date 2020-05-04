@@ -1,0 +1,40 @@
+<style>
+  .shg-box-vertical-align-wrapper {
+    padding: 0 10px 10px;
+  }
+  .shg-box-vertical-align-wrapper .shogun-image-container {
+    float: none;
+    width: 100%;
+    padding: 0 !important;
+  }
+  .shogun-image-container {
+    float: left;
+    width: 33.33%;
+    padding: 10px !important;
+  }
+  .shogun-root {
+    max-width: 1180px;
+    padding: 0 30px;
+    margin: 0 auto;
+  }
+  .shogun-root::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+  @media only screen and (max-width: 1139px) {
+    .shogun-root {
+      padding: 0 20px;
+    }
+  }
+  @media only screen and (max-width: 640px) {
+    .shogun-root {
+      padding: 0 5px;
+    }
+  }
+  @media only screen and (max-width: 480px) {
+    .shogun-image-container {
+      width: 50%;
+    }
+  }
+</style>

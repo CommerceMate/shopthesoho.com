@@ -1,0 +1,255 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+  .toggle {
+  	cursor: pointer;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    align-items: center;
+    background: #3c3c3c;
+    color: #fff;
+    padding: 5px 5px 5px 10px;
+  }
+
+  .sidebar ul li {
+  	position: relative;
+    margin: 0;
+  }
+
+  .sidebar ul li a {
+  	display: block;
+    width: 100%;
+    padding: 5px 10px;
+    padding-right: 30px;
+  }
+
+  .sidebar ul li span {
+  	position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .toggle > span {
+    display: inline-block;
+        float: right;
+    width: 20px;
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sidebar > div + div {
+  	margin-top: 16px;
+  }
+
+
+  .toggle_list,
+  .toggle_list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .toggle_list li ul {
+    padding-left: 16px;
+  }
+
+  .menu-toggle {
+  	-webkit-transition: ease all .3s;
+       -moz-transition: ease all .3s;
+    		transition: ease all .3s;
+  }
+
+  .menu-toggle + ul,
+  .toggle.open + .toggle_list,
+  .sidebar li.open > ul {
+    display: block;
+  }
+
+  .sidebar ul li:hover > a {
+    background: rgba(75,167,215, .03);
+  }
+
+  .sidebar ul li.open > a {
+    background: rgba(75,167,215, .1);
+  }
+
+  .sidebar ul li.open > .menu-toggle {
+  	transform: rotate(-180deg);
+  }
+
+  ul.mytags li a
+  {
+        padding: 5px;
+  }
+  .jspContainer{overflow:hidden;position:relative}
+  .jspPane{position:absolute}
+  .jspVerticalBar{position:absolute;top:0;right:0;width:5px;height:100%;background:red}
+  .jspHorizontalBar{position:absolute;bottom:0;left:0;width:100%;height:5px;background:red}
+  .jspCap{display:none}
+  .jspHorizontalBar .jspCap{float:left}
+  .jspTrack{background:#dde;position:relative}
+  .jspDrag{background:#505050;position:relative;top:0;left:0;cursor:pointer}
+  .jspHorizontalBar .jspTrack,.jspHorizontalBar .jspDrag{float:left;height:100%}
+  .jspArrow{background:#50506d;text-indent:-20000px;display:block;cursor:pointer;padding:0;margin:0}
+  .jspArrow.jspDisabled{cursor:default;background:#80808d}
+  .jspVerticalBar .jspArrow{height:16px}
+  .jspHorizontalBar .jspArrow{width:5px;float:left;height:100%}
+  .jspVerticalBar .jspArrow:focus{outline:none}
+  .jspCorner{background:#eeeef4;float:left;height:100%}
+  * html .jspCorner{margin:0 -3px 0 0}
+  label {
+    text-align: center;
+    font-weight:bold;
+    display: block;
+  }
+
+  .colorFilter {
+    padding: 10px;
+  }
+
+  @media (min-width: 1250px) {
+    #college .colorfilter {
+      width: 200px;
+      position: absolute;
+    }
+  }
+
+  @media(min-width:1441px) {
+    .colorfilter {
+      left: -15%;
+    }
+  }
+
+ .scroll-pane {
+    height: 450px;
+  }
+  .desktophide {
+    display:none;
+  }
+
+  .college-container {
+    max-width: 1180px;
+    padding: 30px 30px 0;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .college-items-container {
+    padding: 10px;
+  }
+  .college-items-container .shogun-root {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+
+  @media only screen and (max-width: 1600px) {
+    #college .colorfilter {
+      width: 20%;
+      position: relative;
+      left: 0;
+    }
+    .college-items-container {
+      width: 80%;
+    }
+  }
+  @media (max-width: 767px) {
+    #college .colorfilter {
+      width: 100%;
+    }
+    .college-items-container {
+      width: 100%;
+      padding: 0;
+      margin-top: 20px;
+    }
+    .menu-toggle {
+      float: right;
+    }
+    .grid-uniform.graphictee , .colorfilter {
+      width:100%;
+    }
+    .mobilehide {
+      display:none;
+    }
+    .desktophide {
+      display: block;
+    }
+    .sidebar li ul,
+    .toggle_list {
+      display: none;
+    }
+  }
+  @media only screen and (max-width: 640px) {
+    .college-container {
+      max-width: 1180px;
+      padding: 20px 15px 0;
+    }
+  }
+  @media only screen and (max-width: 480px) {
+    .college-items-container .shogun-root {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+</style>
+
+<!-- the mousewheel plugin - optional to provide mousewheel support -->
+ {{ 'jquery.mousewheel.js' | asset_url | script_tag }}
+
+<!-- the jScrollPane script -->
+ {{ 'jscrollpane.min.js' | asset_url | script_tag }}
+
+<div class="college-container" id="college">
+  <div class="sidebar four columns toggle-all--true grid__item one-whole colorfilter">
+
+    <h4 class="mobilehide">Choose your team:</h4>
+    <h4 class="toggle desktophide" aria-haspopup="true" aria-expanded="false">Choose your team<span>+</span></h4>
+
+  <ul class="coll-filter mytags scroll-pane toggle_list content_block">
+    {% for link in linklists.team.links %}
+      <li><a href="{{ link.url }}" data-handle="{{ link.handle }}">{{ link.title }}</a></li>
+    {% endfor %}
+  </ul>
+
+
+  </div>
+
+  <div class="college-items-container">
+    {{ page.content }}
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.scroll-pane').jScrollPane();
+    $('.toggle').click(function(){
+      $(this).toggleClass('open');
+
+      $('span', this).html( $('span', this).html() == '+' ? '-': '+' );
+
+      $('.scroll-pane').jScrollPane();
+
+    });
+
+    $('.sidebar li').click(function(){
+      if ($('> ul', this).length > 0) {
+        $(this).toggleClass('open');
+
+        return false;
+      }
+
+      return true;
+    });
+
+  });
+</script>

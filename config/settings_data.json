@@ -111,13 +111,21 @@
           "1587115007375": {
             "type": "announcement",
             "settings": {
-              "content": "Want 20% off your entire order? Text SHOPTHESOHO TO 29071",
+              "content": "Get 20% off your entire order when you text SHOPTHESOHO to 29071",
               "link": "shopify:\/\/pages\/about-us"
+            }
+          },
+          "1588298675703": {
+            "type": "announcement",
+            "settings": {
+              "content": "🎉 FREE SHIPPING ENDS SUNDAY with code BRIDAL 🎉",
+              "link": ""
             }
           }
         },
         "block_order": [
-          "1587115007375"
+          "1587115007375",
+          "1588298675703"
         ],
         "settings": {
           "enable_bar": true,
@@ -125,7 +133,7 @@
           "background": "#fcd6d7",
           "text_color": "#ff0055",
           "enable_autoplay": true,
-          "autoplay_speed": 4
+          "autoplay_speed": 5
         }
       },
       "header": {
@@ -134,9 +142,9 @@
           "1587193342230": {
             "type": "mega_menu",
             "settings": {
-              "navigation_mega_menu": "Trending Now",
+              "navigation_mega_menu": "What's New",
               "menu_item_image": "",
-              "push_1_image": "shopify:\/\/shop_images\/MOM20-MOM20T-MOM20Y.jpg",
+              "push_1_image": "shopify:\/\/shop_images\/MOM.JPG",
               "push_1_heading": "Match Ya Mama",
               "push_1_subheading": "",
               "push_1_url": "",
@@ -154,7 +162,7 @@
               "push_1_image": "shopify:\/\/shop_images\/PICK-YOU-EVERYTIME-KENNEDY-8_52f7c1e6-110c-4714-a361-4150d51a07ad.jpg",
               "push_1_heading": "New in: Rompers",
               "push_1_subheading": "",
-              "push_1_url": "",
+              "push_1_url": "shopify:\/\/collections\/rompers",
               "push_2_image": "",
               "push_2_heading": "Example heading",
               "push_2_subheading": "Example sub-heading",
@@ -166,10 +174,10 @@
             "settings": {
               "navigation_mega_menu": "Graphic Tees",
               "menu_item_image": "",
-              "push_1_image": "shopify:\/\/shop_images\/MM-Graphic-Tees.jpg",
+              "push_1_image": "shopify:\/\/shop_images\/BRIDAL-FLATLAY.jpg",
               "push_1_heading": "",
               "push_1_subheading": "",
-              "push_1_url": "",
+              "push_1_url": "shopify:\/\/collections\/all-graphic-tees",
               "push_2_image": "",
               "push_2_heading": "Example heading",
               "push_2_subheading": "Example sub-heading",
@@ -181,7 +189,7 @@
             "settings": {
               "navigation_mega_menu": "Kids",
               "menu_item_image": "",
-              "push_1_image": "shopify:\/\/shop_images\/MM-Kids.jpg",
+              "push_1_image": "shopify:\/\/shop_images\/KID.JPG",
               "push_1_heading": "",
               "push_1_subheading": "",
               "push_1_url": "",
@@ -211,7 +219,7 @@
             "settings": {
               "navigation_mega_menu": "Accessories",
               "menu_item_image": "",
-              "push_1_image": "shopify:\/\/shop_images\/MM-Accessories.jpg",
+              "push_1_image": "shopify:\/\/shop_images\/ACCESSORIES-MARKETING-PHOTO-9_c8f69ba1-ead4-4102-84b4-66e85c0dc055.jpg",
               "push_1_heading": "",
               "push_1_subheading": "",
               "push_1_url": "",
@@ -241,7 +249,7 @@
             "settings": {
               "navigation_mega_menu": "Gameday Couture",
               "menu_item_image": "shopify:\/\/shop_images\/GC-Logo-S_009b2740-fca9-4550-ace3-e78892ee9965.png",
-              "push_1_image": "shopify:\/\/shop_images\/MM-College.jpg",
+              "push_1_image": "shopify:\/\/shop_images\/ala_ce222779-11e9-45a4-8cd3-676de7457215.JPG",
               "push_1_heading": "",
               "push_1_subheading": "",
               "push_1_url": "",
@@ -516,9 +524,9 @@
       "recently-viewed-products": {
         "type": "recently-viewed-products",
         "settings": {
-          "show_section": true,
+          "show_section": false,
           "title": "Recently viewed",
-          "show_product_info": true,
+          "show_product_info": false,
           "show_vendor": false,
           "show_color_swatch": false
         }
@@ -572,9 +580,9 @@
       "product-recommendations": {
         "type": "product-recommendations",
         "settings": {
-          "show_product_recommendations": true,
+          "show_product_recommendations": false,
           "heading": "You may also like",
-          "show_product_info": true,
+          "show_product_info": false,
           "show_vendor": false,
           "show_color_swatch": false
         }
@@ -655,6 +663,194 @@
           "cycle_speed": 5,
           "dots_color": "#ffffff"
         }
+      },
+      "page-faq-template": {
+        "type": "page-faq-template",
+        "blocks": {
+          "page-faq-template-0": {
+            "type": "separator",
+            "settings": {
+              "title": "Return Policy"
+            }
+          },
+          "page-faq-template-1": {
+            "type": "question",
+            "settings": {
+              "title": "How to Exchange",
+              "answer": "<p>Enter your order number and zip code on our <a href=\"https:\/\/shopthesoho.returnly.com\/\" title=\"https:\/\/shopthesoho.returnly.com\/\">Return\/Exchange portal<\/a>&nbsp;to start an Exchange.<\/p>\n<p>Once there, please select the eligible items you would like to Exchange. Please note that we only offer Exchanges for the same item in a different size, if available.<br><br>Once we receive your Exchange Request and your original item has been scanned, we will begin processing your order.<br><br>Please allow 1-3 business days for the Exchange Request to be processed and shipped.<br><br>Once your Exchange has shipped, you will receive an email with tracking information and your Exchange will arrive to you via UPS Innovations.<\/p>\n<p><\/p>\n<p>To make an exchange, please use our <a href=\"https:\/\/shopthesoho.returnly.com\/\" title=\"https:\/\/shopthesoho.returnly.com\/\">Return\/Exchange portal.<\/a><\/p>"
+            }
+          },
+          "page-faq-template-2": {
+            "type": "question",
+            "settings": {
+              "title": "How to Return",
+              "answer": "<p>We are bummed that you are not 100% satisfied with the items that you received. We will gladly accept returns for store credit within 30 days of the fulfillment date.<\/p>\n<p><\/p>\n<p>Here&rsquo;s what to do:<br>1. Please click <a href=\"https:\/\/shopthesoho.returnly.com\/\">HERE<\/a> to access the Return\/Exchange portal.<\/p>\n<p>2. Enter your order number and zip code on our Returns\/Exchanges page to Start a Return.<\/p>\n<p>3. Once there, please select the eligible items you would like to Return.<\/p>\n<p>4. Once you complete the Returns process, a Packing Slip + Prepaid USPS Return label will be emailed directly to you.<\/p>\n<p>5. Print the label out and send your package back to us.<\/p>\n<p>6. Please ensure that ALL APPROVED ITEMS listed on the Packing Slip are included in the SAME package.<\/p>"
+            }
+          },
+          "page-faq-template-3": {
+            "type": "question",
+            "settings": {
+              "title": "Return Conditions",
+              "answer": "<p>1. Returns must be in original, unused, unworn condition with no defects, no stains, no pet hair, no smells, or any signs that the item has been worn or used, with all tags attached and all packing slips included with the return.<\/p>\n<p>2. Items returned with obvious use, makeup, animal hair, deodorant, perfume, or similar product stains may be subject to refusal.<\/p>\n<p>3. We do not accept returned items that were sent back by you directly without return approval.<\/p>\n<p>4. Jewelry and accessories are not eligible for a return, refund or exchange.<\/p>\n<p>5. Final Sale items or Specialty Items cannot be returned, refunded or exchanged.<\/p>\n<p><\/p>\n<p>Please note that shipping and handling charges are not refundable. The cost of the return shipping label will be deducted from your refund or store credit. Return shipping costs are not reimbursed by Social House Boutique X Gameday Couture, unless we sent damaged or incorrect merchandise.<\/p>"
+            }
+          },
+          "page-faq-template-5": {
+            "type": "question",
+            "settings": {
+              "title": "Return Address",
+              "answer": "<p>Please do not send your return to the address on your package.<\/p>\n<p>This is not our returns address and will affect the processing of your return. The correct return address will be listed on the return label supplied to you from our return portal.<\/p>"
+            }
+          },
+          "1588314748722": {
+            "type": "question",
+            "settings": {
+              "title": "Verification",
+              "answer": "<p>A confirmation email will be sent to you once the order is authorized and verified. (If you did not leave an email or input the wrong email, we are unable to send confirmation email.) We begin preparing your order immediately after it is verified. With this sort of time frame it makes it difficult for us to change or cancel your order.<\/p>"
+            }
+          },
+          "1588314788648": {
+            "type": "question",
+            "settings": {
+              "title": "Processing",
+              "answer": "<p>It normally takes 2-5 business days for us to process your order to be prepared to ship. Please note, this does not include holidays and weekends.<\/p>"
+            }
+          },
+          "1588314809942": {
+            "type": "question",
+            "settings": {
+              "title": "Shipping",
+              "answer": "<p>Orders typically arrive in less than 7-14 business days after being processed. Most orders will be processed within 2-5 business days. Standard orders are delivered by USPS Monday through Saturday.<\/p>\n<p>Shipping times are estimated and may vary due to promotions or holidays. When your item ships, you will receive an email with your tracking number for that order. Please know that your order may be coming from multiple warehouse, so if you are missing items they could be coming in another package.<\/p>"
+            }
+          },
+          "1588314852852": {
+            "type": "question",
+            "settings": {
+              "title": "Lost or Missing Packages",
+              "answer": "<p>If your order is lost in transit, misplaced or stolen , we will open an investigation with the USPS. This process can take up to two weeks for the investigation to be completed.<\/p>\n<p>Once the investigation is complete, if your order is lost in transit or delivered to the wrong address, we will replace your items if they are still available. If we cannot replace them, then we will refund your order, as well as any shipping costs. However, if the USPS confirms delivery to the correct address, Social House Boutique X Gameday Couture is not liable for the misplaced or stolen package.<\/p>"
+            }
+          },
+          "page-faq-template-4": {
+            "type": "separator",
+            "settings": {
+              "title": "Order"
+            }
+          },
+          "page-faq-template-6": {
+            "type": "question",
+            "settings": {
+              "title": "Can I cancel\/make changes to the order I just placed?",
+              "answer": "<p>Check it twice! Once an order is placed we are unable to make any changes to the order, including cancellation. Address changes are not able to be made once the order is submitted.<\/p>"
+            }
+          },
+          "1588315100436": {
+            "type": "question",
+            "settings": {
+              "title": "When will my order ship?",
+              "answer": "<p>Orders typically arrive in less than 7-14 business days after being processed. Most orders will be processed within 2-5 business days. Please note that during peak season processing days may take longer.&nbsp; Standard orders are delivered by USPS Monday through Saturday. Shipping times are estimated and may vary due to promotions or holidays.<\/p>"
+            }
+          },
+          "1588315133051": {
+            "type": "question",
+            "settings": {
+              "title": "Why was my card charged before my items were shipped?",
+              "answer": "<p>To get your items to you promptly, your credit card is charged when you place an order. If an item you&rsquo;ve ordered is out of stock, you&rsquo;ll be issued a refund for that item and shipping charges and taxes will be adjusted accordingly. Though we check all orders very carefully before shipping. Please review your order carefully before submitting your order (then feel free to celebrate your new find)!<\/p>"
+            }
+          },
+          "1588315158157": {
+            "type": "question",
+            "settings": {
+              "title": "My Item was Damaged or missing, what now?",
+              "answer": "<p>If you feel you have received a defective\/damaged item or missing an item, please contact us within 3 business days of the delivery date at <a href=\"mailto:support@gamedaycouture.com\" title=\"mailto:support@gamedaycouture.com\">support@shopthesoho.com. <\/a><\/p>"
+            }
+          },
+          "1588315203917": {
+            "type": "question",
+            "settings": {
+              "title": "Why was my order cancelled?",
+              "answer": "<p>Due to an unforeseen event, the item you ordered suddenly became out of stock and is no longer available. We promise these cases are rare. However, if an item in your order does become unavailable, you will be contacted within 24 to 48 hours about the cancellation. If your order contains additional items, these items will still be shipped to you and the unavailable item will be removed from your order.<\/p>"
+            }
+          },
+          "1588315229408": {
+            "type": "question",
+            "settings": {
+              "title": "What if my order was refused or marked as undeliverable?",
+              "answer": "<p>Refused or undeliverable packages are subject to return shipping costs that vary by shipping method used in the original order.<\/p>\n<p>If you choose not to have your order re-delivered, we can refund you the cost of the items, but the original shipping cost and the undeliverable charge from the carrier (if applicable) will be deducted from the refund as well as a 20% restocking fee.<\/p>"
+            }
+          },
+          "page-faq-template-7": {
+            "type": "separator",
+            "settings": {
+              "title": "Refunds and Store Credits"
+            }
+          },
+          "page-faq-template-8": {
+            "type": "question",
+            "settings": {
+              "title": "When will I receive my Refund?",
+              "answer": "<p>Expect to receive your store credit emailed to you in the form of an E-Gift Card within 2-5 business days after your return has been delivered to our warehouse. Store credit is not processed the day that your item is delivered. Once your return is received, it must be sorted, inspected, and processed. Please note that there may be an increase in processing time due to factors such as seasonal and holiday time periods. We appreciate your patience while we work quickly to get our processing needs resolved.<\/p>"
+            }
+          },
+          "1588316270683": {
+            "type": "question",
+            "settings": {
+              "title": "Why did I get a gift card for my return instead of a refund?",
+              "answer": "<p>We only offer STORE CREDIT for returns. We do not issue refunds back to your method of payment. Store Credit is issued through email and expires 2 years from the issue date. Feel free to reach out to us with any questions regarding sizing or styling prior to placing your order.<\/p>"
+            }
+          },
+          "1588316296885": {
+            "type": "question",
+            "settings": {
+              "title": "What if my item was FINAL SALE or a Specialty Item?",
+              "answer": "<p>FINAL SALE and SPECIALTY items are NOT eligible for Returns or Exchanges. Please know that this will show up in the product description or Name of the product if it is not eligible for return.<\/p>"
+            }
+          },
+          "1588316499416": {
+            "type": "separator",
+            "settings": {
+              "title": "Discount Codes"
+            }
+          },
+          "1588316531400": {
+            "type": "question",
+            "settings": {
+              "title": "How do I redeem my Gift Card?",
+              "answer": "<p>You should have received a 16 digit code for the gift card. When going to check out from your cart, on the customer info page you should see &ldquo;Have a Discount Code&rdquo; in red letters. Click that and input your 16 digit code to apply the gift card to that order. You can also input a Promo Code if used with a Gift Card.<\/p>"
+            }
+          },
+          "1588316548442": {
+            "type": "question",
+            "settings": {
+              "title": "Can I apply a Promo Code after I already Placed an order?",
+              "answer": "<p>We will on occasion run flash sales, who doesn't love a fun sale? Because our sales are only temporary, not a permanent price change, we are unable to honor any price adjustments for order placed outside of 12 hours. If you did purchase the item with this time frame we are happy to issue you a store credit for the price adjustment.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "page-faq-template-0",
+          "page-faq-template-1",
+          "page-faq-template-2",
+          "page-faq-template-3",
+          "page-faq-template-5",
+          "1588314748722",
+          "1588314788648",
+          "1588314809942",
+          "1588314852852",
+          "page-faq-template-4",
+          "page-faq-template-6",
+          "1588315100436",
+          "1588315133051",
+          "1588315158157",
+          "1588315203917",
+          "1588315229408",
+          "page-faq-template-7",
+          "page-faq-template-8",
+          "1588316270683",
+          "1588316296885",
+          "1588316499416",
+          "1588316531400",
+          "1588316548442"
+        ],
+        "settings": {}
       }
     },
     "content_for_index": [

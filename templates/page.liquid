@@ -1,3 +1,9 @@
+{% render 'shogun-products', content: page %}
+<!-- /templates/page.liquid -->
+{% if page.handle == 'college' %}
+  {% render 'page-college' %}
+
+{% else %}
 <div class="Container">
   <header class="PageHeader">
     <div class="SectionHeader SectionHeader--center">
@@ -9,3 +15,4 @@
     {{ page.content }}
   </div>
 </div>
+{% endif %}
