@@ -1,0 +1,218 @@
+<div class="order-page">
+  <style>
+    p.product-counter{
+      display: none;
+    }
+    .page__content.rte {
+      margin: 30px 0 0;
+    }
+    .data_2 {
+      cursor: pointer;
+    }
+    .data_2 {
+      text-decoration: underline;
+      color: #3b5998;
+    }
+    span.hide_3,span.hide_4,span.hide_5,span.hide_6,span.hide_7,span.hide_10,span.hide_13 {
+      display: none;
+    }
+    .order-page{
+      width: 100%;
+      display: block;
+      vertical-align: top;
+      max-width: 550px;
+      margin: 0 auto;
+    }
+    .order-form{
+      width: 100%;
+      display: inline-block;
+      vertical-align: top;
+    }
+    .order-form form{
+      text-align: center;
+    }
+    .order-form .input-container{
+      display: inline-block;
+      width: 100%;
+      vertical-align: top;
+      position: relative;
+      margin: 0 0 15px;
+    }
+    .order-form .input-container i{
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #39B917;
+    }
+    .order-form .input-container input{
+      padding: 10px 15px 10px 40px;
+      width: 100%;
+      border: 1px solid #e5e5e5;
+      border-radius: 3px;
+    }
+    .order-form .btn{
+      display: inline-block;
+      vertical-align: top;
+      background: #39B917;
+      border: 0;
+      color: #fff;
+      padding: 10px 15px;
+      min-width: 200px;
+      border-radius: 3px;
+      width: auto;
+    }
+    .result-order{
+      width: 100%;
+      display: none;
+      vertical-align: top;
+      margin: 20px 0 0;
+      background: #ECECEC;
+      padding: 10px 20px;
+    }
+    .result-order.active{
+      display: inline-block
+    }
+    .result-order div{
+      width: 50%;
+      float: left;
+      font-size: 14px;
+      margin: 5px 0 0;
+      padding-right: 15px;
+    }
+    .result-order .divide-line{
+      width: 100%;
+      display: inline-block;
+      vertical-align: top;
+      border: 0;
+      background: #000;
+      height: 1px;
+      margin: 15px 0 0;
+    }
+    @media screen and (max-width: 480px){
+      .result-order div{
+        width: 100%;
+        margin: 0;
+      }
+      .result-order div:nth-child(odd){
+        margin: 10px 0 0;
+      }
+      .result-order .divide-line{
+        margin: 20px 0 10px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <div class='order-form'>
+    <form action="/">
+      <input class="input-field" type="hidden" value='8257' id='merchant-id' placeholder="Enter Merchant ID" >
+      <div class="input-container">
+        <i class="fa fa-user"></i>
+        <input class="input-field" type="text" id='order-id' placeholder="Enter Order Number" >
+      </div>
+      <button type="submit" id='search-order' class="btn">Lookup Order</button>
+    </form>
+    <div class='result-order'></div>
+  </div>
+  <script>
+    var title=[];
+
+    $(document).ready(function(){
+
+
+      $("#search-order").click(function(e){
+
+        e.preventDefault();
+        var mid=$("input#merchant-id").val();
+        var oid = $("input#order-id").val();
+
+
+        var innerdata='';
+
+        $.ajax({
+
+          type:'POST',
+          crossDomain:true,
+          url:'https://checkoutbump.com/shoporderapi/orderapi.php',
+          data:{ mid:mid,oid:oid },
+
+          success:function(data){
+            var data = JSON.parse(data);
+
+            var col = data.COLUMNS.length;
+
+            var datacollection =[];
+            for(var i =0; i < col; i++)
+            {
+
+              title[i] = data.COLUMNS[i];
+
+            }
+
+
+            var merge=[];
+            var totaldata = data.DATA.length;
+            for(var j =0; j < totaldata; j++)
+            {
+
+              var arr =data.DATA[j];
+              $.merge(merge,arr);
+
+            }
+
+            var html='';
+            var totallength = merge.length;
+            var z=0;
+            var tl = title.length;
+
+            for(var k =0; k< totallength; k++)
+            {
+              if(z >= tl)
+              {
+
+                z=0;
+                html+="<hr class='divide-line'><span style='display: none;'></span>";
+              }
+              html+="<span class='hide_"+z+"'><div><b>"+title[z]+"</b></div><div class='data_"+z+"'>"+merge[k]+"</div></span>";
+
+              z++;
+
+            }
+
+            $(".result-order").append(html).addClass("active");
+
+            $(".data_2").click(function(){
+
+              var sid= $(this).text();
+
+              if(sid !=null)
+              {
+
+                window.open("https://www.ups.com/track?loc=en_IN&tracknum="+sid+"&requester=WT/trackdetails", '_blank');
+
+              }
+              else
+              {
+
+
+              }
+            });
+
+          },
+          error:function(error)
+          {
+
+            console.log(error);
+
+          }
+
+        });
+
+      });
+
+
+
+
+    });
+  </script>
+</div>
