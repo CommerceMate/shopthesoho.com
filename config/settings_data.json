@@ -58,10 +58,10 @@
     "cart_show_free_shipping_threshold": true,
     "cart_free_shipping_threshold": "75",
     "share_image": "",
-    "social_facebook": "#",
-    "social_twitter": "#",
-    "social_pinterest": "#",
-    "social_instagram": "#",
+    "social_facebook": "facebook.com\/shopthesoho",
+    "social_twitter": "",
+    "social_pinterest": "https:\/\/www.pinterest.com\/socialhouseboutique\/",
+    "social_instagram": "https:\/\/www.instagram.com\/shopthesoho\/",
     "social_vimeo": "",
     "social_tumblr": "",
     "social_youtube": "",
@@ -114,18 +114,10 @@
               "content": "Get 20% off your entire order when you text SHOPTHESOHO to 29071",
               "link": "shopify:\/\/pages\/about-us"
             }
-          },
-          "1588298675703": {
-            "type": "announcement",
-            "settings": {
-              "content": "🎉 FREE SHIPPING ENDS SUNDAY with code BRIDAL 🎉",
-              "link": ""
-            }
           }
         },
         "block_order": [
-          "1587115007375",
-          "1588298675703"
+          "1587115007375"
         ],
         "settings": {
           "enable_bar": true,
@@ -518,7 +510,8 @@
           "filter_menu": "",
           "grid_items_per_page": 16,
           "grid_mobile_items_per_row": "2",
-          "grid_desktop_items_per_row": 4
+          "grid_desktop_items_per_row": 4,
+          "enable_infinite_scroll": true
         }
       },
       "recently-viewed-products": {

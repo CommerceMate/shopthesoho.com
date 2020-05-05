@@ -28,10 +28,16 @@
               {%- render 'product-item', product: product, show_product_info: true, show_vendor: section.settings.show_vendor, show_color_swatch: section.settings.show_color_swatch, show_labels: true -%}
             </div>
           {%- endfor -%}
+
+          {% if paginate.next and section.settings.enable_infinite_scroll %}
+            <div class="PaginateNextPage" data-href="{{ paginate.next.url }}"></div>
+          {% endif %}
         </div>
       </div>
 
-      {%- render 'pagination', paginate: paginate -%}
+      {% unless section.settings.enable_infinite_scroll %}
+        {%- render 'pagination', paginate: paginate -%}
+      {% endunless %}
     {%- endpaginate -%}
   {%- else -%}
     <div class="EmptyState">
@@ -75,7 +81,8 @@
     "collectionUrl": {{ collection.url | default: '/collections/all' | json }},
     "currentTags": {% if active_tags != blank %}{{ active_tags | split: '+' | json }}{% else %}[]{% endif %},
     "sortBy": {{ collection.sort_by | default: collection.default_sort_by | json }},
-    "filterPosition": {{ section.settings.filter_position | json }}
+    "filterPosition": {{ section.settings.filter_position | json }},
+    "enableInfiniteScroll": {{ section.settings.enable_infinite_scroll }}
   }
   {%- endcapture -%}
 
@@ -609,6 +616,12 @@
       "id": "grid_desktop_items_per_row",
       "label": "Products per row (desktop)",
       "default": 4
+    },
+    {
+      "type":"checkbox",
+      "id":"enable_infinite_scroll",
+      "label":"Enable infinite scroll?",
+      "default":true
     }
   ]
 }

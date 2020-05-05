@@ -4675,17 +4675,56 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         });
       }
     }, {
+      key: '_loadNextPage',
+      value: function _loadNextPage() {
+        document.dispatchEvent(new CustomEvent('theme:loading:start'));
+
+        var paginationUrl = document.querySelector('.PaginateNextPage').getAttribute('data-href');
+        document.querySelector('.PaginateNextPage').remove();
+
+        if( !paginationUrl.includes('&view=ajax')) {
+          paginationUrl += '&view=ajax';
+        }
+
+        fetch(paginationUrl, {
+          credentials: 'same-origin',
+          method: 'GET'
+        }).then(function (response) {
+          response.text().then(function (content) {
+            var tempElement = document.createElement('div');
+            tempElement.innerHTML = content;
+
+            var productsToAppend = tempElement.querySelector('.ProductList').innerHTML;
+
+            collection_section.collectionInnerElement.querySelector('.ProductList').insertAdjacentHTML('beforeend', productsToAppend);
+            document.dispatchEvent(new CustomEvent('theme:loading:end'));
+          });
+        });
+      }
+    }, {
       key: '_attachListeners',
       value: function _attachListeners() {
         this._toggleTagListener = this._toggleTag.bind(this);
         this._applyTagsListener = this._applyTags.bind(this);
         this._resetTagsListener = this._resetTags.bind(this);
         this._changeLayoutModeListener = this._changeLayoutMode.bind(this);
+        this._loadNextPage = this._loadNextPage.bind(this);
 
         this.delegateElement.on('click', '[data-action="toggle-tag"]', this._toggleTagListener);
         this.delegateElement.on('click', '[data-action="apply-tags"]', this._applyTagsListener);
         this.delegateElement.on('click', '[data-action="reset-tags"]', this._resetTagsListener);
         this.delegateElement.on('click', '[data-action="change-layout-mode"]', this._changeLayoutModeListener);
+        window.collection_section = this;
+
+        if(this.settings.enableInfiniteScroll){
+          window.addEventListener('scroll', function(event){
+            if(document.querySelector('.PaginateNextPage')) {
+              if((window.innerHeight + window.scrollY) >= (document.querySelector('.PaginateNextPage').getBoundingClientRect().top + document.documentElement.scrollTop - document.querySelector('.Grid__Cell').offsetHeight)) {
+                collection_section._loadNextPage();
+              }
+            }
+          });
+        }
 
         window.addEventListener('popstate', function (event) {
           if (event.state.path) {
