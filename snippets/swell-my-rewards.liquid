@@ -1,0 +1,78 @@
+<div class="swell-Gameday swell-account-page">
+  <div class="login">
+    <div class="login-header">
+      <h3 class="login-heading">
+        Hi, {{customer.first_name}}!<br> You have <span class="swell-point-balance">X</span> points
+      </h3>
+    </div>
+    <ul class="swell-link-list">
+      <li class="swell-link">
+        <a href="/checkout" class="swell-btn">Redeem Now
+        </a>
+      </li>
+      <li class="swell-link">
+        <a href="javascript:void(0);" class="swell-btn swell-history-link">Rewards History
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- login section ends -->
+
+  <div class="vip-table-section ">
+    <div class="swell-container">
+      <div class="swell-heading-section">
+        <h2 class="swell-heading ">VIPs Earn Even More</h2>
+      </div>
+      <div class="swell-tier-table {% if customer %} logged-in {% endif %}">
+
+      </div>
+    </div>
+  </div>
+  <!-- tier table section ends -->
+
+  <div class="redemptions {% if customer %} logged-in {% endif %}">
+    <div class="redemptions-holder">
+      <div class="redeem-image">
+        <img class="swell-desktop" src="{{'swell-redeem-desktop.png' | asset_url }}">
+        <img class="swell-mobile" src="{{'swell-redeem-mbl.png' | asset_url }}">
+      </div>
+      <div class="redemptions-content-holder">
+        <div class="redemptions-content-container">
+          <h3 class="redeem-text">redeem</h3>
+          <div class="redemptions-content">
+            <div class="redeem-header">
+              <h3 class="swell-heading">redeem for<br class="swell-mobile"> discounts</h3>
+            </div>
+            <div class="swell-details">
+              Redeeming your hard-earned points is easy!<br class="swell-desktop">Simply apply your points for a discount at checkout!
+            </div>
+            <ul class="swell-link-list">
+              <li class="swell-link">
+                <a href="/checkout" class="swell-btn">redeem now</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- redeem for discount section ends -->
+
+  <section class="swell-referral-widget {% if customer %} logged-in {% endif %}">
+    <div class="swell-container">
+      <div class="swell-refer-image-holder swell-mobile">
+        <img src="{{'swell-referral-mob.jpg' | asset_url}}">
+      </div>
+      <div class="yotpo-widget-instance" data-yotpo-instance-id="1397" customer-email-view-input-placeholder='Enter email'
+      customer-email-view-label-text='Enter your email below to get started'
+      referral-views-friends-input-placeholder="Your friends' emails (separated by commas)"
+      referral-email-view-label-text="Now, Enter your friends' emails."
+      share-copy-link-text="Copy Link"
+      share-link-copied-text="Copied"
+      share-facebook-button-text="Share"
+      share-facebook-messenger-button-text="Message"
+      share-twitter-button-text="Tweet"></div>
+    </div>
+  </section>
+  <!-- refer section ends -->
+</div>

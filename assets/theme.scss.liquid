@@ -1880,7 +1880,7 @@ body {
  * ----------------------------------------------------------------------------
  */
 
-.Button {
+.Button, .shopthelook_add-to-cart {
   position: relative;
   display: inline-block;
   padding: 14px 28px;
@@ -1932,7 +1932,7 @@ body {
   }
 }
 
-.Button--primary {
+.Button--primary, .shopthelook_add-to-cart {
   color: $button-text-color;
   border-color: $button-background;
 
@@ -11720,5 +11720,86 @@ $vertical-spacing-two-products-per-row  : 0px;
 @include av-mq('desk') {
   .Timeline__Nav {
     margin-top: 65px;
+  }
+}
+
+//Shop the look styles overwrite
+.ctl-title {
+  font-family: $heading-font-family !important;
+  font-weight: $heading-font-weight !important;
+  font-style: $heading-font-style !important;
+  color: $heading-color;
+  transition: color 0.2s ease-in-out;
+  font-size: 24px !important;
+  margin-bottom: 70px;
+
+  @if $uppercase-heading {
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+}
+
+.ctl-product-title, .ctl-product-price {
+  font-family: $heading-font-family !important;
+  font-weight: $heading-font-weight !important;
+  font-style: $heading-font-style !important;
+  color: $heading-color;
+  transition: color 0.2s ease-in-out;
+  font-size: 14px !important;
+  color: #000000;
+  text-transform: capitalize;
+}
+
+.ctl-cell-wrapper.is-sticky-bottom .ctl-cell-asset {
+  align-self: flex-start !important;
+}
+
+.cell-asset-bg {
+  background-size: contain !important;
+}
+
+@media only screen and (max-width: 1024px) {
+  .ctl-cell .cell-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+  }
+
+  .ctl-main-product-image {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .ctl-product-component {
+    min-width: 0 !important;
+    width: 100%;
+  }
+
+  .ctl-cell .cell-text-wrapper {
+    padding: 0;
+  }
+
+  .ctl-product-title, .ctl-product-component .select-size-wrap, .ctl-product-actions-button {
+    width: auto !important;
+  }
+
+  .ctl-product-component-info {
+    max-width: calc(100% - 114px);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .shopthelook_add-to-cart {
+    font-size: 2.25vw;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .shopthelook_add-to-cart {
+    margin: 15px 0 0;
   }
 }

@@ -108,23 +108,23 @@
       "announcement": {
         "type": "announcement",
         "blocks": {
-          "1587115007375": {
+          "1589221233604": {
             "type": "announcement",
             "settings": {
-              "content": "Get 20% off your entire order when you text SHOPTHESOHO to 29071",
-              "link": "shopify:\/\/pages\/about-us"
+              "content": "✨Want 20% Off? Text SHOPTHESOHO to 29071 & we'll text you the code! ✨",
+              "link": ""
             }
           }
         },
         "block_order": [
-          "1587115007375"
+          "1589221233604"
         ],
         "settings": {
           "enable_bar": true,
           "home_page_only": false,
-          "background": "#fcd6d7",
-          "text_color": "#ff0055",
-          "enable_autoplay": true,
+          "background": "#222222",
+          "text_color": "#ffffff",
+          "enable_autoplay": false,
           "autoplay_speed": 5
         }
       },
@@ -339,12 +339,12 @@
               "apply_overlay": false,
               "content_position": "middleCenter",
               "subheading": "NEW",
-              "subheading_font": "baskerville_no_2_n4",
+              "subheading_font": "avenir_next_n5",
               "subheading_font_size": 26,
               "title": "In Bloom Collection",
-              "title_font": "bauer_bodoni_n7",
+              "title_font": "avenir_next_n6",
               "title_font_size": 64,
-              "button_1_text": "Shop New Deals",
+              "button_1_text": "Shop New Arrivals",
               "button_1_link": "shopify:\/\/collections\/in-bloom",
               "button_2_text": "",
               "button_2_link": "",
@@ -501,7 +501,7 @@
           "show_color_swatch": true,
           "show_vendor": false,
           "collection_image_size": "normal",
-          "show_sort_by": false,
+          "show_sort_by": true,
           "show_layout_switch": false,
           "toolbar_position": "top",
           "filter_position": "sidebar",
@@ -612,9 +612,9 @@
           "image": "shopify:\/\/shop_images\/LEOPARD-PATTERN-01_aa5363c5-0172-4b68-8d64-d0a541fc7b0b.jpg",
           "text_color": "#000000",
           "button_color": "#ffffff",
-          "subheading": "SIGN UP FOR SOHO EXCLUSIVE OFFERS",
-          "title": "Enter Your Email For 10% Off Now",
-          "content": ""
+          "subheading": "",
+          "title": "JOIN OUR NEWSLETTER TO GET 20% OFF",
+          "content": "<p><strong>WE'LL SEND YOUR 20% OFF CODE RIGHT. NOW.<\/strong><\/p>"
         }
       },
       "1587965690223": {

@@ -1,0 +1,250 @@
+!function(factory){"use strict";"function"==typeof define&&define.amd?define(["jquery"],factory):jQuery&&!jQuery.fn.hoverIntent&&factory(jQuery)}(function($){"use strict";var cX,cY,_cfg={interval:100,sensitivity:6,timeout:0},INSTANCE_COUNT=0,track=function(ev){cX=ev.pageX,cY=ev.pageY},compare=function(ev,$el,s,cfg){if(Math.sqrt((s.pX-cX)*(s.pX-cX)+(s.pY-cY)*(s.pY-cY))<cfg.sensitivity)return $el.off(s.event,track),delete s.timeoutId,s.isActive=!0,ev.pageX=cX,ev.pageY=cY,delete s.pX,delete s.pY,cfg.over.apply($el[0],[ev]);s.pX=cX,s.pY=cY,s.timeoutId=setTimeout(function(){compare(ev,$el,s,cfg)},cfg.interval)},delay=function(ev,$el,s,out){return delete $el.data("hoverIntent")[s.id],out.apply($el[0],[ev])};$.fn.hoverIntent=function(handlerIn,handlerOut,selector){var instanceId=INSTANCE_COUNT++,cfg=$.extend({},_cfg);$.isPlainObject(handlerIn)?(cfg=$.extend(cfg,handlerIn),$.isFunction(cfg.out)||(cfg.out=cfg.over)):cfg=$.isFunction(handlerOut)?$.extend(cfg,{over:handlerIn,out:handlerOut,selector:selector}):$.extend(cfg,{over:handlerIn,out:handlerIn,selector:handlerOut});var handleHover=function(e){var ev=$.extend({},e),$el=$(this),hoverIntentData=$el.data("hoverIntent");hoverIntentData||$el.data("hoverIntent",hoverIntentData={});var state=hoverIntentData[instanceId];state||(hoverIntentData[instanceId]=state={id:instanceId}),state.timeoutId&&(state.timeoutId=clearTimeout(state.timeoutId));var mousemove=state.event="mousemove.hoverIntent.hoverIntent"+instanceId;if("mouseenter"===e.type){if(state.isActive)return;state.pX=ev.pageX,state.pY=ev.pageY,$el.off(mousemove,track).on(mousemove,track),state.timeoutId=setTimeout(function(){compare(ev,$el,state,cfg)},cfg.interval)}else{if(!state.isActive)return;$el.off(mousemove,track),state.timeoutId=setTimeout(function(){delay(ev,$el,state,cfg.out)},cfg.timeout)}};return this.on({"mouseenter.hoverIntent":handleHover,"mouseleave.hoverIntent":handleHover},cfg.selector)}});
+
+$(document).ready(function() {
+
+    if(window.location.href.indexOf("refer") > -1 || window.location.href.indexOf("rewards") > -1 ||  window.location.href.indexOf("account") > -1) {
+      $('body').addClass("swell-rewards-page");
+    }
+
+	$(document).on("swell:setup", function() {
+    $(".swell-referral-loader").remove();
+
+    Swell.Campaign.initializeCampaigns(".campaign-holder", SwellConfig.Campaign.opts);
+    SwellConfig.Campaign.authenticate();
+    SwellConfig.Campaign.addCampaign('.campaign-holder');
+
+    SwellConfig.Tier.initializeCustomTierProperties();
+    SwellConfig.Tier.initializeTiers(".swell-tier-table");
+    SwellConfig.Tier.setupStatus('.swell-tier-table');
+
+	});
+
+  $(document).on("swell:referral:success", function() {
+    if($('.swell-checkout-thanks').length > 0){
+      $('.swell-checkout-thanks').hide();
+    }
+    SwellConfig.Referral.populateReferrals();
+  });
+
+  $(document).on("swell:referral:error", function(jqXHR, textStatus, errorThrown) {
+    let emails = $("#swell-referral-refer-emails").val();
+    $(".refer-customer-error").remove();
+    if (emails.indexOf(spapi.customer.email) > -1 ) {
+      $("<p class=\"refer-customer-error\">Email address is already associated with an account.</p>").insertBefore($("#swell-referral-refer-emails").parent().parent());;
+      $("#swell-referral-refer-emails").addClass("error-border");
+    }else if(textStatus && textStatus === "Please enter a valid email address"){
+      $('<p class=\"refer-customer-error\">Please enter a valid email addresses.</p>').insertBefore($("#swell-referral-refer-emails").parent().parent());
+      $("#swell-referral-refer-emails").parent().parent().addClass("error-border");
+    } else if(textStatus && textStatus === "EMAILS_ALREADY_PURCHASED"){
+      $('<p class=\"refer-customer-error\">Oops, looks like we already know that person. Try another friend\'s email address!</p>').insertBefore($("#swell-referral-refer-emails").parent().parent());
+      $("#swell-referral-refer-emails").parent().parent().addClass("error-border");
+    }
+  });
+
+ });
+
+
+(function() {
+  window.SwellConfig = window.SwellConfig || {};
+  SwellConfig.Campaign = {
+    opts: {
+      templates: {
+        campaign: '<li class="swell-campaign"> <div class="swell-campaign-content" data-display-mode="modal" data-campaign-id="<%= campaign.id %>"> <div class="swell-campaign-icon"> <span class="swell-campaign-icon-content"> <i class="<%= campaign.icon %>"></i> </span> </div> <div class="swell-campaign-points"> <span class="swell-header-details"><%= campaign.reward_text %></span> </div> <div class="swell-campaign-header"> <span class="swell-details"><%= campaign.title %></span> </div> </div> </li>',
+        campaignHover: '<div class="swell-campaign-hover"> <div class="swell-campaign-hover-content"> <ul class="swell-link-list"> <li class="swell-link"> <a href="/account/login" class="swell-link-login">Sign In</a> </li> <li class="swell-link"> <a href="/account/register" class="swell-link-register">Sign Up</a> </li> </ul> </div> </div>'
+      }
+    },
+    authenticate: function() {
+      if (!spapi.authenticated) {
+        spapi.$(document).off("click", ".swell-campaign-content");
+        return $(".swell-campaign-content").hover(function() {
+          return $(this).append(SwellConfig.Campaign.opts.templates.campaignHover);
+        }, function() {
+          return $(this).find(".swell-campaign-hover").remove();
+        });
+      } else {
+        $(".swell-campaign").css("cursor", "pointer");
+      }
+    },
+    addCampaign: function(containerSelector) {
+      $(containerSelector).append("<li class='swell-campaign'> <div class='swell-campaign-content' data-display-mode='modal' data-campaign-id='<%= campaign.id %>'> <div class='campaign-image'> <img src='{{"swell-campaign-image.png" | asset_url }}'> </div> </div> </li>");
+    }
+  };
+}).call(this);
+
+// Tier_List_Table Start
+(function() {
+  window.SwellConfig = window.SwellConfig || {};
+  SwellConfig.Tier = {
+    getTierById : function(id) {
+      var tiers;
+      tiers = spapi.activeVipTiers;
+      return $.grep(tiers, function(e) {
+        return e.id === id;
+      })[0];
+    },
+    getTierByRank: function(rank) {
+      var tiers;
+      tiers = spapi.activeVipTiers;
+      return $.grep(tiers, function(e) {
+        return e.rank === rank;
+      })[0];
+    },
+    initializeDummyTier: function() {
+      var k, len, tier, tiers;
+      tiers = spapi.activeVipTiers;
+      for (k = 0, len = tiers.length; k < len; k++) {
+        tier = tiers[k];
+        tier.rank += 1;
+      }
+      return tiers.unshift({
+        id: -1,
+        rank: 0,
+        dummy: true,
+        name: "SOCIAL MIXER",
+        points: "$0&ndash;$249",
+        points_multiplier:" 1",
+        exclusive_products: "",
+        free_product: "",
+        AmountSpent: "$0",
+        amount_spent_cents: 0,
+        AmountSpentCents: 0,
+        PointsEarned: 0,
+        points_earned: 0,
+        PurchasesMade: 0,
+        ReferralsCompleted: 0
+      });
+    },
+    initializeCustomTierProperties: function() {
+      var tiers = spapi.activeVipTiers;
+        Tier_0 = SwellConfig.Tier.getTierByRank(0);
+        Tier_1 = SwellConfig.Tier.getTierByRank(1);
+        Tier_2 = SwellConfig.Tier.getTierByRank(2);
+
+      if(Tier_0){
+        Tier_0.spend = '$'+(Tier_0.amount_spent_cents/100)+'-$'+((Tier_1.amount_spent_cents/100)-1)+'<span class="tier-value-refer">('+Tier_0.referrals_completed+'-'+(Tier_1.referrals_completed-1)+' Successful Referrals)</span>'; 
+        Tier_0.multiplier = "1x"; 
+        Tier_0.birthday_bonus = '100 points'; 
+        Tier_0.entry_reward = ''; 
+        Tier_0.early_access_to_promotions = ''; 
+        Tier_0.class = 'tier_0'; 
+      }
+      if(Tier_1){
+        Tier_1.spend = '$'+(Tier_1.amount_spent_cents/100)+'-$'+((Tier_2.amount_spent_cents/100)-1)+'<span class="tier-value-refer">('+Tier_1.referrals_completed+'-'+(Tier_2.referrals_completed-1)+' Successful Referrals)</span>'; 
+        Tier_1.multiplier = "1.5x"; 
+        Tier_1.birthday_bonus = '150 points'; 
+        Tier_1.entry_reward = '$10 REWARD'; 
+        Tier_1.early_access_to_promotions = '<span class="circle"></span>';
+        Tier_1.class = 'tier_1'; 
+      }
+      if(Tier_2){
+        Tier_2.spend = '$'+(Tier_2.amount_spent_cents/100)+'+<span class="tier-value-refer">('+Tier_2.referrals_completed+'+ Successful Referrals)</span>'; 
+        Tier_2.multiplier = "2x"; 
+        Tier_2.birthday_bonus = '200 points'; 
+        Tier_2.entry_reward = '$20 REWARD'; 
+        Tier_2.early_access_to_promotions = '<span class="circle"></span>';  
+        Tier_2.class = 'tier_2'; 
+      }
+    },
+    initializeTiers: function(containerSelector) {
+      if ($(containerSelector).length === 0) {
+        return "";
+      }
+      $(containerSelector).append('<ul class="swell-tier-table-header"> <li class="swell-tier-list"> <div class="tier-list tier-earn"> </div> <div class="tier-list tier-status"></div> <div class="tier-list tier-value"></div> <div class="tier-list tier-name">Benefits</div> <div class="tier-list tier-multiplier">Points<br class="swell-mobile"> Multiplier</div> <div class="tier-list">Birthday<br class="swell-mobile"> points</div> <div class="tier-list">Tier entry<br class="swell-mobile"> reward</div> <div class="tier-list">Early Access to<br class="swell-mobile"> New Releases<br class="swell-mobile"> & Promotions</div> </li> </ul>');
+      $(containerSelector).append('<ul class="swell-tier-table-body"></ul>');
+
+      var tiers = spapi.activeVipTiers;
+      tiers.forEach(function(tier) {
+        return $(containerSelector).find(".swell-tier-table-body").append('<li class="swell-tier-list '+tier.class+'" data-tier-id="' + tier.id + '"> <div class="tier-list tier-earn"></div> <div class="tier-list tier-status status-rank'+tier.rank+'"></div> <div class="tier-list tier-value">'+tier.spend+'</div> <div class="tier-list tier-name"> <span>'+tier.name+'</span></div> <div class="tier-list tier-multiplier">'+tier.multiplier+'</div> <div class="tier-list">'+tier.birthday_bonus+'</div> <div class="tier-list">'+tier.entry_reward+'</div> <div class="tier-list">'+tier.early_access_to_promotions+'</div> </li>');
+      });
+      SwellConfig.Tier.applytierSlickSlider(".swell-tier-table-body");
+    },
+    setupStatus: function(containerSelector){
+      if ($(containerSelector).length === 0) {
+        return "";
+      }
+      var current_tier, next_tier, tiers;
+      if(spapi.authenticated){
+        tiers = spapi.activeVipTiers;
+        $(containerSelector).find(".swell-tier-table-header .tier-status, .swell-tier-table-body .tier-status").css('opacity','0');
+        $(containerSelector).find(".swell-tier-table-header .tier-status, .swell-tier-table-body .tier-status").css('display','flex');
+
+        if(spapi.customer.vip_tier){
+          current_tier = SwellConfig.Tier.getTierById(spapi.customer.vip_tier.id);
+          if(current_tier.rank < tiers.length - 1){
+            next_tier = SwellConfig.Tier.getTierByRank(current_tier.rank+1);
+          }
+        }else{
+          if(typeof(SwellConfig.Tier.getTierByRank(0).dummy) !== 'undefined' && SwellConfig.Tier.getTierByRank(0).dummy ){
+            current_tier = SwellConfig.Tier.getTierByRank(0);
+            next_tier = SwellConfig.Tier.getTierByRank(current_tier.rank+1);
+          }else{
+            if(SwellConfig.Tier.getTierByRank(0).referrals_completed == 0){
+              current_tier = SwellConfig.Tier.getTierByRank(0);
+              next_tier = SwellConfig.Tier.getTierByRank(current_tier.rank+1);
+            }else{
+              next_tier = SwellConfig.Tier.getTierByRank(0);
+            }
+          }
+        }
+        if(current_tier){
+          $(containerSelector).find('.swell-tier-table-body .swell-tier-list[data-tier-id="'+current_tier.id+'"] .tier-status').html("Current Status");
+          $(containerSelector).find('.swell-tier-table-body .swell-tier-list[data-tier-id="'+current_tier.id+'"] .tier-status').css("opacity","1");
+          $(containerSelector).find('.swell-tier-table-body .swell-tier-list[data-tier-id="'+current_tier.id+'"]').addClass("swell-tier-active");
+        }
+        if(next_tier){
+          if(current_tier.rank == 0){
+            dollarRequired = (next_tier.amount_spent_cents - spapi.customer.vip_tier_stats.amount_spent_cents)/100;
+            referralsRequired = next_tier.referrals_completed - current_tier.referrals_completed;
+          }else{
+            dollarRequired = (spapi.customer.vip_tier_stats_needed.amount_cents_needed)/100;
+            referralsRequired = spapi.customer.vip_tier_stats_needed.referrals_needed;
+          }
+          $(containerSelector).find('.swell-tier-table-body .swell-tier-list[data-tier-id="'+next_tier.id+'"] .tier-status').html("<span class='next-tier'>Spend $"+dollarRequired+" or<br> make "+referralsRequired+" referrals</span>");
+          $(containerSelector).find('.swell-tier-table-body .swell-tier-list[data-tier-id="'+next_tier.id+'"] .tier-status').css("opacity","1");
+        }
+      }
+    },
+    initializeProgressBar : function(containerSelector){
+      if(spapi.authenticated){
+        var pointsRange,next_tier;
+        var tiers = spapi.activeVipTiers;
+        var points = spapi.customer.adjusted_points_balance;
+        
+        if(spapi.customer.vip_tier){
+          if(SwellConfig.Tier.getTierById(spapi.customer.vip_tier.id).rank < tiers.length-1){
+            next_tier = SwellConfig.Tier.getTierByRank(SwellConfig.Tier.getTierById(spapi.customer.vip_tier.id).rank+1);
+            pointsRange = (next_tier.points_earned - spapi.customer.vip_tier_stats.points_earned);
+          }
+        }else{
+          pointsRange = SwellConfig.Tier.getTierByRank(1).points_earned - SwellConfig.Tier.getTierByRank(0).points_earned;
+        }
+        var pointsincurrentwindow = points%pointsRange;
+        var progressStatus = (pointsincurrentwindow/pointsRange)*100;
+        var neededpoints = pointsRange - pointsincurrentwindow;
+        $(containerSelector).append('<div class="progrees-bar-holder"> <div class="swell-progrees-bar"> <div class="swell-progrees-bar-fill" style="'+progressStatus+'%"> <div class="remaing-points-span">'+((neededpoints===1)? neededpoints+" point" : neededpoints+" points")+'</div> </div> </div> </div>');
+      }
+    },
+    applytierSlickSlider: function(containerSelector){
+      $(containerSelector).slick({
+        dots: true,
+        infinite: true,
+        speed: 300,
+        slidesToScroll:1,
+        slidesToShow: 3,
+        prevArrow: false,
+        nextArrow: false,
+        responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          }
+        }
+        ]
+      });
+    }
+  };
+
+}).call(this);
+// Tier_list_table End

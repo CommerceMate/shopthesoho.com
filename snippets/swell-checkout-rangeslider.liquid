@@ -1,0 +1,211 @@
+<div class="order-summary__section order-summary__section--swell swell-checkout-page" style="display:none;" data-type="apply-points" id="swell-checkout">
+  <div class="swell-attributes" style="display:none;">
+    <span id="swell-checkout-customer-id">{{ customer.id }}</span>
+    <span id="swell-checkout-customer-email">{{ customer.email }}</span>
+    <span id="swell-checkout-customer-tags">{{ customer.tags | json }}</span>
+    <span id="swell-checkout-total-price-cents">{{ checkout.subtotal_price }}</span>
+    <input id="swell-checkout-points-amount" value="0"></input>
+    <span class="discounts_amount">{{ checkout.discounts_amount }}</span>
+    <span class="subtotal_price">{{ checkout.subtotal_price }}</span>
+  </div>
+
+  <div class="swell-checkout-error-message" id="swell-checkout-error-message-amount" style="display:none;color:red;">Oops, You don't have any points to redeem yet.</div>
+  <div class="swell-checkout-error-message" id="swell-checkout-error-message-general" style="display:none;color:red;">Sorry something went wrong.  Try again and if the problem persists please contact support.</div>
+
+  <div class="fieldset">
+    <div class="field">
+      <label class="BrandonTextWeb-Bold redeem-credits-title">You have <span class="swell-point-balance">0</span> Points </label>
+
+      <div class="input-holder">
+      </div>
+
+      <div class="footer-holder">
+      <span class="BrandonTextWeb-Bold redeem-content">Redeem : <strong>$<span class="point-balance swell-adjusted-point-balance swell-checkout-dollar-balance-1"></span> (<span class="slider-point-balance"></span> Points)</strong></span>
+
+      <button type="submit" id="swell-checkout-redeem-btn" class="field__input-btn btn btn--default swell-button">
+        <span class="btn__content visually-hidden-on-mobile">Apply</span>
+        <svg class="icon-svg icon-svg--size-16 btn__icon arrow-btn shown-on-mobile" aria-hidden="true" focusable="false"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow"></use> </svg>
+        <svg class="icon-svg icon-svg--size-18 btn__spinner icon-svg--spinner-button" aria-hidden="true" focusable="false"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#spinner-button"></use> </svg>
+      </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  .input-holder{
+      margin: 30px 0 10px;
+  }
+  .redeem-content, .redeem-credits-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #333;
+  }
+
+  .redeem-content {
+    color: #333;
+  }
+  .footer-holder {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+  }
+  .rangeslider__fill {
+    background: #b7766f;
+    border-radius: 5px;
+  }
+  .rangeslider--horizontal {
+    border-radius: 5px;
+    height: 13px;
+    background: #333333;
+  }
+  .rangeslider--horizontal .rangeslider__handle {
+    top: -7px;
+  }
+  .rangeslider__handle {
+    background: #b7766f;
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border: 0;
+  }
+  .rangeslider__handle:after {
+    content: "";
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: #333333;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 50%;
+  }
+
+  #swell-checkout-redeem-btn {
+    height: 44px;
+    outline: none;
+    background: #333333;
+    font-weight: normal;
+    min-width: 86.64px;
+    text-transform: uppercase;
+  }
+  @media(max-width: 749px){
+    #swell-checkout-redeem-btn {
+      min-width: 65.59px;
+    }
+  }
+</style>
+
+<script type="text/javascript">
+  $(document).one("swell:initialized", function() {
+    Swell.Cart.selectors.couponCode = ".reduction-code__text";
+  });
+
+  if(window.location.href.indexOf("checkout") > -1 && window.location.href.indexOf("thank_you") == -1) {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://cdn-loyalty.yotpo.com/loader/t9-vlhCmWaUMqsuuWFiouA.js?shop=gameday-couture-beta.myshopify.com";
+
+    document.getElementsByTagName("head")[0].appendChild(script);
+
+    var link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.2/rangeslider.min.css";
+    document.getElementsByTagName("head")[0].appendChild(link);
+
+    var range_script = document.createElement("script");
+    range_script.src = "https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.2/rangeslider.min.js";
+    document.getElementsByTagName("head")[0].appendChild(range_script);
+    
+    $(document).on("swell:setup", function() {
+
+      if($(window).width() < 999)
+      {
+        $("[data-trekkie-id='order_summary_toggle']").click();
+      }
+      Swell.Checkout.showLoadingSpinner = function() {
+        $('#swell-checkout-redeem-btn').addClass('btn--loading');
+        $('#swell-checkout-redeem-btn .icon-svg--spinner-button').css('opacity', '1');
+        $('#swell-checkout-redeem-btn .icon-svg--spinner-button').css( 'animation', 'rotate 0.5s linear infinite');
+        $('#swell-checkout-redeem-btn .icon-svg--spinner-button').show();
+      }
+
+      Swell.Checkout.hideLoadingSpinner = function() {
+        $('#swell-checkout-redeem-btn .icon-svg--spinner-button').hide();
+        $('#swell-checkout-redeem-btn .icon-svg--spinner-button').css('opacity', '0');
+        $('#swell-checkout-redeem-btn').removeClass('btn--loading');
+      }
+
+      var pointsToRedeem, dollarsToRedeem;
+      var customerAdjustedPoints = spapi.customer.adjusted_points_balance;
+      var cartTotalCents = {{ checkout.discounts_amount }} + {{ checkout.subtotal_price }};
+      var centsPerPoint = spapi.variableRedemptionOption ? spapi.variableRedemptionOption.discount_rate_cents : 1; 
+      var cartTotalDollars = cartTotalCents / 100;
+      var customerAdjustedDollar = parseFloat( customerAdjustedPoints * centsPerPoint / 100.0 ).toFixed(2);
+      $(".slider-point-balance").html(customerAdjustedPoints);
+      $(".swell-checkout-dollar-balance-1").html(customerAdjustedDollar);
+
+      var slider_value_points = customerAdjustedPoints;
+      var slider_value_cents = slider_value_points * centsPerPoint;
+      if (slider_value_cents > cartTotalCents) {
+        pointsToRedeem = cartTotalCents / centsPerPoint;
+      } else {
+        pointsToRedeem = slider_value_points;
+      }
+
+      dollarsToRedeem = parseFloat( pointsToRedeem * centsPerPoint / 100.0 ).toFixed(2);
+
+      $(".input-holder").append('<input type="range" class="swell-range-slider" min="0" max="' + customerAdjustedPoints + '" step="1" value="'+ customerAdjustedPoints + '">');
+
+      $("#swell-checkout-points-amount").val(pointsToRedeem);
+
+      $('.input-holder input[type="range"]').rangeslider({
+        polyfill: false,
+        // Default CSS classes
+        rangeClass: 'rangeslider',
+        disabledClass: 'rangeslider--disabled',
+        horizontalClass: 'rangeslider--horizontal',
+        verticalClass: 'rangeslider--vertical',
+        fillClass: 'rangeslider__fill',
+        handleClass: 'rangeslider__handle',
+
+        // Callback function
+        onInit: function() {},
+
+        // Callback function
+        onSlide: function(position, value) {},
+
+        // Callback function
+        onSlideEnd: function(position, value) {}
+      });
+
+      $( ".swell-range-slider" ).change(function() {
+        slider_value_points = $(".swell-range-slider").val();
+        slider_value_cents = slider_value_points * centsPerPoint;
+
+        if (slider_value_cents > cartTotalCents) {
+          pointsToRedeem = cartTotalCents / centsPerPoint;
+        } else {
+          pointsToRedeem = slider_value_points;
+        }
+        
+        $("#swell-checkout-points-amount").val(pointsToRedeem);
+        $(".slider-point-balance").html(slider_value_points);
+        $(".swell-checkout-dollar-balance-1").html(parseFloat( slider_value_points * centsPerPoint / 100.0 ).toFixed(2));
+      });
+
+      //reset the last redeemPoints
+      $(document).on("swell:redemption", function(){
+        var lastRedeemPoints = $("#swell-checkout-points-amount").val();
+        setTimeout(function(){
+          $("#swell-checkout-points-amount").val(lastRedeemPoints);
+        }, 200);         
+      });
+    }); 
+  }
+</script>
