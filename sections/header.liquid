@@ -252,8 +252,11 @@ HEADER CONTENT
                         {%- if sublinks_without_children != blank -%}
                           <div class="MegaMenu__Item MegaMenu__Item--fit">
                             {%- for sub_link in link.links -%}
+                              {% assign sub_link_title_handle = sub_link.title | handle %}
                               {%- if sublinks_without_children contains sub_link.title -%}
-                                <a href="{{ sub_link.url }}" class="MegaMenu__Title Heading Text--subdued u-h7">{{ sub_link.title | title }}</a>
+                                {% unless sub_link_title_handle contains 'shop-all'%}
+                                  <a href="{{ sub_link.url }}" class="MegaMenu__Title Heading Text--subdued u-h7">{{ sub_link.title | title }}</a>
+                                {% endunless %}
                               {%- endif -%}
                             {%- endfor -%}
                           </div>
@@ -267,9 +270,12 @@ HEADER CONTENT
                               {%- if sub_link.links != blank -%}
                                 <ul class="Linklist">
                                   {%- for sub_sub_link in sub_link.links -%}
-                                    <li class="Linklist__Item">
-                                      <a href="{{ sub_sub_link.url }}" class="Link Link--secondary">{{ sub_sub_link.title | escape }}</a>
-                                    </li>
+                                   {% assign sub_sub_link_title_handle = sub_sub_link.title | handle %}
+                                    {% unless sub_sub_link_title_handle contains 'shop-all' %}
+                                      <li class="Linklist__Item">
+                                        <a href="{{ sub_sub_link.url }}" class="Link Link--secondary">{{ sub_sub_link.title | escape }}</a>
+                                      </li>
+                                    {% endunless %}
                                   {%- endfor -%}
                                 </ul>
                               {%- endif -%}
@@ -347,21 +353,27 @@ HEADER CONTENT
                   <div class="DropdownMenu" aria-hidden="true">
                     <ul class="Linklist">
                       {%- for sub_link in link.links -%}
-                        <li class="Linklist__Item" {% if sub_link.links != blank %}aria-haspopup="true"{% endif %}>
-                          <a href="{{ sub_link.url }}" class="Link Link--secondary">{{ sub_link.title | escape }} {% if sub_link.links != blank %}{% render 'icon' with 'select-arrow-right' %}{% endif %}</a>
+                        {% assign sub_link_title_handle = sub_link.title | handle %}
+                        {% unless sub_link_title_handle contains 'shop-all'%}
+                          <li class="Linklist__Item" {% if sub_link.links != blank %}aria-haspopup="true"{% endif %}>
+                            <a href="{{ sub_link.url }}" class="Link Link--secondary">{{ sub_link.title | escape }} {% if sub_link.links != blank %}{% render 'icon' with 'select-arrow-right' %}{% endif %}</a>
 
-                          {%- if sub_link.links != blank -%}
-                            <div class="DropdownMenu" aria-hidden="true">
-                              <ul class="Linklist">
-                                {%- for sub_sub_link in sub_link.links -%}
-                                  <li class="Linklist__Item">
-                                    <a href="{{ sub_sub_link.url }}" class="Link Link--secondary">{{ sub_sub_link.title | escape }}</a>
-                                  </li>
-                                {%- endfor -%}
-                              </ul>
-                            </div>
-                          {%- endif -%}
-                        </li>
+                            {%- if sub_link.links != blank -%}
+                              <div class="DropdownMenu" aria-hidden="true">
+                                <ul class="Linklist">
+                                  {%- for sub_sub_link in sub_link.links -%}
+                                    {% assign sub_sub_link_title_handle = sub_sub_link.title | handle %}
+                                    {% unless sub_sub_link_title_handle contains 'shop-all' %}
+                                      <li class="Linklist__Item">
+                                        <a href="{{ sub_sub_link.url }}" class="Link Link--secondary">{{ sub_sub_link.title | escape }}</a>
+                                      </li>
+                                    {% endunless %}
+                                  {%- endfor -%}
+                                </ul>
+                              </div>
+                            {%- endif -%}
+                          </li>
+                        {% endunless %}
                       {%- endfor -%}
                     </ul>
                   </div>
@@ -475,6 +487,10 @@ HEADER CONTENT
       <a href="{{ routes.search_url }}" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable {% unless section.settings.show_icons or use_sidebar_menu %}hidden-desk{% endunless %}" data-action="toggle-search" aria-label="{{ 'header.navigation.search' | t }}">
         <span class="hidden-tablet-and-up">{%- render 'icon' with 'search' -%}</span>
         <span class="hidden-phone">{%- render 'icon' with 'search-desktop' -%}</span>
+      </a>
+      
+      <a href="#swym-wishlist" class="swym-wishlist Header__Icon Icon-Wrapper Icon-Wrapper--clickable">
+      	 <i aria-hidden="true" focusable="false" role="presentation" class="icon icon-swym-wishlist"></i>
       </a>
 
       <a href="{{ routes.cart_url }}" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable {% unless section.settings.show_icons or use_sidebar_menu %}hidden-desk{% endunless %}" {% if settings.cart_type == 'drawer' %}data-action="open-drawer" data-drawer-id="sidebar-cart" aria-expanded="false" aria-label="{{ 'header.navigation.open_cart' | t }}"{% endif %}>

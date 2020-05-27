@@ -2,7 +2,32 @@
 
 <html class="no-js" lang="{{ shop.locale }}">
   <head>
-{% include 'limespot' %}
+
+    <!-- Yotpo Javascript -->
+    <script type="text/javascript">(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/nap2dXlE4l9KFthJemgh23nFY56JJGkrzEpKfcXG/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();</script>
+    <!-- Yotpo Javascript -->
+
+    {%- assign yotpo_offload_content = shop.metafields.yotpo.yotpo_offload_content %}
+    {%- assign time_now = 'now' | date: '%s' %}
+    {%- assign yotpo_live_time = shop.metafields.yotpo.yotpo_live | date: '%s' %}
+    {%- assign diffSeconds = time_now | minus: yotpo_live_time %}
+    {%- if yotpo_offload_content == 'yes' and diffSeconds < 86400 -%}
+    {{ 'yotpo-full-css.css' | asset_url | stylesheet_tag }}
+    {%- endif -%}
+
+    <!-- Hotjar Tracking Code for https://www.shopthesoho.com/ -->
+	<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1808406,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+	</script>
+
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
@@ -115,7 +140,6 @@
     </script>
 
     {% render 'microdata-schema' %}
-  {% include 'limoniapps-discountninja-header' %}
 
   {% include 'shogun-head' %}
 <script>var scaaffCheck = false;</script>
@@ -125,22 +149,14 @@
   <script type="text/javascript" src="https://sdk.qikify.com/tmenu/app-v5.js?token=iuiV2IhSvlZvwvD9NmpND3nsir3PUcNx&shop=gameday-couture-beta.myshopify.com" defer="defer"></script>
 
 
-{%- assign yotpo_offload_content = shop.metafields.yotpo.yotpo_offload_content %}
-{%- assign time_now = 'now' | date: '%s' %}
-{%- assign yotpo_live_time = shop.metafields.yotpo.yotpo_live | date: '%s' %}
-{%- assign diffSeconds = time_now | minus: yotpo_live_time %}
-{%- if yotpo_offload_content == 'yes' and diffSeconds < 86400 -%}
-{{ 'yotpo-full-css.css' | asset_url | stylesheet_tag }}
-{%- endif -%}
-
-  {% if template contains 'rewards' or template contains 'refer' or template contains 'account' %}
+   {% if template contains 'rewards' or template contains 'refer' or template contains 'account' %}
 
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
     <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/t9-vlhCmWaUMqsuuWFiouA" async></script>
     {{ '//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css' | stylesheet_tag }}
     {{ '//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css' | stylesheet_tag }}
     {{ '//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js' | script_tag }}
-  
+
     {{ 'swell-rewards.js' | asset_url | script_tag }}
     {{ 'swell-rewards.scss.css' | asset_url | stylesheet_tag }}
 
@@ -169,15 +185,13 @@
 
       <main id="main" role="main">
         {{ content_for_layout }}
-        <limespot></limespot>
       </main>
 
       {% section 'footer' %}
     </div>
-  {% include 'limoniapps-discountninja-body' %}
 
   {% include 'swymSnippet' %}
-    
+
   {% if settings.enable_klaviyo_bis and settings.klaviyo_bis_account != blank %}
     <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
     <script>
@@ -218,10 +232,7 @@
   {% endif %}
  {% include 'smile-initializer' %}
 
-{% include 'carro' %}</body>
-</html>
-
-
+{% include 'carro' %}
 <!-- Begin Shopify-Afterpay JavaScript Snippet (v1.0.6) -->
 <script type="text/javascript">
 // Editable fields:
@@ -248,3 +259,5 @@ var afterpay_js_snippet_version = '1.0.6';
 </script>
 <script type="text/javascript" src="https://static.afterpay.com/shopify-afterpay-javascript.js"></script>
 <!-- End Shopify-Afterpay JavaScript Snippet (v1.0.6) -->
+</body>
+</html>

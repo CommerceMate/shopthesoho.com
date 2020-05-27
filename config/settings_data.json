@@ -38,8 +38,8 @@
     "secondary_elements_background": "#5c5c5c",
     "secondary_elements_text_color": "#ffffff",
     "heading_font": "helvetica_n7",
-    "heading_size": "large",
-    "uppercase_heading": false,
+    "heading_size": "normal",
+    "uppercase_heading": true,
     "text_font": "helvetica_n4",
     "base_text_font_size": 15,
     "show_page_transition": false,
@@ -70,9 +70,9 @@
     "social_fancy": "",
     "favicon": "shopify:\/\/shop_images\/favicon-32x32.png",
     "checkout_header_image": "",
-    "checkout_logo_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/GC_X_SOHO_transparent_3_4ef63c84-5336-4e32-a668-0981575888f5.png",
     "checkout_logo_position": "center",
-    "checkout_logo_size": "small",
+    "checkout_logo_size": "medium",
     "checkout_body_background_image": "",
     "checkout_body_background_color": "#fff",
     "checkout_input_background_color_mode": "white",
@@ -108,23 +108,23 @@
       "announcement": {
         "type": "announcement",
         "blocks": {
-          "1589221233604": {
+          "1587115007375": {
             "type": "announcement",
             "settings": {
-              "content": "✨Want 20% Off? Text SHOPTHESOHO to 29071 & we'll text you the code! ✨",
-              "link": ""
+              "content": "✨ Want 20% off? Text SHOPTHESOHO to 29071 & we'll send your code! ✨",
+              "link": "shopify:\/\/collections\/memorial-day-sale"
             }
           }
         },
         "block_order": [
-          "1589221233604"
+          "1587115007375"
         ],
         "settings": {
           "enable_bar": true,
           "home_page_only": false,
           "background": "#222222",
           "text_color": "#ffffff",
-          "enable_autoplay": false,
+          "enable_autoplay": true,
           "autoplay_speed": 5
         }
       },
@@ -139,11 +139,11 @@
               "push_1_image": "shopify:\/\/shop_images\/MOM.JPG",
               "push_1_heading": "Match Ya Mama",
               "push_1_subheading": "",
-              "push_1_url": "",
+              "push_1_url": "shopify:\/\/collections\/match-ya-mama",
               "push_2_image": "shopify:\/\/shop_images\/FLUTTER-ON-IN-KENNEDY-3_c410c661-8b0e-4966-b375-2e59cdf711ce.jpg",
-              "push_2_heading": "In Bloom Collection",
+              "push_2_heading": "New This week",
               "push_2_subheading": "",
-              "push_2_url": ""
+              "push_2_url": "shopify:\/\/collections\/may-collection"
             }
           },
           "1587166530393": {
@@ -209,12 +209,12 @@
           "1587200462612": {
             "type": "mega_menu",
             "settings": {
-              "navigation_mega_menu": "Accessories",
+              "navigation_mega_menu": "Accessories & Gifts",
               "menu_item_image": "",
-              "push_1_image": "shopify:\/\/shop_images\/ACCESSORIES-MARKETING-PHOTO-9_c8f69ba1-ead4-4102-84b4-66e85c0dc055.jpg",
+              "push_1_image": "shopify:\/\/shop_images\/MARKETING-FLATLAY.jpg",
               "push_1_heading": "",
               "push_1_subheading": "",
-              "push_1_url": "",
+              "push_1_url": "shopify:\/\/collections\/all-accessories",
               "push_2_image": "",
               "push_2_heading": "Example heading",
               "push_2_subheading": "Example sub-heading",
@@ -264,8 +264,8 @@
         ],
         "settings": {
           "use_sticky_header": true,
-          "logo": "shopify:\/\/shop_images\/SH_Logo_M_ca20892c-7b62-4a4f-9be9-b7d4cb4f20ca.png",
-          "logo_max_width": 160,
+          "logo": "shopify:\/\/shop_images\/GC_X_SOHO_transparent_3.png",
+          "logo_max_width": 250,
           "mobile_logo_max_width": 175,
           "show_currency_selector": true,
           "show_locale_selector": true,
@@ -334,18 +334,18 @@
           "slide-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Main_Banner-Desktop-04.26.20_af547caf-588f-494e-89d6-8c213a923d2e.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/Main_Banner-Mobile-04.26.20.jpg",
+              "image": "shopify:\/\/shop_images\/CAROUSEL-DESKTOP.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/MOBILE-DESKTOP_3b119f7b-7eeb-4bca-b045-def9072db58b.jpg",
               "apply_overlay": false,
               "content_position": "middleCenter",
-              "subheading": "NEW",
+              "subheading": "red, white & NEW!",
               "subheading_font": "avenir_next_n5",
               "subheading_font_size": 26,
-              "title": "In Bloom Collection",
+              "title": "PATRIOTIC Collection",
               "title_font": "avenir_next_n6",
               "title_font_size": 64,
-              "button_1_text": "Shop New Arrivals",
-              "button_1_link": "shopify:\/\/collections\/in-bloom",
+              "button_1_text": "Shop The Collection",
+              "button_1_link": "shopify:\/\/collections\/featured-collection-1",
               "button_2_text": "",
               "button_2_link": "",
               "buttons_font": "helvetica_n4",
@@ -355,43 +355,43 @@
               "buttons_color": "#363636",
               "buttons_background_color": "#ffffff"
             }
-          }
-        },
-        "block_order": [
-          "slide-0"
-        ],
-        "settings": {
-          "show_fullscreen": false,
-          "show_arrow": false,
-          "autoplay": false,
-          "cycle_speed": 5,
-          "dots_color": "#ffffff"
-        }
-      },
-      "featured-collections": {
-        "type": "featured-collections",
-        "blocks": {
-          "featured-collection-0": {
-            "type": "collection",
+          },
+          "1589481623140": {
+            "type": "image",
             "settings": {
-              "collection": "in-bloom",
-              "title": "",
-              "grid_items_count": 8,
-              "button_text": "View all products"
+              "image": "shopify:\/\/shop_images\/CAROUSEL-DESKTOP_2.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/MOBILE-DESKTOP_7d26c9e3-c2fe-4d66-b567-6bbef9566a96.jpg",
+              "apply_overlay": true,
+              "content_position": "middleCenter",
+              "subheading": "NEW ARRIVALS",
+              "subheading_font": "avenir_next_n5",
+              "subheading_font_size": 26,
+              "title": "IN BLOOM COLLECTION",
+              "title_font": "avenir_next_n6",
+              "title_font_size": 64,
+              "button_1_text": "SHOP NEW ARRIVALS",
+              "button_1_link": "shopify:\/\/collections\/in-bloom",
+              "button_2_text": "",
+              "button_2_link": "",
+              "buttons_font": "avenir_next_n6",
+              "buttons_font_size": 14,
+              "subheading_color": "#fff",
+              "title_color": "#fff",
+              "buttons_color": "#363636",
+              "buttons_background_color": "#fff"
             }
           }
         },
         "block_order": [
-          "featured-collection-0"
+          "slide-0",
+          "1589481623140"
         ],
         "settings": {
-          "title": "",
-          "layout_mode": "carousel",
-          "show_product_info": true,
-          "show_vendor": false,
-          "show_color_swatch": false,
-          "grid_mobile_items_per_row": "2",
-          "grid_desktop_items_per_row": 4
+          "show_fullscreen": false,
+          "show_arrow": false,
+          "autoplay": true,
+          "cycle_speed": 8,
+          "dots_color": "#ffffff"
         }
       },
       "collection-list": {
@@ -401,7 +401,7 @@
             "type": "collection",
             "settings": {
               "collection": "match-ya-mama",
-              "image": "shopify:\/\/shop_images\/Homepage-Collection-01_4236d9f6-6a92-4560-a29b-c78e59f584b7.jpg",
+              "image": "shopify:\/\/shop_images\/MOM_c97bda9a-77de-4185-8005-0f6a7f79a11f.jpg",
               "image_alignment": "center center",
               "show_content_below_image": false,
               "content_position": "bottomCenter",
@@ -410,16 +410,16 @@
               "subheading_font": "helvetica_n4",
               "subheading_font_size": 8,
               "title": "Match Ya Mama",
-              "title_font": "bauer_bodoni_n4",
+              "title_font": "avenir_next_n4",
               "title_font_size": 28,
               "button_text": "Shop The Collection",
-              "button_link": "",
-              "button_font": "helvetica_n4",
+              "button_link": "shopify:\/\/collections\/match-ya-mama",
+              "button_font": "avenir_next_n4",
               "button_font_size": 14,
-              "apply_overlay": false,
+              "apply_overlay": true,
               "content_background_color": "#ffffff",
               "subheading_color": "#000000",
-              "title_color": "#000000",
+              "title_color": "#ffffff",
               "button_color": "#ffffff",
               "button_background_color": "#000000"
             }
@@ -428,7 +428,7 @@
             "type": "collection",
             "settings": {
               "collection": "athlesiure",
-              "image": "shopify:\/\/shop_images\/Homepage-Collection-02.jpg",
+              "image": "shopify:\/\/shop_images\/GC.jpg",
               "image_alignment": "center center",
               "show_content_below_image": false,
               "content_position": "bottomCenter",
@@ -436,17 +436,17 @@
               "subheading": "",
               "subheading_font": "helvetica_n7",
               "subheading_font_size": 24,
-              "title": "Athleisure",
-              "title_font": "bauer_bodoni_n4",
+              "title": "COLLEGE APPAREL",
+              "title_font": "avenir_next_n4",
               "title_font_size": 28,
-              "button_text": "Shop Athleisure",
-              "button_link": "",
+              "button_text": "Shop YOUR TEAM",
+              "button_link": "shopify:\/\/pages\/college",
               "button_font": "helvetica_n4",
               "button_font_size": 14,
               "apply_overlay": false,
               "content_background_color": "#fff",
               "subheading_color": "#fff",
-              "title_color": "#000000",
+              "title_color": "#ffffff",
               "button_color": "#ffffff",
               "button_background_color": "#000000"
             }
@@ -455,7 +455,7 @@
             "type": "collection",
             "settings": {
               "collection": "all-tops",
-              "image": "shopify:\/\/shop_images\/Homepage-Collection-03.jpg",
+              "image": "shopify:\/\/shop_images\/NEW.jpg",
               "image_alignment": "center center",
               "show_content_below_image": false,
               "content_position": "bottomCenter",
@@ -463,17 +463,17 @@
               "subheading": "",
               "subheading_font": "helvetica_n4",
               "subheading_font_size": 8,
-              "title": "WFH?",
-              "title_font": "bauer_bodoni_n4",
+              "title": "NEW THIS WEEK",
+              "title_font": "avenir_next_n4",
               "title_font_size": 28,
-              "button_text": "Shop Zoom Ready Tops",
-              "button_link": "",
+              "button_text": "Shop NEW ARRIVALS",
+              "button_link": "shopify:\/\/collections\/new-arrivals",
               "button_font": "helvetica_n4",
               "button_font_size": 14,
-              "apply_overlay": false,
+              "apply_overlay": true,
               "content_background_color": "#fff",
               "subheading_color": "#fff",
-              "title_color": "#000000",
+              "title_color": "#ffffff",
               "button_color": "#ffffff",
               "button_background_color": "#000000"
             }
@@ -502,7 +502,7 @@
           "show_vendor": false,
           "collection_image_size": "normal",
           "show_sort_by": true,
-          "show_layout_switch": false,
+          "show_layout_switch": true,
           "toolbar_position": "top",
           "filter_position": "sidebar",
           "filter_mode": "group",
@@ -519,7 +519,7 @@
         "settings": {
           "show_section": false,
           "title": "Recently viewed",
-          "show_product_info": false,
+          "show_product_info": true,
           "show_vendor": false,
           "show_color_swatch": false
         }
@@ -573,9 +573,9 @@
       "product-recommendations": {
         "type": "product-recommendations",
         "settings": {
-          "show_product_recommendations": false,
-          "heading": "You may also like",
-          "show_product_info": false,
+          "show_product_recommendations": true,
+          "heading": "Recommended For You",
+          "show_product_info": true,
           "show_vendor": false,
           "show_color_swatch": false
         }
@@ -623,16 +623,16 @@
           "1587965690223-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/SALE-Background_cd99416f-d7b9-44b8-993a-c01a6565e45d.jpg",
+              "image": "shopify:\/\/shop_images\/SALE_37f0d111-e9d3-4e7b-88b8-d1678fe6b07f.jpg",
               "mobile_image": "",
               "apply_overlay": false,
               "content_position": "middleCenter",
-              "subheading": "",
+              "subheading": "LAST CHANCE",
               "subheading_font": "helvetica_n4",
               "subheading_font_size": 24,
               "title": "Shop Final Sale!",
-              "title_font": "bauer_bodoni_n4",
-              "title_font_size": 96,
+              "title_font": "avenir_next_n4",
+              "title_font_size": 76,
               "button_1_text": "Shop Final Sale",
               "button_1_link": "shopify:\/\/collections\/all-sale",
               "button_2_text": "",
@@ -844,12 +844,93 @@
           "1588316548442"
         ],
         "settings": {}
+      },
+      "1589288484389": {
+        "type": "featured-collections",
+        "blocks": {
+          "1589288484389-0": {
+            "type": "collection",
+            "settings": {
+              "collection": "may-collection",
+              "title": "",
+              "grid_items_count": 8,
+              "button_text": "View all products"
+            }
+          }
+        },
+        "block_order": [
+          "1589288484389-0"
+        ],
+        "settings": {
+          "title": "",
+          "layout_mode": "carousel",
+          "show_product_info": true,
+          "show_vendor": false,
+          "show_color_swatch": false,
+          "grid_mobile_items_per_row": "2",
+          "grid_desktop_items_per_row": 4
+        }
+      },
+      "1589288517746": {
+        "type": "featured-collections",
+        "blocks": {
+          "1589288517746-0": {
+            "type": "collection",
+            "settings": {
+              "collection": "best-sellers",
+              "title": "",
+              "grid_items_count": 8,
+              "button_text": "View all products"
+            }
+          }
+        },
+        "block_order": [
+          "1589288517746-0"
+        ],
+        "settings": {
+          "title": "",
+          "layout_mode": "carousel",
+          "show_product_info": true,
+          "show_vendor": false,
+          "show_color_swatch": false,
+          "grid_mobile_items_per_row": "2",
+          "grid_desktop_items_per_row": 4
+        }
+      },
+      "1589300984491": {
+        "type": "featured-collections",
+        "disabled": true,
+        "blocks": {
+          "1589300984491-0": {
+            "type": "collection",
+            "settings": {
+              "collection": "in-bloom",
+              "title": "",
+              "grid_items_count": 8,
+              "button_text": "View all products"
+            }
+          }
+        },
+        "block_order": [
+          "1589300984491-0"
+        ],
+        "settings": {
+          "title": "",
+          "layout_mode": "carousel",
+          "show_product_info": true,
+          "show_vendor": false,
+          "show_color_swatch": false,
+          "grid_mobile_items_per_row": "2",
+          "grid_desktop_items_per_row": 4
+        }
       }
     },
     "content_for_index": [
       "slideshow",
-      "featured-collections",
+      "1589288517746",
+      "1589300984491",
       "collection-list",
+      "1589288484389",
       "1587965690223",
       "1587608850251"
     ]

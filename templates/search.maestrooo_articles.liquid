@@ -16,7 +16,7 @@ are still using our apps. Otherwise, the apps may not work as expected.
   {%- else -%}
     {%- assign article = search.results.first -%}
   {%- endif -%}
-  
+
   {%- if article.handle != blank -%}
     {{ jsonp_callback }}({
       {%- assign url_parts = article.url | split: '/' -%}

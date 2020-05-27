@@ -5886,6 +5886,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.productVariants = new __WEBPACK_IMPORTED_MODULE_2__components_ProductVariants__["default"](container, this.options);
       }
 
+      if (this.element.querySelector('.Product__BreadCrumb')){
+        var collection_href = this.element.querySelector('.Product__BreadCrumb').getAttribute('href');
+        var nav_parent_text = '';
+        if (document.querySelector('.MegaMenu__Title[href="'+ collection_href +'"]')) {
+          nav_parent_text = document.querySelector('.MegaMenu__Title[href="'+ collection_href +'"]').closest('.HorizontalList__Item').querySelector('.Header__LinkSpacer').innerHTML;
+        } else if (document.querySelector('.Link--secondary[href="'+ collection_href +'"]')){
+          nav_parent_text = document.querySelector('.Link--secondary[href="'+ collection_href +'"]').closest('.MegaMenu__Item').querySelector('.MegaMenu__Title').innerHTML;
+        }
+
+        this.element.querySelector('.Product__BreadcrumbsContainer').prepend(nav_parent_text + ' /');
+      }
+
       this.productReviews = new __WEBPACK_IMPORTED_MODULE_4__components_ProductReviews__["default"](container);
 
       var productSlideshowElement = this.element.querySelector('.Product__Slideshow');

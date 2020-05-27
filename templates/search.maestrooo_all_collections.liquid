@@ -10,7 +10,7 @@ are still using our apps. Otherwise, the apps may not work as expected.
 {%- capture all_collections -%}
   [
     {%- assign sorted_collections = collections | sort: 'published_at' | reverse -%}
-    
+
     {%- for collection in sorted_collections -%}
       {%- assign rules_map = collection | json | map: 'rules' | append: '' -%}
 
@@ -19,7 +19,7 @@ are still using our apps. Otherwise, the apps may not work as expected.
       {%- else -%}
         {%- assign is_smart_collection = true -%}
       {%- endif -%}
-      
+
       {
         "id": {{ collection.id }},
         "object": {% if is_smart_collection %}"smart_collection"{% else %}"custom_collection"{% endif %},

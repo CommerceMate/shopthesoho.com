@@ -19,6 +19,7 @@
 
 <section class="Product Product--{{ section.settings.image_size }}" data-section-id="{{ section.id }}" data-section-type="product" data-section-settings='{{ section_settings }}'>
   <div class="Product__Wrapper">
+
     {%- capture action_list_items -%}
       {%- if section.settings.enable_image_zoom -%}
         <div class="Product__ActionItem hidden-lap-and-up">
@@ -119,6 +120,14 @@
 
     {%- if product.media.size > 0 -%}
       <div class="Product__Gallery {% if section.settings.stack_images %}Product__Gallery--stack{% endif %} {% if section.settings.show_thumbnails and media_count > 1 %}Product__Gallery--withThumbnails{% else %}Product__Gallery--withDots{% endif %}">
+
+        {% if collection %}
+          <div class="Product__BreadcrumbsContainer">
+            <a href="{{ collection.url }}" class="Product__BreadCrumb">{{ collection.title }}</a>
+            /
+          </div>
+        {% endif %}
+
         <span id="ProductGallery" class="Anchor"></span>
 
         {%- if action_list_items != blank -%}
@@ -275,7 +284,7 @@
       {%- endfor -%}
     {%- endcapture -%}
 
-    <div class="Product__InfoWrapper">
+    <div class="Product__InfoWrapper {% if collection %}with-margin-top{% endif %}">
       <div class="Product__Info {% if media_count == 0 %}Product__Info--noGallery{% endif %}">
         <div class="Container">
           {%- render 'product-meta', product: product, show_description: true -%}
@@ -283,6 +292,8 @@
           {%- if product.template_suffix != 'coming-soon' -%}
             {%- render 'product-form', product: product -%}
           {%- endif -%}
+
+
 
           {%- if section.settings.description_below_add_to_cart -%}
             <div class="ProductMeta__Description">
@@ -453,6 +464,10 @@ This is the root container for the zoom functionality. Must not be removed, as o
 {% endif %}
 
 <div id="ShopTheLook-section" class="Product Container"></div>
+
+<!-- Yotpo reviews widget product page -->
+<div class="yotpo yotpo-main-widget" data-product-id="{{ product.id }}" data-name="{{ product.title | escape }}" data-url="{{ shop.url }}{{ product.url }}" data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}" data-description="{{ product.description | escape }}"></div>
+<!-- end of Yotpo reviews widget product page -->
 
 {% schema %}
 {

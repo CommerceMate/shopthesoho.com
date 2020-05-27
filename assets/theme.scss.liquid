@@ -9632,6 +9632,9 @@ $vertical-spacing-two-products-per-row  : 0px;
     right: 0;
     top: 0;
     height: 100%;
+    &.with-margin-top {
+      margin-top: 10px;
+    }
   }
 
   .Product__Info {
@@ -11801,5 +11804,26 @@ $vertical-spacing-two-products-per-row  : 0px;
 @media only screen and (min-width: 1025px) {
   .shopthelook_add-to-cart {
     margin: 15px 0 0;
+  }
+}
+
+// Product breadcrumbs
+.Product__BreadcrumbsContainer {
+  padding: 15px 18px;
+  font-size: 11px;
+  line-height: 1.3;
+}
+@include av-mq('tablet-and-up') {
+  .Product__BreadcrumbsContainer {
+    padding: 18px 30px;
+    font-size: 16px;
+  }
+}
+@include av-mq('lap-and-up') {
+  .Product__BreadcrumbsContainer {
+    max-width: 550px;
+    margin: 0 auto;
+    font-size: 11px;
+    padding: 0 0 10px;
   }
 }

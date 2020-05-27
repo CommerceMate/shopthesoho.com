@@ -1,4 +1,4 @@
-<div class="ProductItem {% if use_horizontal %}ProductItem--horizontal{% endif %}" data-limoniapps-discountninja-product-handle="{{ product.handle }}">
+<div class="ProductItem {% if use_horizontal %}ProductItem--horizontal{% endif %}">
   <div class="ProductItem__Wrapper">
     {%- comment -%}
     We are using LazySizes to efficiently choose the most appropriate image in the set. However, because internally LazySizes uses srcset, we need to make
@@ -88,6 +88,27 @@
           <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
         </h2>
 
+        <!-- Yotpo Star Ratings in Category pages -->
+        <div class="yotpo bottomLine"
+        data-product-id="{{ product.id }}">
+        {%- assign yotpo_offload_content = shop.metafields.yotpo.yotpo_offload_content %}
+        {%- assign time_now = 'now' | date: '%s' %}
+        {%- assign yotpo_live_time = shop.metafields.yotpo.yotpo_live | date: '%s' %}
+        {%- assign diff_seconds_from_live = time_now | minus: yotpo_live_time %}
+        {%- assign yotpo_bottomline_last_updated = product.metafields.yotpo.catalog_bottomline_update_time | date: '%s' %}
+        {%- assign diff_seconds_from_last_bottomline_update = time_now | minus: yotpo_bottomline_last_updated %}
+        {%- if yotpo_live_time and diff_seconds_from_live < 86400 or yotpo_bottomline_last_updated and diff_seconds_from_last_bottomline_update < 86400 -%}
+          {%- assign yotpo_bottomline_obsolete = false %}
+        {%- else %}
+          {%- assign yotpo_bottomline_obsolete = true %}
+        {%- endif %}
+        {%- if yotpo_offload_content == 'yes' and yotpo_bottomline_obsolete != true -%}
+          {{ product.metafields.yotpo.catalog_bottomline }}
+        {%- endif %}
+        </div>
+        <!-- end of Yotpo Star Ratings in Category pages -->
+
+
         {%- if show_color_swatch -%}
           {%- assign color_swatch_list = '' -%}
 
@@ -147,7 +168,7 @@
         {%- endif -%}
 
         {%- if product.template_suffix != 'coming-soon' -%}
-          <div class="ProductItem__PriceList {% if show_price_on_hover %}ProductItem__PriceList--showOnHover{% endif %} Heading limoniapps-discountninja-productprice">
+          <div class="ProductItem__PriceList {% if show_price_on_hover %}ProductItem__PriceList--showOnHover{% endif %} Heading">
             {%- if product.compare_at_price > product.price -%}
               <span class="ProductItem__Price Price Price--highlight Text--subdued">{{ product.price | money_without_trailing_zeros }}</span>
               <span class="ProductItem__Price Price Price--compareAt Text--subdued">{{ product.compare_at_price | money_without_trailing_zeros }}</span>

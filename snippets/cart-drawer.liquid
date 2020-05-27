@@ -7,7 +7,7 @@
 }
 {%- endcapture -%}
 
-<div id="sidebar-cart" class="Drawer Drawer--fromRight limoniapps-discountninja-drawercart-root" aria-hidden="true" data-section-id="cart" data-section-type="cart" data-section-settings='{{ section_settings }}'>
+<div id="sidebar-cart" class="Drawer Drawer--fromRight" aria-hidden="true" data-section-id="cart" data-section-type="cart" data-section-settings='{{ section_settings }}'>
   <div class="Drawer__Header Drawer__Header--bordered Drawer__Container">
       <span class="Drawer__Title Heading u-h4">{{ 'cart.general.title' | t }}</span>
 
@@ -72,7 +72,7 @@
         <button type="submit" name="checkout" class="Cart__Checkout Button Button--primary Button--full">
           <span>{{- 'cart.general.checkout' | t -}}</span>
           <span class="Button__SeparatorDot"></span>
-          <span class="limoniapps-discountninja-cart-subtotal-price">{{ cart.total_price | money_without_trailing_zeros }}</span>
+          <span class="">{{ cart.total_price | money_without_trailing_zeros }}</span>
         </button>
 
         {%- if settings.cart_enable_notes -%}

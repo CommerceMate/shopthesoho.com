@@ -16,7 +16,7 @@ are still using our apps. Otherwise, the apps may not work as expected.
   {%- else -%}
     {%- assign page = search.results.first -%}
   {%- endif -%}
-  
+
   {%- if page.handle != blank -%}
     {{ jsonp_callback }}({
       "id": {{ page.id }},

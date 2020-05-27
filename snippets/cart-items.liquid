@@ -31,9 +31,6 @@
           <a href="{{ line_item.url }}">{{ line_item.product.title }}</a>
         </h2>
 
-        <div class="limoniapps-discountninja-cart-item-product-comment" data-limoniapps-discountninja-cart-key="{{ line_item.key }}"></div>
-
-        <span class="limoniapps-discountninja-cart-item-variant"style="display:none;">{{ line_item.variant.id }}</span>
         <div class="CartItem__Meta Heading Text--subdued">
           {%- unless line_item.product.has_only_default_variant -%}
             <p class="CartItem__Variant">{{ line_item.variant.title }}</p>
@@ -53,7 +50,7 @@
             </ul>
           {%- endif -%}
 
-          <div class="CartItem__PriceList limoniapps-discountninja-cart-item-product-price" data-limoniapps-discountninja-cart-key="{{ line_item.key }}">
+          <div class="CartItem__PriceList"">
             {%- if line_item.original_price != line_item.final_price -%}
               <span class="CartItem__Price Price Price--highlight">{{ line_item.final_price | money_without_trailing_zeros }}</span>
               <span class="CartItem__OriginalPrice Price Price--compareAt">{{ line_item.original_price | money_without_trailing_zeros }}</span>
@@ -103,7 +100,7 @@
       {%- unless for_drawer -%}
         {{ item_actions }}
 
-        <div class="CartItem__LinePriceList Heading Text--subdued limoniapps-discountninja-cart-item-line-price" style="text-align: right" data-limoniapps-discountninja-cart-key="{{ line_item.key }}">
+        <div class="CartItem__LinePriceList Heading Text--subdued" style="text-align: right">
           {%- if line_item.original_line_price != line_item.final_line_price -%}
             <span class="CartItem__Price Price Price--highlight">{{ line_item.final_line_price | money_without_trailing_zeros }}</span>
             <span class="CartItem__Price Price Price--compareAt">{{ line_item.original_line_price | money_without_trailing_zeros }}</span>

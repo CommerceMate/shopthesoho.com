@@ -20,15 +20,36 @@
     {%- endif -%}
   </h1>
 
-  {% render 'swym-product-view', product: product %}
-  <button class="swym-button swym-add-to-wishlist-view-product product_{{product.id}}" data-swaction="addToWishlist" data-product-id="{{product.id | json}}"></button>
+  <!-- Start of Yotpo Star Rating on Product Pages - Templates -->
+      <div class="yotpo bottomLine"
+           data-product-id="{{ product.id }}">
+        {%- assign yotpo_offload_content = shop.metafields.yotpo.yotpo_offload_content %}
+        {%- assign time_now = 'now' | date: '%s' %}
+        {%- assign yotpo_live_time = shop.metafields.yotpo.yotpo_live | date: '%s' %}
+        {%- assign diff_seconds_from_live = time_now | minus: yotpo_live_time %}
+        {%- assign yotpo_bottomline_last_updated = product.metafields.yotpo.bottomline_update_time | date: '%s' %}
+        {%- assign diff_seconds_from_last_bottomline_update = time_now | minus: yotpo_bottomline_last_updated %}
+        {%- if yotpo_live_time and diff_seconds_from_live < 86400 or yotpo_bottomline_last_updated and diff_seconds_from_last_bottomline_update < 86400 -%}
+        {%- assign yotpo_bottomline_obsolete = false %}
+        {%- else %}
+        {%- assign yotpo_bottomline_obsolete = true %}
+        {%- endif %}
+        {%- if yotpo_offload_content == 'yes' and yotpo_bottomline_obsolete != true -%}
+        {{ product.metafields.yotpo.bottomline }}
+        {%- endif %}
+      </div>
+      <style>a.text-m {
+        margin-left: 5px;
+      }</style>
+
+<!-- End of Yotpo Star Rating on Product Pages - Templates -->
 
   {%- if section.settings.show_sku and product.selected_or_first_available_variant.sku != blank -%}
     <p class="ProductMeta__Sku Heading Text--subdued u-h6">{{ 'product.form.sku' | t }}: <span class="ProductMeta__SkuNumber">{{ product.selected_or_first_available_variant.sku }}</span></p>
   {%- endif -%}
 
   {%- if product.template_suffix != 'coming-soon' -%}
-    <div class="ProductMeta__PriceList Heading limoniapps-discountninja-productprice">
+    <div class="ProductMeta__PriceList Heading">
       {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
         <span class="ProductMeta__Price Price Price--highlight Text--subdued u-h4">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</span>
         <span class="ProductMeta__Price Price Price--compareAt Text--subdued u-h4">{{ product.selected_or_first_available_variant.compare_at_price | money_without_trailing_zeros }}</span>
@@ -57,7 +78,6 @@
         {{ section.settings.sale_message }}
       </div>
     {% endif %}
-    <div class="limoniapps-discountninja-promotioncard-productpage"></div>
   {%- endif -%}
 
   {%- if show_description and section.settings.description_below_add_to_cart == false -%}

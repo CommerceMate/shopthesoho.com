@@ -29,7 +29,7 @@ are still using our apps. Otherwise, the apps may not work as expected.
           }{%- unless forloop.last %},{% endunless -%}
         {%- endfor -%}
       {%- endcapture -%}
-      
+
       {%- capture product_variants -%}
         {%- for variant in product.variants -%}
           {
@@ -43,7 +43,7 @@ are still using our apps. Otherwise, the apps may not work as expected.
           }{%- unless forloop.last %},{% endunless -%}
         {%- endfor -%}
       {%- endcapture -%}
-      
+
       "id": {{ product.id }},
       "object": "product",
       "title": {{ product.title | json }},
@@ -78,7 +78,7 @@ are still using our apps. Otherwise, the apps may not work as expected.
               }{%- unless forloop.last %},{% endunless -%}
             {%- endfor -%}
           {%- endcapture -%}
-          
+
           {%- capture product_variants -%}
             {%- for variant in product.variants -%}
               {
@@ -92,7 +92,7 @@ are still using our apps. Otherwise, the apps may not work as expected.
               }{%- unless forloop.last %},{% endunless -%}
             {%- endfor -%}
           {%- endcapture -%}
-          
+
           {
             "id": {{ product.id }},
             "object": "product",
