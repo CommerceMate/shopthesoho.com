@@ -499,6 +499,7 @@
           "show_collection_image": false,
           "apply_overlay": false,
           "show_color_swatch": true,
+          "show_quickshop": true,
           "show_vendor": false,
           "collection_image_size": "normal",
           "show_sort_by": true,

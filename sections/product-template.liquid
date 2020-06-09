@@ -463,7 +463,7 @@ This is the root container for the zoom functionality. Must not be removed, as o
   </style>
 {% endif %}
 
-<div id="ShopTheLook-section" class="Product Container"></div>
+<div id="bundler-target-element"></div>
 
 <!-- Yotpo reviews widget product page -->
 <div class="yotpo yotpo-main-widget" data-product-id="{{ product.id }}" data-name="{{ product.title | escape }}" data-url="{{ shop.url }}{{ product.url }}" data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}" data-description="{{ product.description | escape }}"></div>

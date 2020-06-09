@@ -777,6 +777,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   "use strict";
 
   Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+  /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__helper_Dom__ = __webpack_require__(0);
+  /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__helper_Form__ = __webpack_require__(22);
   /**
    * Note: this was a feature that was added at the very end and couldn't do something much cleaner without rewriting large parts of the theme...
    */
@@ -787,8 +789,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       this.element = element;
       this.delegateElement = new domDelegate.Delegate(this.element);
-
       this.delegateElement.on('change', '.ColorSwatch__Radio', this._colorChanged.bind(this));
+      this.delegateElement.on('change', '.QuickshopProductForm__SizeOptionRadio', this._sizeChanged.bind(this));
+      this.delegateElement.on('click', '.QuickshopProductForm__SubmitButton.use-ajax', this._ajaxAddToCart.bind(this));
     }
 
     _createClass(ProductItemColorSwatch, [{
@@ -820,6 +823,122 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           originalImageElement.parentNode.style.setProperty('--aspect-ratio', target.getAttribute('data-image-aspect-ratio'));
           originalImageElement.parentNode.replaceChild(newImageElement, originalImageElement);
         }
+
+        var quickshop_container = productItem.querySelector('.ProductItem__QuickshopContainer')
+        if (quickshop_container) {
+          var color_value = target.value;
+          var color_option_index = target.getAttribute('data-variant-option-index');
+          var size_options_container = productItem.querySelector('.QuickShopProductForm__SizeOptionsContainer');
+          var variant_select = productItem.querySelector('.QuickshopSelect');
+          if (size_options_container) {
+            var size_option_index = size_options_container.querySelector('input').getAttribute('data-variant-option-index');
+            __WEBPACK_IMPORTED_MODULE_1__helper_Dom__["default"].nodeListToArray(variant_select.querySelectorAll('option[data-variant-'+color_option_index+'="'+color_value+'"]')).forEach(function (item) {
+              var size_option_value = item.getAttribute('data-variant-'+ size_option_index);
+              var size_input = size_options_container.querySelector('input[value="'+size_option_value+'"]');
+              if(size_input){
+                if(item.disabled) {
+                  size_input.disabled = true;
+                } else {
+                  size_input.disabled = false;
+                }
+              }
+            });
+            var first_available_size_input = size_options_container.querySelector('input:not(:disabled)');
+            if (!first_available_size_input) {
+              var first_available_size_input = size_options_container.querySelector('input');
+            }
+            var size_value = first_available_size_input.value;
+            first_available_size_input.checked = true;
+            var option = variant_select.querySelector('option[data-variant-'+size_option_index+'="'+ size_value +'"][data-variant-'+color_option_index+'="'+color_value+'"]');
+          } else {
+            var option = variant_select.querySelector('option[data-variant-'+color_option_index+'="'+color_value+'"]');
+          }
+
+          variant_select.value = option.value;
+          var quickshop_button = productItem.querySelector('.QuickshopProductForm__SubmitButton');
+
+          if(option.disabled){
+            quickshop_button.disabled = true;
+            quickshop_button.querySelector('.QuickshopProductForm__SubmitButtonHoverText').innerHTML = window.languages.productFormSoldOut;
+          } else {
+            quickshop_button.disabled = false;
+            quickshop_button.querySelector('.QuickshopProductForm__SubmitButtonHoverText').innerHTML = window.languages.productFormAddToCart;
+          }
+        }
+
+      }
+    }, {
+      key: '_sizeChanged',
+      value: function _sizeChanged(event, target) {
+        var productItem = target.closest('.ProductItem');
+        var size_value = target.value;
+        var size_option_index = target.getAttribute('data-variant-option-index');
+        var color_value = productItem.querySelector('.ColorSwatch__Radio:checked').value;
+        var color_option_index = productItem.querySelector('.ColorSwatch__Radio:checked').getAttribute('data-variant-option-index');
+        var variant_select = productItem.querySelector('.QuickshopSelect');
+        var option = variant_select.querySelector('option[data-variant-'+size_option_index+'="'+ size_value +'"][data-variant-'+color_option_index+'="'+color_value+'"]');
+        variant_select.value = option.value;
+
+        var quickshop_button = productItem.querySelector('.QuickshopProductForm__SubmitButton');
+
+        if(option.disabled){
+          quickshop_button.disabled = true;
+          quickshop_button.querySelector('.QuickshopProductForm__SubmitButtonHoverText').innerHTML = window.languages.productFormSoldOut;
+        } else {
+          quickshop_button.disabled = false;
+          quickshop_button.querySelector('.QuickshopProductForm__SubmitButtonHoverText').innerHTML = window.languages.productFormAddToCart;
+        }
+      }
+    }, {
+      key: '_ajaxAddToCart',
+      value: function _ajaxAddToCart(event, target) {
+        event.preventDefault();
+        var productItem = target.closest('.ProductItem');
+        var addToCartButton = productItem.querySelector('.QuickshopProductForm__SubmitButton');
+
+        // First, we switch the status of the button
+        addToCartButton.setAttribute('disabled', 'disabled');
+        document.dispatchEvent(new CustomEvent('theme:loading:start'));
+
+        // Then we add the product in Ajax
+        var formElement = productItem.querySelector('form[action*="/cart/add"]');
+        var variant_id = formElement.querySelector('.QuickshopSelect').value;
+
+        fetch(window.routes.cartAddUrl + '.js', {
+          body: JSON.stringify(__WEBPACK_IMPORTED_MODULE_2__helper_Form__["default"].serialize(formElement)),
+          credentials: 'same-origin',
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest' // This is needed as currently there is a bug in Shopify that assumes this header
+          }
+        }).then(function (response) {
+          document.dispatchEvent(new CustomEvent('theme:loading:end'));
+          if (response.ok) {
+            addToCartButton.removeAttribute('disabled');
+            // We simply trigger an event so the mini-cart can re-render
+            document.dispatchEvent(new CustomEvent('product:added', {
+              bubbles: true,
+              detail: {
+                variant: variant_id,
+                quantity: 1
+              }
+            }));
+          } else {
+            response.json().then(function (content) {
+              var errorMessageElement = document.createElement('span');
+              errorMessageElement.className = 'ProductForm__Error Alert Alert--error';
+              errorMessageElement.innerHTML = content['description'];
+              addToCartButton.removeAttribute('disabled');
+              addToCartButton.insertAdjacentElement('afterend', errorMessageElement);
+              setTimeout(function () {
+                errorMessageElement.remove();
+              }, 2500);
+            });
+          }
+        });
+
+        event.preventDefault();
       }
     }]);
 

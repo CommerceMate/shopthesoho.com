@@ -17,41 +17,92 @@
       {%- assign has_alternate_image = false -%}
     {%- endif -%}
 
-    <a href="{{ product.url | within: collection }}" class="ProductItem__ImageWrapper {% if has_alternate_image %}ProductItem__ImageWrapper--withAlternateImage{% endif %}">
-      {%- if use_horizontal -%}
-        {%- assign max_width = 125 -%}
-      {%- else -%}
-        {%- assign max_width = product.featured_media.preview_image.width -%}
-      {%- endif -%}
-
-      {%- assign media_aspect_ratio = product.featured_media.aspect_ratio | default: product.featured_media.preview_image.aspect_ratio -%}
-
-      <div class="AspectRatio AspectRatio--{% if use_natural_size %}withFallback{% else %}{{ settings.product_image_size }}{% endif %}" style="max-width: {{ max_width }}px; {% if use_natural_size %}padding-bottom: {{ 100.0 | divided_by: media_aspect_ratio }}%;{% endif %} --aspect-ratio: {{ media_aspect_ratio }}">
-        {%- comment -%}
-        IMPLEMENTATION NOTE: The alternate image (not visible by default) should be the first in the DOM, as the spinner (Image__Loader element) is
-        displayed based on the immediately previously shown image.
-        {%- endcomment -%}
-
-        {%- if has_alternate_image -%}
-          {%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,600,800,900,1000,1200', image: product.media[1] -%}{%- endcapture -%}
-
-          {%- assign image_url = product.media[1] | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-
-          <img class="ProductItem__Image ProductItem__Image--alternate Image--lazyLoad Image--fadeIn" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="{{ product.media[1].alt | escape }}" data-media-id="{{ product.media[1].id }}">
+    <div class="ProductItem__ImageContainer">
+      <a href="{{ product.url | within: collection }}" class="ProductItem__ImageWrapper {% if has_alternate_image %}ProductItem__ImageWrapper--withAlternateImage{% endif %}">
+        {%- if use_horizontal -%}
+          {%- assign max_width = 125 -%}
+        {%- else -%}
+          {%- assign max_width = product.featured_media.preview_image.width -%}
         {%- endif -%}
 
-        {%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: product.featured_media -%}{%- endcapture -%}
-        {%- assign image_url = product.featured_media | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        {%- assign media_aspect_ratio = product.featured_media.aspect_ratio | default: product.featured_media.preview_image.aspect_ratio -%}
 
-        <img class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="{{ product.featured_media.alt | escape }}" data-media-id="{{ product.featured_media.id }}">
-        <span class="Image__Loader"></span>
+        <div class="AspectRatio AspectRatio--{% if use_natural_size %}withFallback{% else %}{{ settings.product_image_size }}{% endif %}" style="max-width: {{ max_width }}px; {% if use_natural_size %}padding-bottom: {{ 100.0 | divided_by: media_aspect_ratio }}%;{% endif %} --aspect-ratio: {{ media_aspect_ratio }}">
+          {%- comment -%}
+          IMPLEMENTATION NOTE: The alternate image (not visible by default) should be the first in the DOM, as the spinner (Image__Loader element) is
+          displayed based on the immediately previously shown image.
+          {%- endcomment -%}
 
-        <noscript>
-          <img class="ProductItem__Image ProductItem__Image--alternate" src="{{ product.media[1] | img_url: '600x' }}" alt="{{ product.media[1].alt | escape }}">
-          <img class="ProductItem__Image" src="{{ product.featured_media| img_url: '600x' }}" alt="{{ product.featured_media.alt | escape }}">
-        </noscript>
-      </div>
-    </a>
+          {%- if has_alternate_image -%}
+            {%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,600,800,900,1000,1200', image: product.media[1] -%}{%- endcapture -%}
+
+            {%- assign image_url = product.media[1] | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+            <img class="ProductItem__Image ProductItem__Image--alternate Image--lazyLoad Image--fadeIn" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="{{ product.media[1].alt | escape }}" data-media-id="{{ product.media[1].id }}">
+          {%- endif -%}
+
+          {%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: product.featured_media -%}{%- endcapture -%}
+          {%- assign image_url = product.featured_media | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+          <img class="ProductItem__Image Image--lazyLoad Image--fadeIn" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="{{ product.featured_media.alt | escape }}" data-media-id="{{ product.featured_media.id }}">
+          <span class="Image__Loader"></span>
+
+          <noscript>
+            <img class="ProductItem__Image ProductItem__Image--alternate" src="{{ product.media[1] | img_url: '600x' }}" alt="{{ product.media[1].alt | escape }}">
+            <img class="ProductItem__Image" src="{{ product.featured_media| img_url: '600x' }}" alt="{{ product.featured_media.alt | escape }}">
+          </noscript>
+        </div>
+      </a>
+      {% if show_quickshop and product.available and show_color_swatch %}
+        <div class="ProductItem__QuickshopContainer">
+          {%- form 'product', product, class: 'QuickshopProductForm' -%}
+            <select id="product-select-{{ product.id }}" name="id" class="QuickshopSelect">
+              {%- for variant in product.variants -%}
+                <option {% if variant == selected_variant %}selected="selected"{% endif %} {% unless variant.available %}disabled="disabled"{% endunless %} value="{{ variant.id }}" data-sku="{{ variant.sku }}" data-variant-title="{{ variant.title }}" data-variant-option1="{{ variant.option1 }}" data-variant-option2="{{ variant.option2 }}" data-variant-option3="{{ variant.option3 }}">{{ variant.title }} - {{ variant.price | money }}</option>
+              {%- endfor -%}
+            </select>
+            <input type="hidden" name="quantity" value="1">
+
+            <div class="QuickshopProductForm__OptionsAndButtonContainer">
+              {% if product.options.size > 1 %}
+                <div class="QuickShopProductForm__SizeOptionsContainer">
+                  {%- assign size_label = 'size' | split: ',' -%}
+                  {%- for option in product.options_with_values -%}
+                    {%- assign downcased_option = option.name | downcase -%}
+                    {%- if size_label contains downcased_option -%}
+                      {%- assign variant_option = 'option' | append: forloop.index -%}
+                      {%- assign found_first_available_size = false -%}
+                      {%- for value in option.values -%}
+                        {%- assign size_available = false -%}
+                        {%- for variant in product.variants -%}
+                          {%- if variant[variant_option] == value -%}
+                            {%- if variant.available -%}
+                              {%- assign size_available = true -%}
+                            {%- endif -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+                        {%- capture size_id -%}{{ section.id }}-{{ product.id }}-{{ forloop.index }}{%- endcapture -%}
+                        {% if size_available %}
+                          <div class="QuickshopProductForm__SizeOption">
+                            <input class="QuickshopProductForm__SizeOptionRadio" type="radio" name="{{ section.id }}-{{ product.id }}-size" value="{{ value | escape }}" id="{{ size_id }}-size" aria-hidden="true" data-variant-option-index="{{ variant_option }}" {% unless found_first_available_size %}checked{% endunless %}>
+                            <label class="QuickshopProductForm__SizeOptionLabel" title="{{ value | escape }}" for="{{ size_id }}-size">{{ value }}</label>
+                            {%- assign found_first_available_size = true -%}
+                          </div>
+                        {% endif %}
+                      {%- endfor -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              {% endif %}
+              <button type="submit" class="QuickshopProductForm__SubmitButton {% if settings.cart_type == 'drawer' %}use-ajax{% endif %}">
+                <span class="QuickshopProductForm__SubmitButtonHoverText">{{ 'product.form.add_to_cart' | t }}</span>
+                <span class="QuickshopProductForm__SubmitButtonText">{{'product.form.quickshop' | t }}</span>
+              </button>
+            </div>
+          {%- endform -%}
+        </div>
+      {% endif %}
+    </div>
 
     {%- if show_labels -%}
       {%- capture product_labels -%}
@@ -142,7 +193,7 @@
                     {%- assign color_swatch_name = value | handle | append: '.png' -%}
                     {%- assign color_swatch_image = images[color_swatch_name] -%}
 
-                    <input class="ColorSwatch__Radio" type="radio" name="{{ color_name }}" id="{{ color_id }}" value="{{ value | escape }}" {% if option.selected_value == value %}checked="checked"{% endif %} data-variant-url="{{ variant_for_value.url }}{% if variant_for_value.image %}#Image{{ variant_for_value.image.id }}{% endif %}" {% if variant_for_value.image %}data-image-id="{{ variant_for_value.image.id }}" data-image-url="{{ variant_image_url }}" data-image-widths="[{{ supported_sizes }}]" data-image-aspect-ratio="{{ variant_for_value.image.aspect_ratio }}"{% endif %} aria-hidden="true">
+                    <input class="ColorSwatch__Radio" type="radio" name="{{ color_name }}" id="{{ color_id }}" value="{{ value | escape }}" {% if option.selected_value == value %}checked="checked"{% endif %} data-variant-url="{{ variant_for_value.url }}{% if variant_for_value.image %}#Image{{ variant_for_value.image.id }}{% endif %}" {% if variant_for_value.image %}data-image-id="{{ variant_for_value.image.id }}" data-image-url="{{ variant_image_url }}" data-image-widths="[{{ supported_sizes }}]" data-image-aspect-ratio="{{ variant_for_value.image.aspect_ratio }}"{% endif %} aria-hidden="true" data-variant-option-index={{ variant_option }}>
                     <label class="ColorSwatch ColorSwatch--small {% if downcased_value == 'white' %}ColorSwatch--white{% endif %}" for="{{ color_id }}" style="background-color: {{ value | replace: ' ', '' | downcase }}; {% if color_swatch_image != blank %}background-image: url({{ color_swatch_image | img_url: '64x64' }}){% endif %}" title="{{ value | escape }}" data-tooltip="{{ value | escape }}"></label>
                   </div>
                 {%- endfor -%}

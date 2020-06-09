@@ -2,7 +2,7 @@
 {
   "productId": {{ product.id | json }},
   "useRecommendations": {% if product.metafields.sf_related_products.enabled == 1 %}false{% else %}true{% endif %},
-  "recommendationsCount": 4
+  "recommendationsCount": {{ section.settings.amount_of_products }}
 }
 {%- endcapture -%}
 
@@ -33,7 +33,7 @@
     <div class="ProductRecommendations">
       {%- if recommendations.performed or product.metafields.sf_related_products.enabled == 1 -%}
         <div class="ProductListWrapper">
-          <div class="ProductList ProductList--carousel Carousel" data-flickity-config='{{ flickity_options }}'>
+          <div class="ProductList ProductList--carousel Carousel ProductRecommendationsList" data-flickity-config='{{ flickity_options }}'>
             {%- comment -%}
             If the merchant is explicitly using SuperFields, we use the hand-picked related products, otherwise we
             switch to the Shopify automatic recommendation
@@ -82,6 +82,15 @@
       "label": "Show dynamic recommendations",
       "info": "Dynamic recommendations change and improve with time. [Learn more](https://help.shopify.com/en/themes/development/recommended-products)",
       "default": true
+    },
+    {
+      "type":"range",
+      "id":"amount_of_products",
+      "label":"Amount of products to show",
+      "min":6,
+      "max":36,
+      "step":6,
+      "default":12
     },
     {
       "type": "text",
