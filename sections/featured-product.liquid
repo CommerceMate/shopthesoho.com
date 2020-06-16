@@ -57,10 +57,10 @@
         {%- endif -%}
 
         <div class="FeaturedProduct__Info">
-          {%- render 'product-meta', product: product, show_description: section.settings.show_description -%}
+          {%- include 'product-meta', product: product, show_description: section.settings.show_description -%}
 
           {%- if product.template_suffix != 'coming-soon' -%}
-            {%- render 'product-form', product: product -%}
+            {%- include 'product-form', product: product -%}
           {%- endif -%}
 
           {%- if section.settings.show_description and section.settings.description_below_add_to_cart -%}

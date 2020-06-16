@@ -50,12 +50,12 @@
             </ul>
           {%- endif -%}
 
-          <div class="CartItem__PriceList"">
+          <div class="CartItem__PriceList">
             {%- if line_item.original_price != line_item.final_price -%}
-              <span class="CartItem__Price Price Price--highlight">{{ line_item.final_price | money_without_trailing_zeros }}</span>
+              <span class="CartItem__Price Price Price--highlight"><span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_item_price" style="display:none !important;"></span>{{ line_item.final_price | money_without_trailing_zeros }}</span>
               <span class="CartItem__OriginalPrice Price Price--compareAt">{{ line_item.original_price | money_without_trailing_zeros }}</span>
             {%- else -%}
-              <span class="CartItem__Price Price">{{ line_item.final_price | money_without_trailing_zeros }}</span>
+              <span class="CartItem__Price Price"><span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_item_price" style="display:none !important;"></span>{{ line_item.final_price | money_without_trailing_zeros }}</span>
             {%- endif -%}
 
             {%- if line_item.line_level_discount_allocations != blank -%}
@@ -102,10 +102,10 @@
 
         <div class="CartItem__LinePriceList Heading Text--subdued" style="text-align: right">
           {%- if line_item.original_line_price != line_item.final_line_price -%}
-            <span class="CartItem__Price Price Price--highlight">{{ line_item.final_line_price | money_without_trailing_zeros }}</span>
+            <span class="CartItem__Price Price Price--highlight"><span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_item_total" style="display:none !important;"></span>{{ line_item.final_line_price | money_without_trailing_zeros }}</span>
             <span class="CartItem__Price Price Price--compareAt">{{ line_item.original_line_price | money_without_trailing_zeros }}</span>
           {%- else -%}
-            <span class="CartItem__Price Price">{{ line_item.final_line_price | money_without_trailing_zeros }}</span>
+            <span class="CartItem__Price Price"><span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_item_total" style="display:none !important;"></span>{{ line_item.final_line_price | money_without_trailing_zeros }}</span>
           {%- endif -%}
         </div>
       {%- endunless -%}

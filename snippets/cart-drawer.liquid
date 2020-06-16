@@ -72,7 +72,7 @@
         <button type="submit" name="checkout" class="Cart__Checkout Button Button--primary Button--full">
           <span>{{- 'cart.general.checkout' | t -}}</span>
           <span class="Button__SeparatorDot"></span>
-          <span class="">{{ cart.total_price | money_without_trailing_zeros }}</span>
+          <span class=""><span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_total" style="display:none !important;"></span>{{ cart.total_price | money_without_trailing_zeros }}</span>
         </button>
 
         {%- if settings.cart_enable_notes -%}

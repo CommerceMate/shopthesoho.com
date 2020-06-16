@@ -1,3 +1,4 @@
+{%- include 'bold-product' with product, hide_action: 'break', output: 'none' -%}
 {% include 'shogun-products', content: product %}
 {{product.metafields.shogun.above}}
 {% section 'product-template' %}
@@ -18,8 +19,8 @@
     ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
     URL: "{{ shop.secure_url }}{{ product.url }}",
     Brand: {{ product.vendor|json }},
-    Price: {{ product.price|money|json }},
-    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+    Price: {{ bold_price|money|json }},
+    CompareAtPrice: {{ bold_compare_at_price_max|money|json }}
   };
   _learnq.push(['track', 'Viewed Product', item]);
   _learnq.push(['trackViewedItem', {

@@ -112,7 +112,7 @@
             "type": "announcement",
             "settings": {
               "content": "✨ Want 20% off? Text SHOPTHESOHO to 29071 & we'll send your code! ✨",
-              "link": "shopify:\/\/collections\/memorial-day-sale"
+              "link": ""
             }
           }
         },
@@ -136,11 +136,11 @@
             "settings": {
               "navigation_mega_menu": "What's New",
               "menu_item_image": "",
-              "push_1_image": "shopify:\/\/shop_images\/MOM.JPG",
+              "push_1_image": "shopify:\/\/shop_images\/620CTY-PAT16Y-BLUE-KAI_bab03d06-2057-4ed8-99d3-59ad28168dd1.jpg",
               "push_1_heading": "Match Ya Mama",
               "push_1_subheading": "",
               "push_1_url": "shopify:\/\/collections\/match-ya-mama",
-              "push_2_image": "shopify:\/\/shop_images\/FLUTTER-ON-IN-KENNEDY-3_c410c661-8b0e-4966-b375-2e59cdf711ce.jpg",
+              "push_2_image": "shopify:\/\/shop_images\/LOST-IN-PARADISE-FLATLAY.jpg",
               "push_2_heading": "New This week",
               "push_2_subheading": "",
               "push_2_url": "shopify:\/\/collections\/may-collection"
@@ -151,7 +151,7 @@
             "settings": {
               "navigation_mega_menu": "Clothing",
               "menu_item_image": "",
-              "push_1_image": "shopify:\/\/shop_images\/PICK-YOU-EVERYTIME-KENNEDY-8_52f7c1e6-110c-4714-a361-4150d51a07ad.jpg",
+              "push_1_image": "shopify:\/\/shop_images\/MOBILE-DESKTOP_174ff504-ac0a-407a-aaf7-f5091b6da828.jpg",
               "push_1_heading": "New in: Rompers",
               "push_1_subheading": "",
               "push_1_url": "shopify:\/\/collections\/rompers",
@@ -181,7 +181,7 @@
             "settings": {
               "navigation_mega_menu": "Kids",
               "menu_item_image": "",
-              "push_1_image": "shopify:\/\/shop_images\/KID.JPG",
+              "push_1_image": "shopify:\/\/shop_images\/UGC-MOMMY-AND-ME-2.jpg",
               "push_1_heading": "",
               "push_1_subheading": "",
               "push_1_url": "",
@@ -196,7 +196,7 @@
             "settings": {
               "navigation_mega_menu": "Shoes",
               "menu_item_image": "",
-              "push_1_image": "shopify:\/\/shop_images\/MM-Shoes.jpg",
+              "push_1_image": "shopify:\/\/shop_images\/SHOE-ASSORTMENT-FLATLAY-10.jpg",
               "push_1_heading": "",
               "push_1_subheading": "",
               "push_1_url": "",
@@ -211,7 +211,7 @@
             "settings": {
               "navigation_mega_menu": "Accessories & Gifts",
               "menu_item_image": "",
-              "push_1_image": "shopify:\/\/shop_images\/MARKETING-FLATLAY.jpg",
+              "push_1_image": "shopify:\/\/shop_images\/MARKETING-FLATLAY-2.jpg",
               "push_1_heading": "",
               "push_1_subheading": "",
               "push_1_url": "shopify:\/\/collections\/all-accessories",
@@ -244,7 +244,7 @@
               "push_1_image": "shopify:\/\/shop_images\/ala_ce222779-11e9-45a4-8cd3-676de7457215.JPG",
               "push_1_heading": "",
               "push_1_subheading": "",
-              "push_1_url": "",
+              "push_1_url": "shopify:\/\/pages\/college",
               "push_2_image": "",
               "push_2_heading": "Example heading",
               "push_2_subheading": "Example sub-heading",
@@ -331,6 +331,31 @@
       "slideshow": {
         "type": "slideshow",
         "blocks": {
+          "1589481623140": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/CAROUSEL-DESKTOP_0e136c86-273f-4366-9227-81ced128aa74.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/MOBILE-DESKTOP_174ff504-ac0a-407a-aaf7-f5091b6da828.jpg",
+              "apply_overlay": true,
+              "content_position": "middleCenter",
+              "subheading": "NEW ARRIVALS",
+              "subheading_font": "avenir_next_n5",
+              "subheading_font_size": 26,
+              "title": "PREP FOR SUMMER",
+              "title_font": "avenir_next_n6",
+              "title_font_size": 64,
+              "button_1_text": "SHOP NEW ARRIVALS",
+              "button_1_link": "shopify:\/\/collections\/may-collection",
+              "button_2_text": "",
+              "button_2_link": "",
+              "buttons_font": "avenir_next_n6",
+              "buttons_font_size": 14,
+              "subheading_color": "#fff",
+              "title_color": "#fff",
+              "buttons_color": "#363636",
+              "buttons_background_color": "#fff"
+            }
+          },
           "slide-0": {
             "type": "image",
             "settings": {
@@ -355,36 +380,11 @@
               "buttons_color": "#363636",
               "buttons_background_color": "#ffffff"
             }
-          },
-          "1589481623140": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/CAROUSEL-DESKTOP_2.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/MOBILE-DESKTOP_7d26c9e3-c2fe-4d66-b567-6bbef9566a96.jpg",
-              "apply_overlay": true,
-              "content_position": "middleCenter",
-              "subheading": "NEW ARRIVALS",
-              "subheading_font": "avenir_next_n5",
-              "subheading_font_size": 26,
-              "title": "IN BLOOM COLLECTION",
-              "title_font": "avenir_next_n6",
-              "title_font_size": 64,
-              "button_1_text": "SHOP NEW ARRIVALS",
-              "button_1_link": "shopify:\/\/collections\/in-bloom",
-              "button_2_text": "",
-              "button_2_link": "",
-              "buttons_font": "avenir_next_n6",
-              "buttons_font_size": 14,
-              "subheading_color": "#fff",
-              "title_color": "#fff",
-              "buttons_color": "#363636",
-              "buttons_background_color": "#fff"
-            }
           }
         },
         "block_order": [
-          "slide-0",
-          "1589481623140"
+          "1589481623140",
+          "slide-0"
         ],
         "settings": {
           "show_fullscreen": false,
@@ -400,8 +400,8 @@
           "collection-0": {
             "type": "collection",
             "settings": {
-              "collection": "match-ya-mama",
-              "image": "shopify:\/\/shop_images\/MOM_c97bda9a-77de-4185-8005-0f6a7f79a11f.jpg",
+              "collection": "all-kids",
+              "image": "shopify:\/\/shop_images\/UGC-MOMMY-AND-ME-2.jpg",
               "image_alignment": "center center",
               "show_content_below_image": false,
               "content_position": "bottomCenter",
@@ -409,7 +409,7 @@
               "subheading": "",
               "subheading_font": "helvetica_n4",
               "subheading_font_size": 8,
-              "title": "Match Ya Mama",
+              "title": "Kids",
               "title_font": "avenir_next_n4",
               "title_font_size": 28,
               "button_text": "Shop The Collection",
@@ -455,7 +455,7 @@
             "type": "collection",
             "settings": {
               "collection": "all-tops",
-              "image": "shopify:\/\/shop_images\/NEW.jpg",
+              "image": "shopify:\/\/shop_images\/CAROUSEL-DESKTOP_0e136c86-273f-4366-9227-81ced128aa74.jpg",
               "image_alignment": "center center",
               "show_content_below_image": false,
               "content_position": "bottomCenter",
@@ -467,7 +467,7 @@
               "title_font": "avenir_next_n4",
               "title_font_size": 28,
               "button_text": "Shop NEW ARRIVALS",
-              "button_link": "shopify:\/\/collections\/new-arrivals",
+              "button_link": "shopify:\/\/collections\/may-collection",
               "button_font": "helvetica_n4",
               "button_font_size": 14,
               "apply_overlay": true,
@@ -575,6 +575,7 @@
         "type": "product-recommendations",
         "settings": {
           "show_product_recommendations": true,
+          "amount_of_products": 12,
           "heading": "Recommended For You",
           "show_product_info": true,
           "show_vendor": false,
@@ -849,10 +850,10 @@
       "1589288484389": {
         "type": "featured-collections",
         "blocks": {
-          "1589288484389-0": {
+          "1590601204617": {
             "type": "collection",
             "settings": {
-              "collection": "may-collection",
+              "collection": "lake-life-graphic-tees",
               "title": "",
               "grid_items_count": 8,
               "button_text": "View all products"
@@ -860,10 +861,10 @@
           }
         },
         "block_order": [
-          "1589288484389-0"
+          "1590601204617"
         ],
         "settings": {
-          "title": "",
+          "title": "JUST IN:",
           "layout_mode": "carousel",
           "show_product_info": true,
           "show_vendor": false,
@@ -879,14 +880,24 @@
             "type": "collection",
             "settings": {
               "collection": "best-sellers",
-              "title": "",
+              "title": "Trending",
+              "grid_items_count": 8,
+              "button_text": "View all products"
+            }
+          },
+          "1590601562064": {
+            "type": "collection",
+            "settings": {
+              "collection": "may-collection",
+              "title": "New In",
               "grid_items_count": 8,
               "button_text": "View all products"
             }
           }
         },
         "block_order": [
-          "1589288517746-0"
+          "1589288517746-0",
+          "1590601562064"
         ],
         "settings": {
           "title": "",

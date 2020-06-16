@@ -1,3 +1,4 @@
+{%- include 'bold-product' with product, hide_action: 'break' -%}
 <div class="ProductMeta">
   {%- if section.settings.show_vendor and product.vendor != blank -%}
     <h2 class="ProductMeta__Vendor Heading u-h6">
@@ -44,26 +45,26 @@
 
 <!-- End of Yotpo Star Rating on Product Pages - Templates -->
 
-  {%- if section.settings.show_sku and product.selected_or_first_available_variant.sku != blank -%}
-    <p class="ProductMeta__Sku Heading Text--subdued u-h6">{{ 'product.form.sku' | t }}: <span class="ProductMeta__SkuNumber">{{ product.selected_or_first_available_variant.sku }}</span></p>
+  {%- if section.settings.show_sku and bold_selected_or_first_available_variant.sku != blank -%}
+    <p class="ProductMeta__Sku Heading Text--subdued u-h6">{{ 'product.form.sku' | t }}: <span class="ProductMeta__SkuNumber">{{ bold_selected_or_first_available_variant.sku }}</span></p>
   {%- endif -%}
 
   {%- if product.template_suffix != 'coming-soon' -%}
     <div class="ProductMeta__PriceList Heading">
-      {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
-        <span class="ProductMeta__Price Price Price--highlight Text--subdued u-h4">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</span>
-        <span class="ProductMeta__Price Price Price--compareAt Text--subdued u-h4">{{ product.selected_or_first_available_variant.compare_at_price | money_without_trailing_zeros }}</span>
+      {%- if bold_selected_or_first_available_variant.compare_at_price > bold_variant_price -%}
+        <span class="ProductMeta__Price Price Price--highlight Text--subdued u-h4">{{ bold_variant_price | money_without_trailing_zeros }}</span>
+        <span class="ProductMeta__Price Price Price--compareAt Text--subdued u-h4">{{ bold_selected_or_first_available_variant.compare_at_price | money_without_trailing_zeros }}</span>
       {%- else -%}
-        <span class="ProductMeta__Price Price Text--subdued u-h4">{{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}</span>
+        <span class="ProductMeta__Price Price Text--subdued u-h4">{{ bold_variant_price | money_without_trailing_zeros }}</span>
       {%- endif -%}
     </div>
 
     {% if section.settings.enable_sale_message and section.settings.sale_message != blank %}
       {% assign sale_message_threshold = section.settings.sale_message_threshold %}
 
-      {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
-        {% assign compare_at_price = product.selected_or_first_available_variant.compare_at_price %}
-        {% assign price_difference = compare_at_price | minus: product.selected_or_first_available_variant.price %}
+      {% if bold_selected_or_first_available_variant.compare_at_price > bold_variant_price %}
+        {% assign compare_at_price = bold_selected_or_first_available_variant.compare_at_price %}
+        {% assign price_difference = compare_at_price | minus: bold_variant_price %}
 
         {% assign price_difference_in_percent = price_difference | times: 100 | divided_by: compare_at_price %}
         {% if price_difference_in_percent >= sale_message_threshold %}

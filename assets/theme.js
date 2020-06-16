@@ -4326,6 +4326,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               _this35._replaceContent(html);
             });
           }
+          if(typeof BOLD === 'object' && BOLD.common && BOLD.common.eventEmitter && typeof BOLD.common.eventEmitter.emit === 'function') {
+    BOLD.common.eventEmitter.emit("BOLD_COMMON_cart_loaded");
+  }
+
+
         });
       }
     }, {

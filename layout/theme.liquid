@@ -16,16 +16,22 @@
     {%- endif -%}
 
     <!-- Hotjar Tracking Code for https://www.shopthesoho.com/ -->
-	<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:1808406,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-	</script>
+  	<script>
+      (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:1808406,hjsv:6};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  	</script>
+
+    <!-- BEGINNING Bing Tracking Code for https://www.shopthesoho.com/ -->
+<script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"17395925"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
+
+
+    <!-- END Bing Tracking Code for https://www.shopthesoho.com/ -->
 
 
     <meta charset="utf-8">
@@ -50,6 +56,8 @@
     {% render 'social-meta-tags' %}
 
     {{ content_for_header }}
+{%- include 'bold-product' with product, hide_action: 'header' -%}
+{%- include 'bold-common' -%}
 
     <link rel="stylesheet" href="{{ 'theme.scss.css' | asset_url }}">
 	<link rel="stylesheet" href="{{ 'custom.scss.css' | asset_url }}">
@@ -230,7 +238,6 @@
       });
     </script>
   {% endif %}
- {% include 'smile-initializer' %}
 
 {% include 'carro' %}
 <!-- Begin Shopify-Afterpay JavaScript Snippet (v1.0.6) -->
@@ -252,7 +259,7 @@ var afterpay_cart_currency = {{ cart.currency.iso_code | json }};
 var afterpay_shop_money_format = {{ shop.money_format | json }};
 var afterpay_shop_permanent_domain = {{ shop.permanent_domain | json }};
 var afterpay_theme_name = {{ theme.name | json }};
-var afterpay_product = {{ product | json }};
+var afterpay_product = {%- include 'bold-product', output: 'json' -%};
 var afterpay_current_variant = {{ product.selected_or_first_available_variant | json }};
 var afterpay_cart_total_price = {{ cart.total_price | json }};
 var afterpay_js_snippet_version = '1.0.6';

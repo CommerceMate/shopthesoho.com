@@ -7,7 +7,7 @@ In order to edit custom CSS for Bold Product Bundles you should:
 - Go to Display Settings
 ------------------------------------  WARNING  ------------------------------------
 bold-bundles.css version 1
-Generated at 2020-05-26 11:03:57
+Generated at 2020-06-15 02:35:05
 */
 
 /* .bold-bundles-product component */
@@ -142,7 +142,7 @@ Generated at 2020-05-26 11:03:57
 }
 
 .bold-bundles-widget-item-separator {
-  background-color: #333333;
+  background-color: #ffffff;
   border-radius: 50%;
   display: inline-block;
   width: 20px;
@@ -153,7 +153,7 @@ Generated at 2020-05-26 11:03:57
 
 .bold-bundles-widget-item-separator__icon {
   display: block;
-  fill: #FFFFFF;
+  fill: #ffffff;
   margin: 0 auto;
   position: relative;
   top: 4px;
@@ -492,7 +492,7 @@ select.bold-bundles-widget-item__variants option[disabled] {
 .bold-bundles-widget #overlay-wrapper{
 position: relative;
 }
- 
+
 
 .bold-bundles-widget .modal-content {
   background-color: #fff;
@@ -500,7 +500,9 @@ position: relative;
   padding: 0 10px;
   border: 1px solid #888;
   width: 80%;
-  margin-top: 20%;
+  top: 50%;
+  transform: translateY(-50%);
+  position: relative;
 }
 
 .bold-bundles-widget .close {
