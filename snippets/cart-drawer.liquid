@@ -47,6 +47,71 @@
 
     {%- unless cart.item_count == 0 -%}
       <div class="Drawer__Footer" data-drawer-animated-bottom>
+        {% if settings.cart_upsell_collection != blank %}
+          {% assign cart_upsell_collection = collections[settings.cart_upsell_collection] %}
+
+          {%- capture flickity_options -%}
+          {
+            "prevNextButtons": false,
+            "pageDots": true,
+            "wrapAround": false,
+            "contain": true,
+            "cellAlign": "left",
+            "dragThreshold": 8,
+            "groupCells": true
+          }
+          {%- endcapture -%}
+
+          <div class="Drawer__UpsellCollection Carousel" data-flickity-config='{{ flickity_options }}'>
+            {% for product in cart_upsell_collection.products limit: settings.cart_upsell_collection_products %}
+              <div class="Carousel__Cell Drawer__UpsellCollection--Item">
+                <div class="CartItemWrapper">
+                  <div class="CartItem">
+                    <div class="CartItem__ImageWrapper AspectRatio">
+                      <div class="AspectRatio" style="--aspect-ratio: {{ product.featured_image.aspect_ratio }}">
+                        <img class="CartItem__Image" src="{{ product.featured_image | img_url: '240x' }}" alt="{{ product.featured_image.alt | escape }}">
+                      </div>
+                    </div>
+                    <div class="CartItem__Info">
+                      <h2 class="CartItem__Title Heading">
+                        <a href="{{ product.url }}">{{ product.title }}</a>
+                      </h2>
+                      <div class="CartItem__Meta Heading Text--subdued">
+                        <div class="CartItem__PriceList">
+                          <span class="CartItem__Price Price">{{ product.first_available_variant.price | money }}
+                          </span>
+                        </div>
+                      </div>
+                      <div class="CartItem__Actions Heading Text--subdued" style="text-align: center">
+                        <div class="Drawer__UpsellCollection--FakeForm">
+                          {% if product.has_only_default_variant %}
+                            <input name="id" value="{{ product.first_available_variant.id }}" type="hidden">
+                          {% else %}
+                            <select name="id" class="DrawerUpsellSelect">
+                              {% for variant in product.variants %}
+                                <option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>{{ variant.title }}</option>
+                              {% endfor%}
+                            </select>
+                          {% endif %}
+                          <input type="hidden" name="quantity" value="1">
+                          <button type="button" class="ProductForm__AddToCart Button {% if product.available %}Button--primary{% else %}Button--secondary{% endif %} Drawer__UpsellColelction--AddToCart" data-action="add-to-cart" {% unless product.available %}disabled{% endunless %}>
+                            {% if product.available %}
+                              <span>{{ 'cart.upsell_collection.add_to_cart' | t }}</span>
+                            {% else %}
+                              <span>{{ 'cart.upsell_collection.sold_out' | t }}</span>
+                            {% endif %}
+                          </button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
         {%- capture shipping_and_taxes_notice -%}{{ 'cart.general.shipping_and_taxes_notice' | t }}{%- endcapture -%}
 
         {%- if settings.cart_enable_notes or shipping_and_taxes_notices != blank -%}

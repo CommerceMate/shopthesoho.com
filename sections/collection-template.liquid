@@ -87,6 +87,16 @@
   {%- endcapture -%}
 
   <section data-section-id="{{ section.id }}" data-section-type="collection" data-section-settings='{{ section_settings }}'>
+    <div class="CustomQuickshopModal">
+      <div class="CustomQuickshopWrapper">
+        <div class="CustomQuickShopOverlay">
+        </div>
+
+        <div class="CustomQuickshopContainer">
+
+        </div>
+      </div>
+    </div>
     {%- comment -%}
     --------------------------------------------------------------------------------------------------------------------
     COLLECTION INFO
@@ -236,7 +246,7 @@
 
         {%- capture filters_content -%}
           {%- if quick_links != empty -%}
-            <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+            <div class="track_{{ quick_links.title | handle }} Collapsible Collapsible--padded Collapsible--autoExpand">
               <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
                 {{- quick_links.title | escape -}} <span class="Collapsible__Plus"></span>
               </button>
@@ -257,7 +267,7 @@
 
           {%- if has_visible_tags -%}
             {%- if section.settings.filter_mode == 'tag' -%}
-              <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+              <div class="track_{{ 'collection.filter.all' | t | handle }} Collapsible Collapsible--padded Collapsible--autoExpand">
                 <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
                   {{- 'collection.filter.all' | t -}} <span class="Collapsible__Plus"></span>
                 </button>
@@ -305,7 +315,7 @@
                   {%- assign show_color_swatch = false -%}
                 {%- endif -%}
 
-                <div class="Collapsible Collapsible--padded Collapsible--autoExpand">
+                <div class="track_{{ group | handle }} Collapsible Collapsible--padded Collapsible--autoExpand">
                   <button type="button" class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
                     {{- group | escape -}} <span class="Collapsible__Plus"></span>
                   </button>

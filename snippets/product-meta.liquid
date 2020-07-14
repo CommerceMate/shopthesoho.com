@@ -13,7 +13,7 @@
     </h2>
   {%- endif -%}
 
-  <h1 class="ProductMeta__Title Heading u-h2">
+  <h1 class="ProductMeta__Title Heading {% if template.suffix == 'quickshop'%}u-h4 QuickShopProductTitle{% else %}u-h2{% endif %}">
     {%- if template.name == 'product' -%}
       {{- product.title -}}
     {%- else -%}
@@ -21,6 +21,7 @@
     {%- endif -%}
   </h1>
 
+  {% if template.suffix != 'quickshop' %}
   <!-- Start of Yotpo Star Rating on Product Pages - Templates -->
       <div class="yotpo bottomLine"
            data-product-id="{{ product.id }}">
@@ -44,40 +45,56 @@
       }</style>
 
 <!-- End of Yotpo Star Rating on Product Pages - Templates -->
+  {% endif %}
 
   {%- if section.settings.show_sku and bold_selected_or_first_available_variant.sku != blank -%}
     <p class="ProductMeta__Sku Heading Text--subdued u-h6">{{ 'product.form.sku' | t }}: <span class="ProductMeta__SkuNumber">{{ bold_selected_or_first_available_variant.sku }}</span></p>
   {%- endif -%}
 
   {%- if product.template_suffix != 'coming-soon' -%}
-    <div class="ProductMeta__PriceList Heading">
-      {%- if bold_selected_or_first_available_variant.compare_at_price > bold_variant_price -%}
-        <span class="ProductMeta__Price Price Price--highlight Text--subdued u-h4">{{ bold_variant_price | money_without_trailing_zeros }}</span>
-        <span class="ProductMeta__Price Price Price--compareAt Text--subdued u-h4">{{ bold_selected_or_first_available_variant.compare_at_price | money_without_trailing_zeros }}</span>
-      {%- else -%}
-        <span class="ProductMeta__Price Price Text--subdued u-h4">{{ bold_variant_price | money_without_trailing_zeros }}</span>
-      {%- endif -%}
-    </div>
+    {% capture sale_message %}
+      {% if section.settings.enable_sale_message and section.settings.sale_message != blank %}
+        {% assign sale_message_threshold = section.settings.sale_message_threshold %}
 
-    {% if section.settings.enable_sale_message and section.settings.sale_message != blank %}
-      {% assign sale_message_threshold = section.settings.sale_message_threshold %}
+        {% if bold_selected_or_first_available_variant.compare_at_price > bold_variant_price %}
+          {% assign compare_at_price = bold_selected_or_first_available_variant.compare_at_price %}
+          {% assign price_difference = compare_at_price | minus: bold_variant_price %}
 
-      {% if bold_selected_or_first_available_variant.compare_at_price > bold_variant_price %}
-        {% assign compare_at_price = bold_selected_or_first_available_variant.compare_at_price %}
-        {% assign price_difference = compare_at_price | minus: bold_variant_price %}
-
-        {% assign price_difference_in_percent = price_difference | times: 100 | divided_by: compare_at_price %}
-        {% if price_difference_in_percent >= sale_message_threshold %}
-          {% assign hide_sale_message = false %}
+          {% assign price_difference_in_percent = price_difference | times: 100 | divided_by: compare_at_price %}
+          {% if price_difference_in_percent >= sale_message_threshold %}
+            {% assign hide_sale_message = false %}
+          {% else %}
+            {% assign hide_sale_message = true %}
+          {% endif %}
         {% else %}
           {% assign hide_sale_message = true %}
         {% endif %}
-      {% else %}
-        {% assign hide_sale_message = true %}
+        <div class="ProductMeta__SaleMessageContainer" {% if hide_sale_message %}style="display: none;"{% endif %}>
+          {{ section.settings.sale_message }}
+        </div>
       {% endif %}
-      <div class="ProductMeta__SaleMessageContainer" {% if hide_sale_message %}style="display: none;"{% endif %}>
-        {{ section.settings.sale_message }}
-      </div>
+    {% endcapture %}
+
+    <div class="ProductMeta__PriceList Heading {% if template.suffix == 'quickshop'%}QuickShopPriceList{% endif %}">
+      {%- if bold_selected_or_first_available_variant.compare_at_price > bold_variant_price -%}
+        {% if template.suffix == 'quickshop'%}
+          <span class="ProductMeta__Price Price Price--compareAt Text--subdued u-h5">{{ bold_selected_or_first_available_variant.compare_at_price | money_without_trailing_zeros }}</span>
+          <span class="ProductMeta__Price Price Price--highlight Text--subdued u-h5">{{ bold_variant_price | money_without_trailing_zeros }}</span>
+        {% else %}
+          <span class="ProductMeta__Price Price Price--highlight Text--subdued u-h4">{{ bold_variant_price | money_without_trailing_zeros }}</span>
+          <span class="ProductMeta__Price Price Price--compareAt Text--subdued u-h4">{{ bold_selected_or_first_available_variant.compare_at_price | money_without_trailing_zeros }}</span>
+        {% endif %}
+      {%- else -%}
+        <span class="ProductMeta__Price Price Text--subdued {% if template.suffix == 'quickshop'%}u-h5{% else %}u-h4{% endif %}">{{ bold_variant_price | money_without_trailing_zeros }}</span>
+      {%- endif -%}
+
+      {% if template.suffix == 'quickshop' %}
+        {{ sale_message }}
+      {% endif %}
+    </div>
+
+    {% if template.suffix != 'quickshop' %}
+      {{ sale_message }}
     {% endif %}
   {%- endif -%}
 

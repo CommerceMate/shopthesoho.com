@@ -136,7 +136,8 @@
       "empty": "Collection {{collection_title}} is empty",
       "empty_button": "Back to homepage",
       "reset": "Reset filters",
-      "view_products": "View products"
+      "view_products": "View products",
+      "view_full_details": "View Full Details"
     },
     "filter": {
       "title": "Filter",
@@ -297,6 +298,10 @@
       "one_result_title": "1 option available:",
       "more_results_title": "{{count}} options available:",
       "no_results_title": "No shipping could be found"
+    },
+    "upsell_collection": {
+      "add_to_cart": "Add",
+      "sold_out": "Sold out"
     }
   },
   "product": {

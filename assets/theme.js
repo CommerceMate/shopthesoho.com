@@ -313,7 +313,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       this.element = element;
       this.initialConfig = Object.assign(JSON.parse(element.getAttribute('data-flickity-config')), overrideSettings);
       this.options = options;
-
       this._attachListeners();
       this._build();
     }
@@ -790,8 +789,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       this.element = element;
       this.delegateElement = new domDelegate.Delegate(this.element);
       this.delegateElement.on('change', '.ColorSwatch__Radio', this._colorChanged.bind(this));
-      this.delegateElement.on('change', '.QuickshopProductForm__SizeOptionRadio', this._sizeChanged.bind(this));
-      this.delegateElement.on('click', '.QuickshopProductForm__SubmitButton.use-ajax', this._ajaxAddToCart.bind(this));
     }
 
     _createClass(ProductItemColorSwatch, [{
@@ -824,121 +821,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           originalImageElement.parentNode.replaceChild(newImageElement, originalImageElement);
         }
 
-        var quickshop_container = productItem.querySelector('.ProductItem__QuickshopContainer')
-        if (quickshop_container) {
-          var color_value = target.value;
-          var color_option_index = target.getAttribute('data-variant-option-index');
-          var size_options_container = productItem.querySelector('.QuickShopProductForm__SizeOptionsContainer');
-          var variant_select = productItem.querySelector('.QuickshopSelect');
-          if (size_options_container) {
-            var size_option_index = size_options_container.querySelector('input').getAttribute('data-variant-option-index');
-            __WEBPACK_IMPORTED_MODULE_1__helper_Dom__["default"].nodeListToArray(variant_select.querySelectorAll('option[data-variant-'+color_option_index+'="'+color_value+'"]')).forEach(function (item) {
-              var size_option_value = item.getAttribute('data-variant-'+ size_option_index);
-              var size_input = size_options_container.querySelector('input[value="'+size_option_value+'"]');
-              if(size_input){
-                if(item.disabled) {
-                  size_input.disabled = true;
-                } else {
-                  size_input.disabled = false;
-                }
-              }
-            });
-            var first_available_size_input = size_options_container.querySelector('input:not(:disabled)');
-            if (!first_available_size_input) {
-              var first_available_size_input = size_options_container.querySelector('input');
-            }
-            var size_value = first_available_size_input.value;
-            first_available_size_input.checked = true;
-            var option = variant_select.querySelector('option[data-variant-'+size_option_index+'="'+ size_value +'"][data-variant-'+color_option_index+'="'+color_value+'"]');
-          } else {
-            var option = variant_select.querySelector('option[data-variant-'+color_option_index+'="'+color_value+'"]');
-          }
-
-          variant_select.value = option.value;
-          var quickshop_button = productItem.querySelector('.QuickshopProductForm__SubmitButton');
-
-          if(option.disabled){
-            quickshop_button.disabled = true;
-            quickshop_button.querySelector('.QuickshopProductForm__SubmitButtonHoverText').innerHTML = window.languages.productFormSoldOut;
-          } else {
-            quickshop_button.disabled = false;
-            quickshop_button.querySelector('.QuickshopProductForm__SubmitButtonHoverText').innerHTML = window.languages.productFormAddToCart;
-          }
-        }
-
-      }
-    }, {
-      key: '_sizeChanged',
-      value: function _sizeChanged(event, target) {
-        var productItem = target.closest('.ProductItem');
-        var size_value = target.value;
-        var size_option_index = target.getAttribute('data-variant-option-index');
-        var color_value = productItem.querySelector('.ColorSwatch__Radio:checked').value;
-        var color_option_index = productItem.querySelector('.ColorSwatch__Radio:checked').getAttribute('data-variant-option-index');
-        var variant_select = productItem.querySelector('.QuickshopSelect');
-        var option = variant_select.querySelector('option[data-variant-'+size_option_index+'="'+ size_value +'"][data-variant-'+color_option_index+'="'+color_value+'"]');
-        variant_select.value = option.value;
-
-        var quickshop_button = productItem.querySelector('.QuickshopProductForm__SubmitButton');
-
-        if(option.disabled){
-          quickshop_button.disabled = true;
-          quickshop_button.querySelector('.QuickshopProductForm__SubmitButtonHoverText').innerHTML = window.languages.productFormSoldOut;
-        } else {
-          quickshop_button.disabled = false;
-          quickshop_button.querySelector('.QuickshopProductForm__SubmitButtonHoverText').innerHTML = window.languages.productFormAddToCart;
-        }
-      }
-    }, {
-      key: '_ajaxAddToCart',
-      value: function _ajaxAddToCart(event, target) {
-        event.preventDefault();
-        var productItem = target.closest('.ProductItem');
-        var addToCartButton = productItem.querySelector('.QuickshopProductForm__SubmitButton');
-
-        // First, we switch the status of the button
-        addToCartButton.setAttribute('disabled', 'disabled');
-        document.dispatchEvent(new CustomEvent('theme:loading:start'));
-
-        // Then we add the product in Ajax
-        var formElement = productItem.querySelector('form[action*="/cart/add"]');
-        var variant_id = formElement.querySelector('.QuickshopSelect').value;
-
-        fetch(window.routes.cartAddUrl + '.js', {
-          body: JSON.stringify(__WEBPACK_IMPORTED_MODULE_2__helper_Form__["default"].serialize(formElement)),
-          credentials: 'same-origin',
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest' // This is needed as currently there is a bug in Shopify that assumes this header
-          }
-        }).then(function (response) {
-          document.dispatchEvent(new CustomEvent('theme:loading:end'));
-          if (response.ok) {
-            addToCartButton.removeAttribute('disabled');
-            // We simply trigger an event so the mini-cart can re-render
-            document.dispatchEvent(new CustomEvent('product:added', {
-              bubbles: true,
-              detail: {
-                variant: variant_id,
-                quantity: 1
-              }
-            }));
-          } else {
-            response.json().then(function (content) {
-              var errorMessageElement = document.createElement('span');
-              errorMessageElement.className = 'ProductForm__Error Alert Alert--error';
-              errorMessageElement.innerHTML = content['description'];
-              addToCartButton.removeAttribute('disabled');
-              addToCartButton.insertAdjacentElement('afterend', errorMessageElement);
-              setTimeout(function () {
-                errorMessageElement.remove();
-              }, 2500);
-            });
-          }
-        });
-
-        event.preventDefault();
       }
     }]);
 
@@ -4131,6 +4013,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__components_Drawer__ = __webpack_require__(8);
   /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__helper_Dom__ = __webpack_require__(0);
   /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__components_ShippingEstimator__ = __webpack_require__(20);
+  /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__components_Carousel__ = __webpack_require__(2);
 
   var CartSection = function () {
     function CartSection(container) {
@@ -4147,10 +4030,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.sidebarDrawer = new __WEBPACK_IMPORTED_MODULE_0__components_Drawer__["default"](this.element, {
           onClose: this._onDrawerClosed.bind(this)
         });
+        this.upsell_collection_container = this.sidebarDrawer.element.querySelector('.Drawer__UpsellCollection');
+
       }
 
       if (this.options['hasShippingEstimator']) {
         this.shippingEstimator = new __WEBPACK_IMPORTED_MODULE_2__components_ShippingEstimator__["default"](this.element.querySelector('.ShippingEstimator'));
+      }
+
+      if (this.upsell_collection_container) {
+        this.upsell_collection_carousel_current_slide = 0;
       }
 
       this._attachListeners();
@@ -4185,6 +4074,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.delegateElement.on('click', '[data-action="toggle-cart-note"]', this._toggleCartNote.bind(this));
         }
 
+        this.delegateElement.on('click', '[data-action="add-to-cart"]', this._addToCart.bind(this));
+
         document.addEventListener('product:added', this._onProductAddedListener);
 
         // We attach a listener at page level which allows to re-render the cart
@@ -4200,6 +4091,55 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           headers: {
             'Content-Type': 'application/json',
             'X-Requested-With': 'XMLHttpRequest' // This is needed as currently there is a bug in Shopify that assumes this header
+          }
+        });
+      }
+    }, {
+      key: '_addToCart',
+      value: function _addToCart(event, target) {
+        var cart_section = this;
+        var addToCartButton = target;
+        event.preventDefault();
+        var fakeFormParent = addToCartButton.closest('.Drawer__UpsellCollection--FakeForm');
+        var variant_id = fakeFormParent.querySelector('[name="id"]').value;
+        var quantity = fakeFormParent.querySelector('[name="quantity"]').value;
+
+        var data = {'id': variant_id, 'quantity': quantity};
+        addToCartButton.setAttribute('disabled', 'disabled');
+        document.dispatchEvent(new CustomEvent('theme:loading:start'));
+
+        fetch(window.routes.cartAddUrl + '.js', {
+          body: JSON.stringify(data),
+          credentials: 'same-origin',
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest' // This is needed as currently there is a bug in Shopify that assumes this header
+          }
+        }).then(function (response) {
+          document.dispatchEvent(new CustomEvent('theme:loading:end'));
+          if (response.ok) {
+            addToCartButton.removeAttribute('disabled');
+            // We simply trigger an event so the mini-cart can re-render
+            document.dispatchEvent(new CustomEvent('product:added', {
+              bubbles: true,
+              detail: {
+                variant: variant_id,
+                quantity: quantity
+              }
+            }));
+          } else {
+            response.json().then(function (content) {
+              var errorMessageElement = document.createElement('span');
+              errorMessageElement.className = 'ProductForm__Error Alert Alert--error';
+              errorMessageElement.innerHTML = content['description'];
+              addToCartButton.removeAttribute('disabled');
+              console.log(content);
+              addToCartButton.insertAdjacentElement('beforebegin', errorMessageElement);
+              setTimeout(function () {
+                errorMessageElement.remove();
+              }, 2500);
+            });
           }
         });
       }
@@ -4302,7 +4242,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: '_rerenderCart',
       value: function _rerenderCart(elementToAnimate) {
         var _this35 = this;
-
         // Note: appending a timestamp is necessary as the polyfill on IE11 and lower does not support the "cache" property
         return fetch(window.routes.cartUrl + '?view=' + (this.options['drawer'] && window.theme.pageType !== 'cart' ? 'drawer' : 'ajax') + '&timestamp=' + Date.now(), {
           credentials: 'same-origin',
@@ -4343,6 +4282,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         var cartNodeParent = this.element.querySelector('.Cart').parentNode;
 
+        if (this.upsell_collection_carousel) {
+          this.upsell_collection_carousel_current_slide = this.upsell_collection_carousel.getSelectedIndex()
+        }
+
         if (this.options['drawer'] && window.theme.pageType !== 'cart') {
           var currentScrollPosition = this.element.querySelector('.Drawer__Main').scrollTop;
           cartNodeParent.replaceChild(tempElement.querySelector('.Cart'), this.element.querySelector('.Cart'));
@@ -4376,6 +4319,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         cartQuantity.forEach(function (item) {
           item.textContent = _this36.itemCount;
         });
+
+        if (this.upsell_collection_container) {
+          this.upsell_collection_carousel = new __WEBPACK_IMPORTED_MODULE_3__components_Carousel__["default"](this.sidebarDrawer.element.querySelector('[data-flickity-config]'), {}, {'initialIndex':this.upsell_collection_carousel_current_slide});;
+        }
       }
     }]);
 
@@ -4451,6 +4398,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__helper_Dom__ = __webpack_require__(0);
   /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__helper_Responsive__ = __webpack_require__(1);
   /* harmony import */var __WEBPACK_IMPORTED_MODULE_5__components_OverflowScroller__ = __webpack_require__(13);
+  /* harmony import */var __WEBPACK_IMPORTED_MODULE_6__components_ProductSection__ = __webpack_require__(46);
 
   var CollectionSection = function () {
     function CollectionSection(element) {
@@ -4458,9 +4406,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       this.element = element;
       this.delegateElement = new domDelegate.Delegate(this.element);
+      this.delegateElement.on('click', '.QuickshopProductForm__SubmitButton', this._openQuickshopModal.bind(this));
+      this.delegateElement.on('click', '.QuickShopCloseModal', this._closeQuickshopModal.bind(this));
+      this.delegateElement.on('click', '.CustomQuickShopOverlay', this._closeQuickshopModal.bind(this));
       this.toolbarElement = this.element.querySelector('.CollectionToolbar');
       this.collectionInnerElement = this.element.querySelector('.CollectionInner__Products');
-
+      this.quickShopModal = this.element.querySelector('.CustomQuickshopModal');
+      this.quickShopContainer = this.element.querySelector('.CustomQuickshopContainer');
       this.settings = JSON.parse(this.element.getAttribute('data-section-settings'));
       this.currentTags = this.settings['currentTags'];
       this.currentSortBy = this.settings['sortBy'];
@@ -4531,6 +4483,37 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.intersectionObserver.disconnect();
           this.timeline.kill();
         }
+      }
+    }, {
+      key: '_openQuickshopModal',
+      value: function _openQuickshopModal(event, target){
+        var collection = this;
+        var product_url = target.getAttribute('data-product-url');
+        document.dispatchEvent(new CustomEvent('theme:loading:start'));
+        fetch(product_url + '?view=quickshop', {
+          credentials: 'same-origin',
+          method: 'GET'
+        }).then(function (response) {
+          response.text().then(function (content) {
+            var tempElement = document.createElement('div');
+            tempElement.innerHTML = content;
+            document.documentElement.classList.add('no-scroll');
+            collection.quickShopModal.classList.add('visible');
+            collection.quickShopContainer.innerHTML = tempElement.querySelector('.quickshop-content').innerHTML;
+            var loadedProductSection = collection.quickShopContainer.querySelector('.QuickShopProductSection');
+            collection.quickShopProduct = new __WEBPACK_IMPORTED_MODULE_6__components_ProductSection__["default"](loadedProductSection);
+            document.dispatchEvent(new CustomEvent("swym:page-loaded", {detail:{data:content}}));
+            document.dispatchEvent(new CustomEvent('theme:loading:end'));
+          });
+        });
+      }
+    }, {
+      key: '_closeQuickshopModal',
+      value: function _closeQuickshopModal() {
+        var collection = this;
+        document.documentElement.classList.remove('no-scroll');
+        collection.quickShopModal.classList.remove('visible');
+        collection.quickShopContainer.innerHTML = '';
       }
     }, {
       key: '_setupAnimation',
@@ -6005,7 +5988,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       this.options = JSON.parse(this.element.getAttribute('data-section-settings'));
 
       this.viewInSpaceElement = this.element.querySelector('[data-shopify-xr]');
-
       if (this.options['templateSuffix'] !== 'coming-soon') {
         this.productVariants = new __WEBPACK_IMPORTED_MODULE_2__components_ProductVariants__["default"](container, this.options);
       }
@@ -6154,6 +6136,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var _this57 = this;
 
         this.slideshowMobileNav = this.element.querySelector('.Product__SlideshowMobileNav');
+        this.slideshowNav = this.element.querySelector('.Product__Slideshow');
 
         if (this.slideshowMobileNav) {
           var slideshowMobileNavDelegate = new domDelegate.Delegate(this.slideshowMobileNav);
@@ -6175,6 +6158,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           });
         }
+
+        if (this.slideshowNav.classList.contains('QuickShop__Slideshow')) {
+          var slideshowNavDelegate = new domDelegate.Delegate(this.slideshowNav);
+
+          slideshowNavDelegate.on('click', '.flickity-prev-next-button', function(event, element){
+            _this57._slideWillChange();
+          });
+        }
+
       }
 
       /**

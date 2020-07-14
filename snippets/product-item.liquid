@@ -54,53 +54,11 @@
           </noscript>
         </div>
       </a>
-      {% if show_quickshop and product.available and show_color_swatch %}
+      {% if show_quickshop and product.available %}
         <div class="ProductItem__QuickshopContainer">
-          {%- form 'product', product, class: 'QuickshopProductForm' -%}
-            <select id="product-select-{{ product.id }}" name="id" class="QuickshopSelect">
-              {%- for variant in product.variants -%}
-                <option {% if variant == selected_variant %}selected="selected"{% endif %} {% unless variant.available %}disabled="disabled"{% endunless %} value="{{ variant.id }}" data-sku="{{ variant.sku }}" data-variant-title="{{ variant.title }}" data-variant-option1="{{ variant.option1 }}" data-variant-option2="{{ variant.option2 }}" data-variant-option3="{{ variant.option3 }}">{{ variant.title }} - {{ variant.price | money }}</option>
-              {%- endfor -%}
-            </select>
-            <input type="hidden" name="quantity" value="1">
-
-            <div class="QuickshopProductForm__OptionsAndButtonContainer">
-              {% if product.options.size > 1 %}
-                <div class="QuickShopProductForm__SizeOptionsContainer">
-                  {%- assign size_label = 'size' | split: ',' -%}
-                  {%- for option in product.options_with_values -%}
-                    {%- assign downcased_option = option.name | downcase -%}
-                    {%- if size_label contains downcased_option -%}
-                      {%- assign variant_option = 'option' | append: forloop.index -%}
-                      {%- assign found_first_available_size = false -%}
-                      {%- for value in option.values -%}
-                        {%- assign size_available = false -%}
-                        {%- for variant in product.variants -%}
-                          {%- if variant[variant_option] == value -%}
-                            {%- if variant.available -%}
-                              {%- assign size_available = true -%}
-                            {%- endif -%}
-                          {%- endif -%}
-                        {%- endfor -%}
-                        {%- capture size_id -%}{{ section.id }}-{{ product.id }}-{{ forloop.index }}{%- endcapture -%}
-                        {% if size_available %}
-                          <div class="QuickshopProductForm__SizeOption">
-                            <input class="QuickshopProductForm__SizeOptionRadio" type="radio" name="{{ section.id }}-{{ product.id }}-size" value="{{ value | escape }}" id="{{ size_id }}-size" aria-hidden="true" data-variant-option-index="{{ variant_option }}" {% unless found_first_available_size %}checked{% endunless %}>
-                            <label class="QuickshopProductForm__SizeOptionLabel" title="{{ value | escape }}" for="{{ size_id }}-size">{{ value }}</label>
-                            {%- assign found_first_available_size = true -%}
-                          </div>
-                        {% endif %}
-                      {%- endfor -%}
-                    {%- endif -%}
-                  {%- endfor -%}
-                </div>
-              {% endif %}
-              <button type="submit" class="QuickshopProductForm__SubmitButton {% if settings.cart_type == 'drawer' %}use-ajax{% endif %}">
-                <span class="QuickshopProductForm__SubmitButtonHoverText">{{ 'product.form.add_to_cart' | t }}</span>
-                <span class="QuickshopProductForm__SubmitButtonText">{{'product.form.quickshop' | t }}</span>
-              </button>
-            </div>
-          {%- endform -%}
+          <button type="button" class="QuickshopProductForm__SubmitButton" data-product-url="{{ product.url | within: collection }}">
+            <span class="QuickshopProductForm__SubmitButtonText">{{'product.form.quickshop' | t }}</span>
+          </button>
         </div>
       {% endif %}
     </div>

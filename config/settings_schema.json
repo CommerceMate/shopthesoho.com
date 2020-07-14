@@ -553,6 +553,20 @@
         "label": "Free shipping minimum amount",
         "info": "Only write a number, no letters",
         "default": "50"
+      },
+      {
+        "type": "collection",
+        "id": "cart_upsell_collection",
+        "label": "Upsell collection"
+      },
+      {
+        "type": "range",
+        "id": "cart_upsell_collection_products",
+        "label": "How many products?",
+        "info": "Amount of products to show from upsell collection",
+        "min": 1,
+        "max": 20,
+        "default": 5
       }
     ]
   },

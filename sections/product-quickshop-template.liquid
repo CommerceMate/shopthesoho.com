@@ -1,6 +1,6 @@
 {%- capture section_settings -%}
 {
-  "enableHistoryState": true,
+  "enableHistoryState": false,
   "templateSuffix": {{ product.template_suffix | json }},
   "showInventoryQuantity": {{ section.settings.show_inventory_quantity | json }},
   "showSku": {{ section.settings.show_sku | json }},
@@ -17,7 +17,10 @@
 }
 {%- endcapture -%}
 
-<section class="Product Product--{{ section.settings.image_size }}" data-section-id="{{ section.id }}" data-section-type="product" data-section-settings='{{ section_settings }}'>
+<section class="Product QuickShopProductSection Product--{{ section.settings.image_size }}" data-section-id="{{ section.id }}" data-section-type="product" data-section-settings='{{ section_settings }}'>
+  <button class="QuickShopCloseModal Icon-Wrapper--clickable" data-action="close-drawer" data-drawer-id="sidebar-cart" aria-label="{{ 'header.navigation.close_cart' | t }}">
+    {%- render 'icon' with 'close' -%}
+  </button>
   <div class="Product__Wrapper">
 
     {%- capture action_list_items -%}
@@ -119,14 +122,7 @@
     {%- endcapture -%}
 
     {%- if product.media.size > 0 -%}
-      <div class="Product__Gallery {% if section.settings.stack_images %}Product__Gallery--stack{% endif %} {% if section.settings.show_thumbnails and media_count > 1 %}Product__Gallery--withThumbnails{% else %}Product__Gallery--withDots{% endif %}">
-
-        {% if collection %}
-          <div class="Product__BreadcrumbsContainer">
-            <a href="{{ collection.url }}" class="Product__BreadCrumb">{{ collection.title }}</a>
-            /
-          </div>
-        {% endif %}
+      <div class="Product__Gallery QuickShop__ProductGallery{% if section.settings.stack_images %}Product__Gallery--stack{% endif %} {% if section.settings.show_thumbnails and media_count > 1 %}Product__Gallery--withThumbnails{% else %}Product__Gallery--withDots{% endif %}">
 
         <span id="ProductGallery" class="Anchor"></span>
 
@@ -194,7 +190,7 @@
 
         {%- capture flickity_options -%}
         {
-          "prevNextButtons": false,
+          "prevNextButtons": true,
           "pageDots": false,
           "adaptiveHeight": true,
           "watchCSS": true,
@@ -204,7 +200,7 @@
         }
         {%- endcapture -%}
 
-        <div class="Product__Slideshow {% if section.settings.enable_image_zoom %}Product__Slideshow--zoomable{% endif %} Carousel" data-flickity-config='{{ flickity_options }}'>
+        <div class="Product__Slideshow {% if section.settings.enable_image_zoom %}Product__Slideshow--zoomable{% endif %} Carousel QuickShop__Slideshow" data-flickity-config='{{ flickity_options }}'>
           {{ slideshow_media }}
         </div>
 
@@ -254,7 +250,9 @@
       --------------------------------------------------------------------------------------------------------------------
       {%- endcomment -%}
 
+      {% comment %}
       {%- render 'product-tabs' -%}
+      {% endcomment %}
 
       {%- comment -%}
       --------------------------------------------------------------------------------------------------------------------
@@ -286,16 +284,14 @@
       {%- endfor -%}
     {%- endcapture -%}
 
-    <div class="Product__InfoWrapper {% if collection %}with-margin-top{% endif %}">
-      <div class="Product__Info {% if media_count == 0 %}Product__Info--noGallery{% endif %}">
+    <div class="Product__InfoWrapper">
+      <div class="Product__Info QuickShop__ProductInfo{% if media_count == 0 %}Product__Info--noGallery{% endif %}">
         <div class="Container">
-          {%- include 'product-meta', product: product, show_description: true -%}
+          {%- include 'product-meta', product: product, show_description: false -%}
 
           {%- if product.template_suffix != 'coming-soon' -%}
             {%- include 'product-form', product: product -%}
           {%- endif -%}
-
-
 
           {%- if section.settings.description_below_add_to_cart -%}
             <div class="ProductMeta__Description">
@@ -465,29 +461,6 @@ This is the root container for the zoom functionality. Must not be removed, as o
   </style>
 {% endif %}
 
-<div id="ShopTheLook-section" class="Product Container"></div>
-
-{%- if section.settings.reviews_enabled -%}
-<!-- Yotpo reviews widget product page -->
-<div class="Product ProductReviews__Container">
-  <div class="Container">
-    <div class="Collapsible Collapsible__ProductReviews">
-      <button class="Collapsible__Button Heading u-h6" data-action="toggle-collapsible" aria-expanded="false">
-        {{ 'product.tabs.reviews' | t }} <span class="Collapsible__Plus"></span>
-      </button>
-
-      <div class="Collapsible__Inner">
-        <div class="Collapsible__Content">
-          <div class="Rte">
-            <div class="yotpo yotpo-main-widget" data-product-id="{{ product.id }}" data-name="{{ product.title | escape }}" data-url="{{ shop.url }}{{ product.url }}" data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}" data-description="{{ product.description | escape }}"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end of Yotpo reviews widget product page -->
-{% endif %}
 {% schema %}
 {
   "name": "Product page",
@@ -518,13 +491,13 @@ This is the root container for the zoom functionality. Must not be removed, as o
       "type":"richtext",
       "id":"sale_message",
       "label":"Sale message",
-      "default":"<p>ALL SALES ARE FINAL!</p>"
+      "default":"<p>The Final Offer!</p>"
     },
     {
       "type":"font_picker",
       "id":"sale_message_font",
       "label":"Sale message font",
-      "default":"avenir_next_n6"
+      "default":"helvetica_n4"
     },
     {
       "type":"range",
@@ -534,13 +507,13 @@ This is the root container for the zoom functionality. Must not be removed, as o
       "max":200,
       "step":2,
       "unit":"px",
-      "default":16
+      "default":14
     },
     {
       "type":"color",
       "id":"sale_message_color",
       "label":"Sale message color",
-      "default":"#000"
+      "default":"#f05"
     },
     {
       "type":"header",
@@ -550,13 +523,13 @@ This is the root container for the zoom functionality. Must not be removed, as o
       "type": "checkbox",
       "id": "show_share_buttons",
       "label": "Show social sharing buttons",
-      "default": true
+      "default": false
     },
     {
       "type": "checkbox",
       "id": "show_vendor",
       "label": "Show vendor",
-      "default": true
+      "default": false
     },
     {
       "type": "checkbox",
@@ -598,13 +571,13 @@ This is the root container for the zoom functionality. Must not be removed, as o
           "label": "Dropdown"
         }
       ],
-      "default": "dropdown"
+      "default": "block"
     },
     {
       "type": "checkbox",
       "id": "show_color_swatch",
       "label": "Show color swatch",
-      "default": false,
+      "default": true,
       "info": "Some colors appear white? [Learn more](http://support.maestrooo.com/article/80-product-uploading-custom-color-for-color-swatch)."
     },
     {
@@ -618,7 +591,7 @@ This is the root container for the zoom functionality. Must not be removed, as o
       "type": "checkbox",
       "id": "show_quantity_selector",
       "label": "Show quantity selector",
-      "default": true
+      "default": false
     },
     {
       "type": "checkbox",
@@ -641,14 +614,14 @@ This is the root container for the zoom functionality. Must not be removed, as o
       "type": "checkbox",
       "id": "show_price_in_button",
       "label": "Show price in add to cart button",
-      "default": false
+      "default": true
     },
     {
       "type": "checkbox",
       "id": "show_payment_button",
       "label": "Show dynamic checkout button",
       "info": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
-      "default": true
+      "default": false
     },
     {
       "type": "header",
@@ -686,19 +659,19 @@ This is the root container for the zoom functionality. Must not be removed, as o
       "type": "checkbox",
       "id": "stack_images",
       "label": "Stack images on desktop",
-      "default": true
+      "default": false
     },
     {
       "type": "checkbox",
       "id": "show_thumbnails",
       "label": "Show thumbnails on desktop",
-      "default": true
+      "default": false
     },
     {
       "type": "checkbox",
       "id": "enable_image_zoom",
       "label": "Enable zoom",
-      "default": true
+      "default": false
     },
     {
       "type": "checkbox",

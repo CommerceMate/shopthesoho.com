@@ -36,16 +36,16 @@ This file can be re-written at any time.
 
     <!-- BEGINNING Bing Tracking Code for https://www.shopthesoho.com/ -->
 <script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"17395925"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
-   
-    
+
+
     <!-- END Bing Tracking Code for https://www.shopthesoho.com/ -->
 
-    
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="theme-color" content="{{ settings.accent_color }}">
-    
+
     <title>
       {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
     </title>
@@ -63,8 +63,9 @@ This file can be re-written at any time.
     {% render 'social-meta-tags' %}
 
     {{ content_for_header }}
-{%- include 'bold-product' with product, hide_action: 'header' -%}
-{%- include 'bold-common' -%}
+	{%- include 'bold-product' with product, hide_action: 'header' -%}
+    {%- render 'bold-pr' -%}
+ 	{%- render 'bold-common' -%}
 
     <link rel="stylesheet" href="{{ 'theme.scss.css' | asset_url }}">
 	<link rel="stylesheet" href="{{ 'custom.scss.css' | asset_url }}">
@@ -185,7 +186,7 @@ This file can be re-written at any time.
   
   
   {{ content_for_layout }}
-  
+  {{ 'swym-custom.js' | asset_url | script_tag }}
   <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
 <script>
         var klaviyo = klaviyo || [];
@@ -240,8 +241,9 @@ var afterpay_cart_currency = {{ cart.currency.iso_code | json }};
 var afterpay_shop_money_format = {{ shop.money_format | json }};
 var afterpay_shop_permanent_domain = {{ shop.permanent_domain | json }};
 var afterpay_theme_name = {{ theme.name | json }};
-var afterpay_product = {%- include 'bold-product', output: 'json' -%};
-var afterpay_current_variant = {{ product.selected_or_first_available_variant | json }};
+
+var afterpay_product = {% if product %}{%- include 'bold-product', output: 'json' -%}{% else %}null{% endif %};
+var afterpay_current_variant = {% if product %}{{ product.selected_or_first_available_variant | json }}{% else %}null{% endif %};
 var afterpay_cart_total_price = {{ cart.total_price | json }};
 var afterpay_js_snippet_version = '1.0.6';
 </script>

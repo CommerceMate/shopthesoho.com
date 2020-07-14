@@ -37,7 +37,7 @@
     "newsletter_popup_text_color": "#1c1b1b",
     "secondary_elements_background": "#5c5c5c",
     "secondary_elements_text_color": "#ffffff",
-    "heading_font": "helvetica_n7",
+    "heading_font": "helvetica_n4",
     "heading_size": "normal",
     "uppercase_heading": true,
     "text_font": "helvetica_n4",
@@ -57,6 +57,8 @@
     "cart_enable_notes": false,
     "cart_show_free_shipping_threshold": true,
     "cart_free_shipping_threshold": "75",
+    "cart_upsell_collection": "best-sellers",
+    "cart_upsell_collection_products": 10,
     "share_image": "",
     "social_facebook": "facebook.com\/shopthesoho",
     "social_twitter": "",
@@ -108,21 +110,21 @@
       "announcement": {
         "type": "announcement",
         "blocks": {
-          "1587115007375": {
+          "1593047953773": {
             "type": "announcement",
             "settings": {
-              "content": "✨ Want 20% off? Text SHOPTHESOHO to 29071 & we'll send your code! ✨",
-              "link": ""
+              "content": "✨30% OFF SITEWIDE\ncode: SUMMER30✨",
+              "link": "shopify:\/\/collections\/patriotic"
             }
           }
         },
         "block_order": [
-          "1587115007375"
+          "1593047953773"
         ],
         "settings": {
           "enable_bar": true,
           "home_page_only": false,
-          "background": "#222222",
+          "background": "#f503e5",
           "text_color": "#ffffff",
           "enable_autoplay": true,
           "autoplay_speed": 5
@@ -136,11 +138,11 @@
             "settings": {
               "navigation_mega_menu": "What's New",
               "menu_item_image": "",
-              "push_1_image": "shopify:\/\/shop_images\/620CTY-PAT16Y-BLUE-KAI_bab03d06-2057-4ed8-99d3-59ad28168dd1.jpg",
-              "push_1_heading": "Match Ya Mama",
+              "push_1_image": "",
+              "push_1_heading": "NEW THIS WEEK",
               "push_1_subheading": "",
-              "push_1_url": "shopify:\/\/collections\/match-ya-mama",
-              "push_2_image": "shopify:\/\/shop_images\/LOST-IN-PARADISE-FLATLAY.jpg",
+              "push_1_url": "",
+              "push_2_image": "shopify:\/\/shop_images\/NEW-THIS-WEEK.jpg",
               "push_2_heading": "New This week",
               "push_2_subheading": "",
               "push_2_url": "shopify:\/\/collections\/may-collection"
@@ -151,10 +153,10 @@
             "settings": {
               "navigation_mega_menu": "Clothing",
               "menu_item_image": "",
-              "push_1_image": "shopify:\/\/shop_images\/MOBILE-DESKTOP_174ff504-ac0a-407a-aaf7-f5091b6da828.jpg",
-              "push_1_heading": "New in: Rompers",
+              "push_1_image": "shopify:\/\/shop_images\/LOUNGE_bf3442c6-eb46-4dcf-903f-aeb0e492443f.jpg",
+              "push_1_heading": "New in: LOUNGE",
               "push_1_subheading": "",
-              "push_1_url": "shopify:\/\/collections\/rompers",
+              "push_1_url": "https:\/\/www.shopthesoho.com\/collections\/lounge-wear",
               "push_2_image": "",
               "push_2_heading": "Example heading",
               "push_2_subheading": "Example sub-heading",
@@ -166,14 +168,14 @@
             "settings": {
               "navigation_mega_menu": "Graphic Tees",
               "menu_item_image": "",
-              "push_1_image": "shopify:\/\/shop_images\/BRIDAL-FLATLAY.jpg",
-              "push_1_heading": "",
+              "push_1_image": "shopify:\/\/shop_images\/GRAPHIC-TEES.jpg",
+              "push_1_heading": "LAKE LIFE GRAPHIC TEES",
               "push_1_subheading": "",
-              "push_1_url": "shopify:\/\/collections\/all-graphic-tees",
-              "push_2_image": "",
-              "push_2_heading": "Example heading",
-              "push_2_subheading": "Example sub-heading",
-              "push_2_url": ""
+              "push_1_url": "https:\/\/www.shopthesoho.com\/collections\/lake-life-graphic-tees",
+              "push_2_image": "shopify:\/\/shop_images\/home.jpg",
+              "push_2_heading": "STAY AT HOME GRAPHIC TEES",
+              "push_2_subheading": "",
+              "push_2_url": "https:\/\/www.shopthesoho.com\/collections\/stay-at-home-graphic-tees"
             }
           },
           "1587962866706": {
@@ -181,14 +183,14 @@
             "settings": {
               "navigation_mega_menu": "Kids",
               "menu_item_image": "",
-              "push_1_image": "shopify:\/\/shop_images\/UGC-MOMMY-AND-ME-2.jpg",
-              "push_1_heading": "",
+              "push_1_image": "shopify:\/\/shop_images\/KIDS.jpg",
+              "push_1_heading": "KIDS GRAPHIC TEES",
               "push_1_subheading": "",
-              "push_1_url": "",
-              "push_2_image": "",
-              "push_2_heading": "Example heading",
-              "push_2_subheading": "Example sub-heading",
-              "push_2_url": ""
+              "push_1_url": "https:\/\/www.shopthesoho.com\/collections\/kids-graphic-tees",
+              "push_2_image": "shopify:\/\/shop_images\/KIDS2.jpg",
+              "push_2_heading": "KIDS MASKS",
+              "push_2_subheading": "",
+              "push_2_url": "https:\/\/www.shopthesoho.com\/collections\/kids-masks"
             }
           },
           "1587180277531": {
@@ -196,8 +198,8 @@
             "settings": {
               "navigation_mega_menu": "Shoes",
               "menu_item_image": "",
-              "push_1_image": "shopify:\/\/shop_images\/SHOE-ASSORTMENT-FLATLAY-10.jpg",
-              "push_1_heading": "",
+              "push_1_image": "shopify:\/\/shop_images\/SHOES2.jpg",
+              "push_1_heading": "ALL SHOES",
               "push_1_subheading": "",
               "push_1_url": "",
               "push_2_image": "",
@@ -211,14 +213,14 @@
             "settings": {
               "navigation_mega_menu": "Accessories & Gifts",
               "menu_item_image": "",
-              "push_1_image": "shopify:\/\/shop_images\/MARKETING-FLATLAY-2.jpg",
-              "push_1_heading": "",
+              "push_1_image": "shopify:\/\/shop_images\/ACCESSORIES_08d78884-7e67-4414-a55c-23f6c34e4b6c.jpg",
+              "push_1_heading": "ADULT MASKS",
               "push_1_subheading": "",
-              "push_1_url": "shopify:\/\/collections\/all-accessories",
-              "push_2_image": "",
-              "push_2_heading": "Example heading",
-              "push_2_subheading": "Example sub-heading",
-              "push_2_url": ""
+              "push_1_url": "https:\/\/www.shopthesoho.com\/collections\/adult-masks",
+              "push_2_image": "shopify:\/\/shop_images\/ACCESSORIES2.jpg",
+              "push_2_heading": "ALL ACCESSORIES",
+              "push_2_subheading": "",
+              "push_2_url": "https:\/\/www.shopthesoho.com\/collections\/all-accessories"
             }
           },
           "1587452811793": {
@@ -282,28 +284,16 @@
       "footer": {
         "type": "footer",
         "blocks": {
-          "1587442858282": {
+          "1593806597208": {
             "type": "links",
             "settings": {
-              "menu": "help"
-            }
-          },
-          "footer-1": {
-            "type": "links",
-            "settings": {
-              "menu": "about-us"
-            }
-          },
-          "1586885673753": {
-            "type": "links",
-            "settings": {
-              "menu": "extras"
+              "menu": "helpful-information"
             }
           },
           "1586885693542": {
             "type": "links",
             "settings": {
-              "menu": ""
+              "menu": "customer-care"
             }
           },
           "footer-0": {
@@ -316,9 +306,7 @@
           }
         },
         "block_order": [
-          "1587442858282",
-          "footer-1",
-          "1586885673753",
+          "1593806597208",
           "1586885693542",
           "footer-0"
         ],
@@ -334,16 +322,16 @@
           "1589481623140": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/CAROUSEL-DESKTOP_0e136c86-273f-4366-9227-81ced128aa74.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/MOBILE-DESKTOP_174ff504-ac0a-407a-aaf7-f5091b6da828.jpg",
+              "image": "shopify:\/\/shop_images\/CAROUSEL-DESKTOP_5fdfd48f-ca9f-4133-aaba-f763a2675237.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/CAROUSEL-MOBILE_b0e82664-5f7f-466d-a0ed-0c9d315015cc.jpg",
               "apply_overlay": true,
               "content_position": "middleCenter",
-              "subheading": "NEW ARRIVALS",
+              "subheading": "",
               "subheading_font": "avenir_next_n5",
               "subheading_font_size": 26,
-              "title": "PREP FOR SUMMER",
+              "title": "BRING ON THE SUNSHINE",
               "title_font": "avenir_next_n6",
-              "title_font_size": 64,
+              "title_font_size": 50,
               "button_1_text": "SHOP NEW ARRIVALS",
               "button_1_link": "shopify:\/\/collections\/may-collection",
               "button_2_text": "",
@@ -355,36 +343,10 @@
               "buttons_color": "#363636",
               "buttons_background_color": "#fff"
             }
-          },
-          "slide-0": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/CAROUSEL-DESKTOP.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/MOBILE-DESKTOP_3b119f7b-7eeb-4bca-b045-def9072db58b.jpg",
-              "apply_overlay": false,
-              "content_position": "middleCenter",
-              "subheading": "red, white & NEW!",
-              "subheading_font": "avenir_next_n5",
-              "subheading_font_size": 26,
-              "title": "PATRIOTIC Collection",
-              "title_font": "avenir_next_n6",
-              "title_font_size": 64,
-              "button_1_text": "Shop The Collection",
-              "button_1_link": "shopify:\/\/collections\/featured-collection-1",
-              "button_2_text": "",
-              "button_2_link": "",
-              "buttons_font": "helvetica_n4",
-              "buttons_font_size": 14,
-              "subheading_color": "#ffffff",
-              "title_color": "#ffffff",
-              "buttons_color": "#363636",
-              "buttons_background_color": "#ffffff"
-            }
           }
         },
         "block_order": [
-          "1589481623140",
-          "slide-0"
+          "1589481623140"
         ],
         "settings": {
           "show_fullscreen": false,
@@ -455,7 +417,7 @@
             "type": "collection",
             "settings": {
               "collection": "all-tops",
-              "image": "shopify:\/\/shop_images\/CAROUSEL-DESKTOP_0e136c86-273f-4366-9227-81ced128aa74.jpg",
+              "image": "shopify:\/\/shop_images\/MASK.jpg",
               "image_alignment": "center center",
               "show_content_below_image": false,
               "content_position": "bottomCenter",
@@ -463,11 +425,11 @@
               "subheading": "",
               "subheading_font": "helvetica_n4",
               "subheading_font_size": 8,
-              "title": "NEW THIS WEEK",
+              "title": "FACE MASKS ARE HERE!",
               "title_font": "avenir_next_n4",
               "title_font_size": 28,
-              "button_text": "Shop NEW ARRIVALS",
-              "button_link": "shopify:\/\/collections\/may-collection",
+              "button_text": "Shop FACE MASKS",
+              "button_link": "shopify:\/\/collections\/masks",
               "button_font": "helvetica_n4",
               "button_font_size": 14,
               "apply_overlay": true,
@@ -558,7 +520,7 @@
           "show_inventory_quantity": false,
           "inventory_quantity_threshold": 0,
           "show_price_in_button": true,
-          "show_payment_button": true,
+          "show_payment_button": false,
           "image_size": "medium",
           "stack_images": false,
           "show_thumbnails": true,
