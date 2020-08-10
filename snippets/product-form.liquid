@@ -16,6 +16,21 @@ for size, we use it to display a size chart (if applicable)
 {%- include 'bold-variant' with selected_variant, output: 'none' -%}
 
 {%- form 'product', product, class: 'ProductForm' -%}
+  {% if section.settings.enable_static_message and section.settings.static_message_text != blank and section.settings.static_message_tag != blank %}
+    {% assign found_static_message_tag = false %}
+    {% for tag in product.tags %}
+      {% if tag contains section.settings.static_message_tag %}
+        {% assign found_static_message_tag = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+
+    {% if found_static_message_tag %}
+      <div class="ProductStaticMessageContainer">
+        {{ section.settings.static_message_text }}
+      </div>
+    {% endif %}
+  {% endif %}
   <div class="ProductForm__Variants">
     {%- unless product.has_only_default_variant -%}
       {%- for option in product.options_with_values -%}
@@ -305,6 +320,8 @@ for size, we use it to display a size chart (if applicable)
     </div>
   {% endif %}
 {%- endform -%}
+{% render 'zoorix-product-main' %}
+
 
 {% unless bundle_loaded == 'true' %}
 {% include 'shappify-bdl-load-bundle' %}

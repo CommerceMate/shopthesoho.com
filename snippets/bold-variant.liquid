@@ -193,6 +193,11 @@ FLAGS:
   "sku":{{- bold_variant.sku | json -}},
   "requires_shipping":{{- bold_variant.requires_shipping | json -}},
   "taxable":{{- bold_variant.taxable | json -}},
+  "featured_media": {
+    "alt":{{- bold_variant.featured_media.alt | json -}},
+    "id":{{- bold_variant.featured_media.id | json -}},
+    "position":{{- bold_variant.featured_media.position | json -}}
+  },
   "featured_image":
   {%- if bold_variant.featured_image == blank -%}
     {{bold_base_variant.featured_image | json}},

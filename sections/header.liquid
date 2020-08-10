@@ -247,105 +247,124 @@ HEADER CONTENT
                     {%- else -%}
                       {%- assign only_sublinks_without_children = false -%}
                     {%- endif -%}
-                    <div class="MegaMenu {% if push_image_count != 0 and link.links.size == 0 %}MegaMenu--spacingCenter{% elsif should_space_evenly or only_sublinks_without_children %}MegaMenu--spacingEvenly{% endif %} {% if push_image_count == 0 and link.links.size > 4 and only_sublinks_without_children == false %}MegaMenu--grid{% endif %}" aria-hidden="true" {{ block.shopify_attributes }}>
+                    <div class="MegaMenu {% if block.settings.use_college_style %}MegaMenu--spacingEvenly{% else %}{% if push_image_count != 0 and link.links.size == 0 %}MegaMenu--spacingCenter{% elsif should_space_evenly or only_sublinks_without_children %}MegaMenu--spacingEvenly{% endif %} {% if push_image_count == 0 and link.links.size > 4 and only_sublinks_without_children == false %}MegaMenu--grid{% endif %}{% endif %}" aria-hidden="true" {{ block.shopify_attributes }}>
                       <div class="MegaMenu__Inner">
-                        {%- if sublinks_without_children != blank -%}
-                          <div class="MegaMenu__Item MegaMenu__Item--fit">
+                        {% if block.settings.use_college_style %}
+                          <div class="MegaMenu__Item MegaMenu__Item--fit MegaMenu__Item--columns" style="--columns: {{ block.settings.amount_of_columns }};">
                             {%- for sub_link in link.links -%}
-                              {% assign sub_link_title_handle = sub_link.title | handle %}
-                              {%- if sublinks_without_children contains sub_link.title -%}
-                                {% unless sub_link_title_handle contains 'shop-all'%}
-                                  <a href="{{ sub_link.url }}" class="MegaMenu__Title Heading Text--subdued u-h7">{{ sub_link.title | title }}</a>
-                                {% endunless %}
-                              {%- endif -%}
+                              {% unless sub_link_title_handle contains 'shop-all'%}
+                                <div class="Linklist__Item">
+                                  <a href="{{ sub_link.url }}" class="Link Link--secondary">
+                                    <div class="Linklist__Item--ImageWrapper">
+                                      {% if sub_link.object.image != blank %}
+                                        <img class="Linklist__Item--Image Image--lazyLoad" data-src="{{ sub_link.object.image | img_url: 'master'}}" src="{{ sub_link.object.image | img_url: '1x1' }}">
+                                      {% endif %}
+                                    </div>
+                                    <span>{{ sub_link.title | title }}</span>
+                                  </a>
+                                </div>
+                              {% endunless %}
                             {%- endfor -%}
                           </div>
-                        {%- endif -%}
+                        {% else %}
+                          {%- if sublinks_without_children != blank -%}
+                            <div class="MegaMenu__Item MegaMenu__Item--fit {% if block.settings.split_into_two_columns %}SplitIntoTwoColumns{% endif %}">
+                              {%- for sub_link in link.links -%}
+                                {% assign sub_link_title_handle = sub_link.title | handle %}
+                                {%- if sublinks_without_children contains sub_link.title -%}
+                                  {% unless sub_link_title_handle contains 'shop-all'%}
+                                    <a href="{{ sub_link.url }}" class="MegaMenu__Title Heading Text--subdued u-h7">{{ sub_link.title | title }}</a>
+                                  {% endunless %}
+                                {%- endif -%}
+                              {%- endfor -%}
+                            </div>
+                          {%- endif -%}
 
-                        {%- for sub_link in link.links -%}
-                          {% if sub_link.links != blank %}
-                            <div class="MegaMenu__Item MegaMenu__Item--fit">
-                              <a href="{{ sub_link.url }}" class="MegaMenu__Title Heading Text--subdued u-h7">{{ sub_link.title | title }}</a>
+                          {%- for sub_link in link.links -%}
+                            {% if sub_link.links != blank %}
+                              <div class="MegaMenu__Item MegaMenu__Item--fit">
+                                <a href="{{ sub_link.url }}" class="MegaMenu__Title Heading Text--subdued u-h7">{{ sub_link.title | title }}</a>
 
-                              {%- if sub_link.links != blank -%}
-                                <ul class="Linklist">
-                                  {%- for sub_sub_link in sub_link.links -%}
-                                   {% assign sub_sub_link_title_handle = sub_sub_link.title | handle %}
-                                    {% unless sub_sub_link_title_handle contains 'shop-all' %}
-                                      <li class="Linklist__Item">
-                                        <a href="{{ sub_sub_link.url }}" class="Link Link--secondary">{{ sub_sub_link.title | escape }}</a>
-                                      </li>
-                                    {% endunless %}
-                                  {%- endfor -%}
-                                </ul>
+                                {%- if sub_link.links != blank -%}
+                                  <ul class="Linklist">
+                                    {%- for sub_sub_link in sub_link.links -%}
+                                     {% assign sub_sub_link_title_handle = sub_sub_link.title | handle %}
+                                      {% unless sub_sub_link_title_handle contains 'shop-all' %}
+                                        <li class="Linklist__Item">
+                                          <a href="{{ sub_sub_link.url }}" class="Link Link--secondary">{{ sub_sub_link.title | escape }}</a>
+                                        </li>
+                                      {% endunless %}
+                                    {%- endfor -%}
+                                  </ul>
+                                {%- endif -%}
+                              </div>
+                            {% endif %}
+                          {%- endfor -%}
+
+                          {%- if push_image_count > 0 -%}
+                            <div class="MegaMenu__Item" style="{% if push_image_count == 1 %}width: 370px; min-width: 250px;{% else %}width: 660px; min-width: 425px;{% endif %}">
+                              {%- if block.settings.push_1_image -%}
+                                <div class="MegaMenu__Push {% if push_image_count == 2 %}MegaMenu__Push--shrink{% endif %}">
+                                  {%- if block.settings.push_1_url != blank -%}
+                                    <a class="MegaMenu__PushLink" href="{{ block.settings.push_1_url }}">
+                                  {%- endif -%}
+
+                                  {%- assign max_width = 370 | at_most: block.settings.push_1_image.width -%}
+
+                                  <div class="MegaMenu__PushImageWrapper AspectRatio" style="background: url({{ block.settings.push_1_image | img_url: '1x1', format: 'jpg' }}); max-width: {{ max_width }}px; --aspect-ratio: {{ block.settings.push_1_image.aspect_ratio }}">
+                                    <img class="Image--lazyLoad Image--fadeIn"
+                                         data-src="{{ block.settings.push_1_image | img_url: '370x230', scale: 2 }}"
+                                         alt="{{ block.settings.push_1_image.alt | escape }}">
+
+                                    <span class="Image__Loader"></span>
+                                  </div>
+
+                                  {%- if block.settings.push_1_heading != blank -%}
+                                    <p class="MegaMenu__PushHeading Heading u-h6">{{ block.settings.push_1_heading | escape }}</p>
+                                  {%- endif -%}
+
+                                  {%- if block.settings.push_1_subheading != blank -%}
+                                    <p class="MegaMenu__PushSubHeading Heading Text--subdued u-h7">{{ block.settings.push_1_subheading | escape }}</p>
+                                  {%- endif -%}
+
+                                  {%- if block.settings.push_1_url != blank -%}
+                                    </a>
+                                  {%- endif -%}
+                                </div>
+                              {%- endif -%}
+
+                              {%- if block.settings.push_2_image -%}
+                                <div class="MegaMenu__Push {% if push_image_count == 2 %}MegaMenu__Push--shrink{% endif %}">
+                                  {%- if block.settings.push_2_url != blank -%}
+                                    <a class="MegaMenu__PushLink" href="{{ block.settings.push_2_url }}">
+                                  {%- endif -%}
+
+                                  {%- assign max_width = 370 | at_most: block.settings.push_2_image.width -%}
+
+                                  <div class="MegaMenu__PushImageWrapper AspectRatio" style="background: url({{ block.settings.push_2_image | img_url: '1x1', format: 'jpg' }}); max-width: {{ max_width }}px; --aspect-ratio: {{ block.settings.push_2_image.aspect_ratio }}">
+                                    <img class="Image--lazyLoad Image--fadeIn"
+                                         data-src="{{ block.settings.push_2_image | img_url: '370x230', scale: 2 }}"
+                                         alt="{{ block.settings.push_2_image.alt | escape }}">
+
+                                    <span class="Image__Loader"></span>
+                                  </div>
+
+                                  {%- if block.settings.push_2_heading != blank -%}
+                                    <p class="MegaMenu__PushHeading Heading u-h6">{{ block.settings.push_2_heading | escape }}</p>
+                                  {%- endif -%}
+
+                                  {%- if block.settings.push_2_subheading != blank -%}
+                                    <p class="MegaMenu__PushSubHeading Heading Text--subdued u-h7">{{ block.settings.push_2_subheading | escape }}</p>
+                                  {%- endif -%}
+
+                                  {%- if block.settings.push_2_url != blank -%}
+                                    </a>
+                                  {%- endif -%}
+                                </div>
                               {%- endif -%}
                             </div>
-                          {% endif %}
-                        {%- endfor -%}
-
-                        {%- if push_image_count > 0 -%}
-                          <div class="MegaMenu__Item" style="{% if push_image_count == 1 %}width: 370px; min-width: 250px;{% else %}width: 660px; min-width: 425px;{% endif %}">
-                            {%- if block.settings.push_1_image -%}
-                              <div class="MegaMenu__Push {% if push_image_count == 2 %}MegaMenu__Push--shrink{% endif %}">
-                                {%- if block.settings.push_1_url != blank -%}
-                                  <a class="MegaMenu__PushLink" href="{{ block.settings.push_1_url }}">
-                                {%- endif -%}
-
-                                {%- assign max_width = 370 | at_most: block.settings.push_1_image.width -%}
-
-                                <div class="MegaMenu__PushImageWrapper AspectRatio" style="background: url({{ block.settings.push_1_image | img_url: '1x1', format: 'jpg' }}); max-width: {{ max_width }}px; --aspect-ratio: {{ block.settings.push_1_image.aspect_ratio }}">
-                                  <img class="Image--lazyLoad Image--fadeIn"
-                                       data-src="{{ block.settings.push_1_image | img_url: '370x230', scale: 2 }}"
-                                       alt="{{ block.settings.push_1_image.alt | escape }}">
-
-                                  <span class="Image__Loader"></span>
-                                </div>
-
-                                {%- if block.settings.push_1_heading != blank -%}
-                                  <p class="MegaMenu__PushHeading Heading u-h6">{{ block.settings.push_1_heading | escape }}</p>
-                                {%- endif -%}
-
-                                {%- if block.settings.push_1_subheading != blank -%}
-                                  <p class="MegaMenu__PushSubHeading Heading Text--subdued u-h7">{{ block.settings.push_1_subheading | escape }}</p>
-                                {%- endif -%}
-
-                                {%- if block.settings.push_1_url != blank -%}
-                                  </a>
-                                {%- endif -%}
-                              </div>
-                            {%- endif -%}
-
-                            {%- if block.settings.push_2_image -%}
-                              <div class="MegaMenu__Push {% if push_image_count == 2 %}MegaMenu__Push--shrink{% endif %}">
-                                {%- if block.settings.push_2_url != blank -%}
-                                  <a class="MegaMenu__PushLink" href="{{ block.settings.push_2_url }}">
-                                {%- endif -%}
-
-                                {%- assign max_width = 370 | at_most: block.settings.push_2_image.width -%}
-
-                                <div class="MegaMenu__PushImageWrapper AspectRatio" style="background: url({{ block.settings.push_2_image | img_url: '1x1', format: 'jpg' }}); max-width: {{ max_width }}px; --aspect-ratio: {{ block.settings.push_2_image.aspect_ratio }}">
-                                  <img class="Image--lazyLoad Image--fadeIn"
-                                       data-src="{{ block.settings.push_2_image | img_url: '370x230', scale: 2 }}"
-                                       alt="{{ block.settings.push_2_image.alt | escape }}">
-
-                                  <span class="Image__Loader"></span>
-                                </div>
-
-                                {%- if block.settings.push_2_heading != blank -%}
-                                  <p class="MegaMenu__PushHeading Heading u-h6">{{ block.settings.push_2_heading | escape }}</p>
-                                {%- endif -%}
-
-                                {%- if block.settings.push_2_subheading != blank -%}
-                                  <p class="MegaMenu__PushSubHeading Heading Text--subdued u-h7">{{ block.settings.push_2_subheading | escape }}</p>
-                                {%- endif -%}
-
-                                {%- if block.settings.push_2_url != blank -%}
-                                  </a>
-                                {%- endif -%}
-                              </div>
-                            {%- endif -%}
-                          </div>
-                        {%- endif -%}
+                          {%- endif -%}
+                        {% endif %}
                       </div>
                     </div>
                   {%- endfor -%}
@@ -488,7 +507,7 @@ HEADER CONTENT
         <span class="hidden-tablet-and-up">{%- render 'icon' with 'search' -%}</span>
         <span class="hidden-phone">{%- render 'icon' with 'search-desktop' -%}</span>
       </a>
-      
+
       <a href="#swym-wishlist" class="swym-wishlist Header__Icon Icon-Wrapper Icon-Wrapper--clickable">
       	 <i aria-hidden="true" focusable="false" role="presentation" class="icon icon-swym-wishlist"></i>
       </a>
@@ -717,6 +736,30 @@ HEADER CONTENT
           "id":"menu_item_image",
           "label":"Menu item image",
           "info":"If selected, menu item text will be replaced with selected image."
+        },
+        {
+          "type":"checkbox",
+          "id":"use_college_style",
+          "label":"Use college style nav?",
+          "default":false,
+          "info":"This style doesn't show any images and 3rd level of links.But shows images of objects tied to links."
+        },
+        {
+          "type":"range",
+          "id":"amount_of_columns",
+          "label":"Amount of columns",
+          "default":5,
+          "min":1,
+          "max":10,
+          "step":1,
+          "info":"Only works with College style nav"
+        },
+        {
+          "type":"checkbox",
+          "id":"split_into_two_columns",
+          "label":"Split menu into two columns?",
+          "default":false,
+          "info":"Only works for menu without 2nd level links and regular style nav."
         },
         {
           "type": "header",

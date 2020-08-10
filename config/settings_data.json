@@ -53,12 +53,12 @@
     "product_image_size": "natural",
     "product_list_horizontal_spacing": "small",
     "product_list_vertical_spacing": "small",
-    "cart_type": "drawer",
+    "cart_type": "page",
     "cart_enable_notes": false,
     "cart_show_free_shipping_threshold": true,
     "cart_free_shipping_threshold": "75",
-    "cart_upsell_collection": "best-sellers",
-    "cart_upsell_collection_products": 10,
+    "cart_upsell_collection": "all-tops",
+    "cart_upsell_collection_products": 5,
     "share_image": "",
     "social_facebook": "facebook.com\/shopthesoho",
     "social_twitter": "",
@@ -94,15 +94,25 @@
             "type": "menu_item_image",
             "settings": {
               "navigation_menu_title": "Gameday Couture",
-              "menu_item_image": "shopify:\/\/shop_images\/GC-Logo-S_009b2740-fca9-4550-ace3-e78892ee9965.png"
+              "menu_item_image": "shopify:\/\/shop_images\/GC-Logo-S_009b2740-fca9-4550-ace3-e78892ee9965.png",
+              "use_college_style": false
+            }
+          },
+          "1595501396103": {
+            "type": "menu_item_image",
+            "settings": {
+              "navigation_menu_title": "College",
+              "menu_item_image": "",
+              "use_college_style": true
             }
           }
         },
         "block_order": [
-          "1586869504333"
+          "1586869504333",
+          "1595501396103"
         ],
         "settings": {
-          "primary_menu": "prestige-main",
+          "primary_menu": "new-menu-with-mega-college",
           "secondary_menu": "",
           "show_social_media": true
         }
@@ -113,7 +123,7 @@
           "1593047953773": {
             "type": "announcement",
             "settings": {
-              "content": "✨30% OFF SITEWIDE\ncode: SUMMER30✨",
+              "content": "✨ Want 20% off? Text SHOPTHESOHO to 29071 & we'll send your code! ✨",
               "link": "shopify:\/\/collections\/patriotic"
             }
           }
@@ -124,7 +134,7 @@
         "settings": {
           "enable_bar": true,
           "home_page_only": false,
-          "background": "#f503e5",
+          "background": "#222222",
           "text_color": "#ffffff",
           "enable_autoplay": true,
           "autoplay_speed": 5
@@ -133,11 +143,32 @@
       "header": {
         "type": "header",
         "blocks": {
+          "1595490901959": {
+            "type": "mega_menu",
+            "settings": {
+              "navigation_mega_menu": "College",
+              "menu_item_image": "",
+              "use_college_style": true,
+              "amount_of_columns": 5,
+              "split_into_two_columns": false,
+              "push_1_image": "",
+              "push_1_heading": "Example heading",
+              "push_1_subheading": "Example sub-heading",
+              "push_1_url": "",
+              "push_2_image": "",
+              "push_2_heading": "Example heading",
+              "push_2_subheading": "Example sub-heading",
+              "push_2_url": ""
+            }
+          },
           "1587193342230": {
             "type": "mega_menu",
             "settings": {
               "navigation_mega_menu": "What's New",
               "menu_item_image": "",
+              "use_college_style": false,
+              "amount_of_columns": 5,
+              "split_into_two_columns": false,
               "push_1_image": "",
               "push_1_heading": "NEW THIS WEEK",
               "push_1_subheading": "",
@@ -153,10 +184,13 @@
             "settings": {
               "navigation_mega_menu": "Clothing",
               "menu_item_image": "",
-              "push_1_image": "shopify:\/\/shop_images\/LOUNGE_bf3442c6-eb46-4dcf-903f-aeb0e492443f.jpg",
-              "push_1_heading": "New in: LOUNGE",
+              "use_college_style": false,
+              "amount_of_columns": 6,
+              "split_into_two_columns": false,
+              "push_1_image": "",
+              "push_1_heading": "",
               "push_1_subheading": "",
-              "push_1_url": "https:\/\/www.shopthesoho.com\/collections\/lounge-wear",
+              "push_1_url": "",
               "push_2_image": "",
               "push_2_heading": "Example heading",
               "push_2_subheading": "Example sub-heading",
@@ -168,6 +202,9 @@
             "settings": {
               "navigation_mega_menu": "Graphic Tees",
               "menu_item_image": "",
+              "use_college_style": false,
+              "amount_of_columns": 5,
+              "split_into_two_columns": true,
               "push_1_image": "shopify:\/\/shop_images\/GRAPHIC-TEES.jpg",
               "push_1_heading": "LAKE LIFE GRAPHIC TEES",
               "push_1_subheading": "",
@@ -183,6 +220,9 @@
             "settings": {
               "navigation_mega_menu": "Kids",
               "menu_item_image": "",
+              "use_college_style": false,
+              "amount_of_columns": 5,
+              "split_into_two_columns": false,
               "push_1_image": "shopify:\/\/shop_images\/KIDS.jpg",
               "push_1_heading": "KIDS GRAPHIC TEES",
               "push_1_subheading": "",
@@ -198,10 +238,13 @@
             "settings": {
               "navigation_mega_menu": "Shoes",
               "menu_item_image": "",
+              "use_college_style": false,
+              "amount_of_columns": 5,
+              "split_into_two_columns": false,
               "push_1_image": "shopify:\/\/shop_images\/SHOES2.jpg",
               "push_1_heading": "ALL SHOES",
               "push_1_subheading": "",
-              "push_1_url": "",
+              "push_1_url": "shopify:\/\/collections\/all-shoes",
               "push_2_image": "",
               "push_2_heading": "Example heading",
               "push_2_subheading": "Example sub-heading",
@@ -213,6 +256,9 @@
             "settings": {
               "navigation_mega_menu": "Accessories & Gifts",
               "menu_item_image": "",
+              "use_college_style": false,
+              "amount_of_columns": 5,
+              "split_into_two_columns": false,
               "push_1_image": "shopify:\/\/shop_images\/ACCESSORIES_08d78884-7e67-4414-a55c-23f6c34e4b6c.jpg",
               "push_1_heading": "ADULT MASKS",
               "push_1_subheading": "",
@@ -228,6 +274,9 @@
             "settings": {
               "navigation_mega_menu": "Sale",
               "menu_item_image": "",
+              "use_college_style": false,
+              "amount_of_columns": 5,
+              "split_into_two_columns": false,
               "push_1_image": "shopify:\/\/shop_images\/MM-SALE_d3f5d399-e927-43a6-b739-d2556375d8e5.jpg",
               "push_1_heading": "",
               "push_1_subheading": "",
@@ -243,6 +292,9 @@
             "settings": {
               "navigation_mega_menu": "Gameday Couture",
               "menu_item_image": "shopify:\/\/shop_images\/GC-Logo-S_009b2740-fca9-4550-ace3-e78892ee9965.png",
+              "use_college_style": false,
+              "amount_of_columns": 5,
+              "split_into_two_columns": false,
               "push_1_image": "shopify:\/\/shop_images\/ala_ce222779-11e9-45a4-8cd3-676de7457215.JPG",
               "push_1_heading": "",
               "push_1_subheading": "",
@@ -255,6 +307,7 @@
           }
         },
         "block_order": [
+          "1595490901959",
           "1587193342230",
           "1587166530393",
           "1587686537290",
@@ -266,12 +319,12 @@
         ],
         "settings": {
           "use_sticky_header": true,
-          "logo": "shopify:\/\/shop_images\/GC_X_SOHO_transparent_3.png",
+          "logo": "shopify:\/\/shop_images\/GC_X_SOHO_transparent-updated.jpg",
           "logo_max_width": 250,
           "mobile_logo_max_width": 175,
           "show_currency_selector": true,
           "show_locale_selector": true,
-          "navigation_menu": "prestige-main",
+          "navigation_menu": "new-menu-with-mega-college",
           "navigation_style": "center",
           "show_icons": true,
           "enable_transparent_header": false,
@@ -319,6 +372,31 @@
       "slideshow": {
         "type": "slideshow",
         "blocks": {
+          "1594397008535": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/CAROUSEL-DESKTOP_81af4732-f0c7-4e20-8aa1-e545fb1e6c4a.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/MOBILE-DESKTOP_copy.jpg",
+              "apply_overlay": false,
+              "content_position": "middleCenter",
+              "subheading": "",
+              "subheading_font": "avenir_next_n4",
+              "subheading_font_size": 26,
+              "title": "",
+              "title_font": "avenir_next_n4",
+              "title_font_size": 50,
+              "button_1_text": "",
+              "button_1_link": "https:\/\/www.shopthesoho.com\/pages\/college",
+              "button_2_text": "",
+              "button_2_link": "",
+              "buttons_font": "avenir_next_n6",
+              "buttons_font_size": 14,
+              "subheading_color": "#fff",
+              "title_color": "#fff",
+              "buttons_color": "#363636",
+              "buttons_background_color": "#fff"
+            }
+          },
           "1589481623140": {
             "type": "image",
             "settings": {
@@ -336,7 +414,7 @@
               "button_1_link": "shopify:\/\/collections\/may-collection",
               "button_2_text": "",
               "button_2_link": "",
-              "buttons_font": "avenir_next_n6",
+              "buttons_font": "avenir_next_n4",
               "buttons_font_size": 14,
               "subheading_color": "#fff",
               "title_color": "#fff",
@@ -346,6 +424,7 @@
           }
         },
         "block_order": [
+          "1594397008535",
           "1589481623140"
         ],
         "settings": {
@@ -456,6 +535,28 @@
       },
       "collection-template": {
         "type": "collection-template",
+        "blocks": {
+          "1595920907309": {
+            "type": "filter_group",
+            "settings": {
+              "title": "Team",
+              "expanded": false,
+              "hide": true
+            }
+          },
+          "1595920912514": {
+            "type": "filter_group",
+            "settings": {
+              "title": "Color",
+              "expanded": true,
+              "hide": false
+            }
+          }
+        },
+        "block_order": [
+          "1595920907309",
+          "1595920912514"
+        ],
         "settings": {
           "show_collection_info": true,
           "show_collection_image": false,
@@ -507,6 +608,10 @@
           "sale_message_font": "helvetica_n4",
           "sale_message_font_size": 16,
           "sale_message_color": "#ff0055",
+          "enable_static_message": true,
+          "static_message_tag": "TEAM_",
+          "static_message_text": "<p>❤️ 10% of this purchase goes to support this school ❤️&nbsp;<\/p>",
+          "static_message_color": "#000000",
           "show_share_buttons": false,
           "show_vendor": false,
           "show_sku": false,
@@ -515,8 +620,8 @@
           "description_collapsible_opened": true,
           "selector_mode": "block",
           "show_color_swatch": true,
-          "show_color_carousel": false,
-          "show_quantity_selector": false,
+          "show_color_carousel": true,
+          "show_quantity_selector": true,
           "show_inventory_quantity": false,
           "inventory_quantity_threshold": 0,
           "show_price_in_button": true,
@@ -896,6 +1001,1021 @@
           "show_color_swatch": false,
           "grid_mobile_items_per_row": "2",
           "grid_desktop_items_per_row": 4
+        }
+      },
+      "college-page": {
+        "type": "college-page",
+        "blocks": {
+          "1594898813991": {
+            "type": "team",
+            "settings": {
+              "title": "Alabama Crimson Tide",
+              "image": "shopify:\/\/shop_images\/ALA_df98b152-76ef-4ab3-b75e-869998ea898b.jpg",
+              "url": "shopify:\/\/collections\/alabama-crimson-tide"
+            }
+          },
+          "1594900024775": {
+            "type": "team",
+            "settings": {
+              "title": "Air Force Falcons",
+              "image": "shopify:\/\/shop_images\/AIR-FORCE.jpg",
+              "url": "shopify:\/\/collections\/air-force-fighting-falcons"
+            }
+          },
+          "1594900069258": {
+            "type": "team",
+            "settings": {
+              "title": "American University",
+              "image": "shopify:\/\/shop_images\/AMU.jpg",
+              "url": "shopify:\/\/collections\/american-university-eagles"
+            }
+          },
+          "1594900121603": {
+            "type": "team",
+            "settings": {
+              "title": "Arizona Wildcats",
+              "image": "shopify:\/\/shop_images\/ARIZONA-WILDCATS.jpg",
+              "url": "shopify:\/\/collections\/arizona-wildcats"
+            }
+          },
+          "1594900218558": {
+            "type": "team",
+            "settings": {
+              "title": "Arizona State Sun Devils",
+              "image": "shopify:\/\/shop_images\/ARIZONA-STATE.jpg",
+              "url": "shopify:\/\/collections\/arizona-state-sundevils"
+            }
+          },
+          "1594900242552": {
+            "type": "team",
+            "settings": {
+              "title": "Arkansas Razorbacks",
+              "image": "shopify:\/\/shop_images\/ARK_65e36096-f1b6-4ba0-a4a0-59230544e3eb.jpg",
+              "url": "shopify:\/\/collections\/arkansas-razorbacks"
+            }
+          },
+          "1594900274365": {
+            "type": "team",
+            "settings": {
+              "title": "Arkansas State Red Wolves",
+              "image": "shopify:\/\/shop_images\/ARKANSAS-STATE.jpg",
+              "url": "shopify:\/\/collections\/arkansas-state-red-wolves"
+            }
+          },
+          "1594900307302": {
+            "type": "team",
+            "settings": {
+              "title": "Appalachian State Mountaineers",
+              "image": "shopify:\/\/shop_images\/APP-STATE.jpg",
+              "url": "shopify:\/\/collections\/appalachian-state-mountaineers"
+            }
+          },
+          "1594900343213": {
+            "type": "team",
+            "settings": {
+              "title": "Auburn Tigers",
+              "image": "shopify:\/\/shop_images\/AUBURN_432774f3-69ba-4114-ad5d-a66fb360f227.jpg",
+              "url": "shopify:\/\/collections\/auburn-tigers"
+            }
+          },
+          "1594900390110": {
+            "type": "team",
+            "settings": {
+              "title": "Ball State Cardinals",
+              "image": "shopify:\/\/shop_images\/BALLST.jpg",
+              "url": "shopify:\/\/collections\/ball-state-cardinals"
+            }
+          },
+          "1594900801257": {
+            "type": "team",
+            "settings": {
+              "title": "Baylor Bears",
+              "image": "shopify:\/\/shop_images\/BAYLOR_bf6c29f7-63e0-4bd2-8394-1bff5ab814b3.jpg",
+              "url": "shopify:\/\/collections\/baylor-bears"
+            }
+          },
+          "1594901237872": {
+            "type": "team",
+            "settings": {
+              "title": "Army Black Knights",
+              "image": "shopify:\/\/shop_images\/ARMY-BLACK.jpg",
+              "url": "shopify:\/\/collections\/army"
+            }
+          },
+          "1594901277289": {
+            "type": "team",
+            "settings": {
+              "title": "Boston College Eagles",
+              "image": "shopify:\/\/shop_images\/BOSTON-COLLEGE.jpg",
+              "url": "shopify:\/\/collections\/boston-college-eagles"
+            }
+          },
+          "1594901313507": {
+            "type": "team",
+            "settings": {
+              "title": "Bowling Green Falcons",
+              "image": "shopify:\/\/shop_images\/BOWLING-GREEN.jpg",
+              "url": "shopify:\/\/collections\/bowling-green-falcons"
+            }
+          },
+          "1594901331261": {
+            "type": "team",
+            "settings": {
+              "title": "Butler Bulldogs",
+              "image": "shopify:\/\/shop_images\/BUTLER-BULLDOGS.jpg",
+              "url": "shopify:\/\/collections\/butler-bulldogs"
+            }
+          },
+          "1594901348812": {
+            "type": "team",
+            "settings": {
+              "title": "BYU Cougars",
+              "image": "shopify:\/\/shop_images\/BYU-COUGARS.jpg",
+              "url": "shopify:\/\/collections\/brigham-young-cougars"
+            }
+          },
+          "1594901414361": {
+            "type": "team",
+            "settings": {
+              "title": "California Golden Bears",
+              "image": "shopify:\/\/shop_images\/CAL-BEARS.jpg",
+              "url": "shopify:\/\/collections\/california-golden-bears"
+            }
+          },
+          "1594901432831": {
+            "type": "team",
+            "settings": {
+              "title": "Chico State Wildcats",
+              "image": "shopify:\/\/shop_images\/CHICO-STATE.jpg",
+              "url": "shopify:\/\/collections\/chico-state-wildcats"
+            }
+          },
+          "1594901460717": {
+            "type": "team",
+            "settings": {
+              "title": "Cincinnatti Bearcats",
+              "image": "shopify:\/\/shop_images\/CINI-BEARS.jpg",
+              "url": "shopify:\/\/collections\/cincinnati-bearcats"
+            }
+          },
+          "1594901499198": {
+            "type": "team",
+            "settings": {
+              "title": "Clemson Tigers",
+              "image": "shopify:\/\/shop_images\/clem-tigers.jpg",
+              "url": "shopify:\/\/collections\/clemson-tigers"
+            }
+          },
+          "1594901519291": {
+            "type": "team",
+            "settings": {
+              "title": "Colorado Buffaloes",
+              "image": "shopify:\/\/shop_images\/COLORADO-BUFFALOS.jpg",
+              "url": "shopify:\/\/collections\/colorado-buffaloes"
+            }
+          },
+          "1594901537432": {
+            "type": "team",
+            "settings": {
+              "title": "Colorado State Rams",
+              "image": "shopify:\/\/shop_images\/COLORADO-STATE-RAMS.jpg",
+              "url": "shopify:\/\/collections\/colorado-state-rams"
+            }
+          },
+          "1594901568317": {
+            "type": "team",
+            "settings": {
+              "title": "Creighton Bluejays",
+              "image": "shopify:\/\/shop_images\/CREIGHTON-BLUEJAYS.jpg",
+              "url": "shopify:\/\/collections\/creighton-blue-jays"
+            }
+          },
+          "1594901588481": {
+            "type": "team",
+            "settings": {
+              "title": "Dayton Flyers",
+              "image": "shopify:\/\/shop_images\/DAYTON-FLYERS.jpg",
+              "url": "shopify:\/\/collections\/dayton-flyers"
+            }
+          },
+          "1594901622177": {
+            "type": "team",
+            "settings": {
+              "title": "East Carolina Pirates",
+              "image": "shopify:\/\/shop_images\/EAST-CAROLINA-PIRATES.jpg",
+              "url": "shopify:\/\/collections\/east-carolina-pirates"
+            }
+          },
+          "1594901654905": {
+            "type": "team",
+            "settings": {
+              "title": "Florida Gators",
+              "image": "shopify:\/\/shop_images\/FLORIDA-GATORS.jpg",
+              "url": "shopify:\/\/collections\/florida-gators"
+            }
+          },
+          "1594901689118": {
+            "type": "team",
+            "settings": {
+              "title": "Florida State Seminoles",
+              "image": "shopify:\/\/shop_images\/FLORIDA-STATE-SEMINOLES.jpg",
+              "url": "shopify:\/\/collections\/florida-state-seminoles"
+            }
+          },
+          "1594901714368": {
+            "type": "team",
+            "settings": {
+              "title": "Central Florida Knights",
+              "image": "shopify:\/\/shop_images\/CENTRAL-FLORIDA.jpg",
+              "url": "shopify:\/\/collections\/central-florida-knights"
+            }
+          },
+          "1594901745896": {
+            "type": "team",
+            "settings": {
+              "title": "Georgetown Hoyas",
+              "image": "shopify:\/\/shop_images\/GTWN_512x-80.jpg",
+              "url": "shopify:\/\/collections\/georgetown-hoyas"
+            }
+          },
+          "1594901852454": {
+            "type": "team",
+            "settings": {
+              "title": "Georgia Southern Eagles",
+              "image": "shopify:\/\/shop_images\/SGA.jpg",
+              "url": "shopify:\/\/collections\/southern-georgia-eagles"
+            }
+          },
+          "1594901888876": {
+            "type": "team",
+            "settings": {
+              "title": "Georgia Tech Yellow Jackets",
+              "image": "shopify:\/\/shop_images\/GTECH_512x-80.jpg",
+              "url": "shopify:\/\/collections\/georgia-tech-yellow-jackets"
+            }
+          },
+          "1594901914173": {
+            "type": "team",
+            "settings": {
+              "title": "Georgia Bulldogs",
+              "image": "shopify:\/\/shop_images\/UGA_512x-80.jpg",
+              "url": "shopify:\/\/collections\/georgia-bulldogs"
+            }
+          },
+          "1594901947643": {
+            "type": "team",
+            "settings": {
+              "title": "Gonzaga Bulldogs",
+              "image": "shopify:\/\/shop_images\/GONZ_512x-80.jpg",
+              "url": "shopify:\/\/collections\/gonzaga-bulldogs"
+            }
+          },
+          "1594901995300": {
+            "type": "team",
+            "settings": {
+              "title": "Houston Cougars",
+              "image": "shopify:\/\/shop_images\/UOH_512x-80.jpg",
+              "url": "shopify:\/\/collections\/houston-cougars"
+            }
+          },
+          "1594902027729": {
+            "type": "team",
+            "settings": {
+              "title": "Illinois Fighting Illini",
+              "image": "shopify:\/\/shop_images\/ILL_512x-80.jpg",
+              "url": "shopify:\/\/collections\/illinois-fighting-illini"
+            }
+          },
+          "1594902070968": {
+            "type": "team",
+            "settings": {
+              "title": "Indiana Hoosiers",
+              "image": "shopify:\/\/shop_images\/IND_512x-80.jpg",
+              "url": "shopify:\/\/collections\/indiana-hoosiers"
+            }
+          },
+          "1594902094823": {
+            "type": "team",
+            "settings": {
+              "title": "Iowa Hawkeyes",
+              "image": "shopify:\/\/shop_images\/IOWA_512x-80.jpg",
+              "url": "shopify:\/\/collections\/iowa-hawkeyes"
+            }
+          },
+          "1594902115812": {
+            "type": "team",
+            "settings": {
+              "title": "Iowa State Cyclones",
+              "image": "shopify:\/\/shop_images\/ISU_512x-80.jpg",
+              "url": "shopify:\/\/collections\/iowa-state-cyclones"
+            }
+          },
+          "1594902137918": {
+            "type": "team",
+            "settings": {
+              "title": "Kansas Jayhawks",
+              "image": "shopify:\/\/shop_images\/KAN_512x-80.jpg",
+              "url": "shopify:\/\/collections\/kansas-jayhawks"
+            }
+          },
+          "1594902164607": {
+            "type": "team",
+            "settings": {
+              "title": "James Madison Dukes",
+              "image": "shopify:\/\/shop_images\/JMAD_512x-80.jpg",
+              "url": "shopify:\/\/collections\/james-madison-dukes"
+            }
+          },
+          "1594902190892": {
+            "type": "team",
+            "settings": {
+              "title": "Kansas State Wildcats",
+              "image": "shopify:\/\/shop_images\/KST_512x-80.jpg",
+              "url": "shopify:\/\/collections\/kansas-state"
+            }
+          },
+          "1594902214644": {
+            "type": "team",
+            "settings": {
+              "title": "Kentucky Wildcats",
+              "image": "shopify:\/\/shop_images\/KENT.png",
+              "url": "shopify:\/\/collections\/kentucky-wildcats"
+            }
+          },
+          "1594902431871": {
+            "type": "team",
+            "settings": {
+              "title": "Louisville Cardinals",
+              "image": "shopify:\/\/shop_images\/LOUIS.png",
+              "url": "shopify:\/\/collections\/louisville-cardinals"
+            }
+          },
+          "1594902449011": {
+            "type": "team",
+            "settings": {
+              "title": "Lafayette Ragin' Cajuns",
+              "image": "shopify:\/\/shop_images\/LAF_512x-80.jpg",
+              "url": "shopify:\/\/collections\/louisiana-lafayette"
+            }
+          },
+          "1594902508751": {
+            "type": "team",
+            "settings": {
+              "title": "LSU Tigers",
+              "image": "shopify:\/\/shop_images\/LSU_512x-80.jpg",
+              "url": "shopify:\/\/collections\/lsu-tigers"
+            }
+          },
+          "1594902533186": {
+            "type": "team",
+            "settings": {
+              "title": "Marshall Thundering Herd",
+              "image": "shopify:\/\/shop_images\/MARSH_512x-80.jpg",
+              "url": "shopify:\/\/collections\/marshall-thundering-herd"
+            }
+          },
+          "1594902581843": {
+            "type": "team",
+            "settings": {
+              "title": "Memphis Tigers",
+              "image": "shopify:\/\/shop_images\/MEMP_512x-80.jpg",
+              "url": "shopify:\/\/collections\/memphis-tigers"
+            }
+          },
+          "1594902610118": {
+            "type": "team",
+            "settings": {
+              "title": "Miami Hurricanes",
+              "image": "shopify:\/\/shop_images\/MIAU_512x-80.jpg",
+              "url": "shopify:\/\/collections\/miami-hurricanes"
+            }
+          },
+          "1594902648144": {
+            "type": "team",
+            "settings": {
+              "title": "Miami Of Ohio Redhawks",
+              "image": "shopify:\/\/shop_images\/MIAO_512x-80.jpg",
+              "url": "shopify:\/\/collections\/miami-of-ohio-redhawks"
+            }
+          },
+          "1594902682759": {
+            "type": "team",
+            "settings": {
+              "title": "Michigan Wolverines",
+              "image": "shopify:\/\/shop_images\/MICH_512x-80.jpg",
+              "url": "shopify:\/\/collections\/university-of-michigan"
+            }
+          },
+          "1594902706242": {
+            "type": "team",
+            "settings": {
+              "title": "Michigan State Spartans",
+              "image": "shopify:\/\/shop_images\/MICHST_512x-80.jpg",
+              "url": "shopify:\/\/collections\/michigan-state-spartans"
+            }
+          },
+          "1594902727296": {
+            "type": "team",
+            "settings": {
+              "title": "Minnesota Golden Gophers",
+              "image": "shopify:\/\/shop_images\/MINN_512x-80.jpg",
+              "url": "shopify:\/\/collections\/minnesota-gophers"
+            }
+          },
+          "1594902745414": {
+            "type": "team",
+            "settings": {
+              "title": "Mississippi State Bulldogs",
+              "image": "shopify:\/\/shop_images\/MISST.jpg",
+              "url": "shopify:\/\/collections\/mississippi-state-bulldogs"
+            }
+          },
+          "1594902765058": {
+            "type": "team",
+            "settings": {
+              "title": "Missouri Tigers",
+              "image": "shopify:\/\/shop_images\/MIZZOU_eb91e9e4-32a0-4b9b-bf5f-c49dbc9dc34e.jpg",
+              "url": "shopify:\/\/collections\/missouri-tigers"
+            }
+          },
+          "1594902782536": {
+            "type": "team",
+            "settings": {
+              "title": "Montana Grizzlies",
+              "image": "shopify:\/\/shop_images\/MON_0eb6a648-da39-4e36-ad39-2589f1f87aa3.jpg",
+              "url": "shopify:\/\/collections\/montana-grizzlies"
+            }
+          },
+          "1594902802698": {
+            "type": "team",
+            "settings": {
+              "title": "Montana State Bobcats",
+              "image": "shopify:\/\/shop_images\/MONST.jpg",
+              "url": "shopify:\/\/collections\/montana-state-bobcats"
+            }
+          },
+          "1594902842414": {
+            "type": "team",
+            "settings": {
+              "title": "North Carolina Tarheels",
+              "image": "shopify:\/\/shop_images\/UNC_ebdb568d-c3eb-403b-8367-bd2afb1ae0cf.jpg",
+              "url": "shopify:\/\/collections\/north-carolina-tar-heels"
+            }
+          },
+          "1594902863756": {
+            "type": "team",
+            "settings": {
+              "title": "Notre Dame Fighting Irish",
+              "image": "shopify:\/\/shop_images\/ND.jpg",
+              "url": "shopify:\/\/collections\/notre-dame-fighting-irish"
+            }
+          },
+          "1594902888936": {
+            "type": "team",
+            "settings": {
+              "title": "Nebraska Cornhuskers",
+              "image": "shopify:\/\/shop_images\/NEB_72de68f5-3eeb-486c-9df9-266d593fdf06.jpg",
+              "url": "shopify:\/\/collections\/nebraska-cornhuskers"
+            }
+          },
+          "1594902923885": {
+            "type": "team",
+            "settings": {
+              "title": "NC State Wolfpack",
+              "image": "shopify:\/\/shop_images\/NCST.jpg",
+              "url": "shopify:\/\/collections\/nc-state-wolfpack"
+            }
+          },
+          "1594902973058": {
+            "type": "team",
+            "settings": {
+              "title": "Nevada Wolf Pack",
+              "image": "shopify:\/\/shop_images\/NEV_7eb0ac78-4618-4648-bd08-c4ef3637885f.jpg",
+              "url": "shopify:\/\/collections\/nevada-wolfpack"
+            }
+          },
+          "1594903003340": {
+            "type": "team",
+            "settings": {
+              "title": "North Dakota Fighting Hawks",
+              "image": "shopify:\/\/shop_images\/UND_a15c557b-ad35-40b9-9daa-ce5351db1d68.jpg",
+              "url": "shopify:\/\/collections\/north-dakota"
+            }
+          },
+          "1594903050133": {
+            "type": "team",
+            "settings": {
+              "title": "North Dakota State Bison",
+              "image": "shopify:\/\/shop_images\/NDST.jpg",
+              "url": "shopify:\/\/collections\/north-dakota-state-bison"
+            }
+          },
+          "1594903074203": {
+            "type": "team",
+            "settings": {
+              "title": "United States Navy Midshipmen",
+              "image": "shopify:\/\/shop_images\/USNAVY.jpg",
+              "url": "shopify:\/\/collections\/united-states-navy-midshipmen"
+            }
+          },
+          "1594903092508": {
+            "type": "team",
+            "settings": {
+              "title": "Northern Iowa Panthers",
+              "image": "shopify:\/\/shop_images\/UNI_4414f97c-71b2-46dc-9f02-d654a214e04e.jpg",
+              "url": "shopify:\/\/collections\/northern-iowa-panthers"
+            }
+          },
+          "1594903125284": {
+            "type": "team",
+            "settings": {
+              "title": "North Texas Mean Green",
+              "image": "shopify:\/\/shop_images\/UNT.jpg",
+              "url": "shopify:\/\/collections\/north-texas-mean-green"
+            }
+          },
+          "1594903157069": {
+            "type": "team",
+            "settings": {
+              "title": "Ohio Bobcats",
+              "image": "shopify:\/\/shop_images\/OHIO.jpg",
+              "url": "shopify:\/\/collections\/ohio-university-bobcats"
+            }
+          },
+          "1594903177315": {
+            "type": "team",
+            "settings": {
+              "title": "Ohio State Buckeyes",
+              "image": "shopify:\/\/shop_images\/TOSU_e9dced7e-4091-429a-ad96-bc701d8d183d.jpg",
+              "url": "shopify:\/\/collections\/ohio-state-buckeyes"
+            }
+          },
+          "1594903205445": {
+            "type": "team",
+            "settings": {
+              "title": "Oklahoma Sooners",
+              "image": "shopify:\/\/shop_images\/OU_cb8fe100-92f8-4320-85f3-5d26d372b964.jpg",
+              "url": "shopify:\/\/collections\/oklahoma-sooners"
+            }
+          },
+          "1594903227282": {
+            "type": "team",
+            "settings": {
+              "title": "Oklahoma State Cowboys",
+              "image": "shopify:\/\/shop_images\/OSU_08fe2e5e-a2ed-4bb1-a7f1-47f1ad6b75c0.jpg",
+              "url": "shopify:\/\/collections\/oklahoma-state-cowboys"
+            }
+          },
+          "1594903248904": {
+            "type": "team",
+            "settings": {
+              "title": "Ole Miss Rebels",
+              "image": "shopify:\/\/shop_images\/OLE_c4124e91-1ac5-4fc9-9d1e-50d338038a1d.jpg",
+              "url": "shopify:\/\/collections\/ole-miss-rebels"
+            }
+          },
+          "1594903267756": {
+            "type": "team",
+            "settings": {
+              "title": "Oregon Ducks",
+              "image": "shopify:\/\/shop_images\/ORE_10df3240-9670-4dfd-8e74-b66c7b0392df.jpg",
+              "url": "shopify:\/\/collections\/oregon-ducks"
+            }
+          },
+          "1594903296794": {
+            "type": "team",
+            "settings": {
+              "title": "Oregon State Beavers",
+              "image": "shopify:\/\/shop_images\/ORSU.jpg",
+              "url": "shopify:\/\/collections\/oregon-state-beavers"
+            }
+          },
+          "1594903340467": {
+            "type": "team",
+            "settings": {
+              "title": "Penn State Nittany Lions",
+              "image": "shopify:\/\/shop_images\/PENNST.jpg",
+              "url": "shopify:\/\/collections\/penn-state-nittany-lions"
+            }
+          },
+          "1594903359112": {
+            "type": "team",
+            "settings": {
+              "title": "Pittsburgh Panthers",
+              "image": "shopify:\/\/shop_images\/PITT.jpg",
+              "url": "shopify:\/\/collections\/pittsburgh-panthers"
+            }
+          },
+          "1594903377224": {
+            "type": "team",
+            "settings": {
+              "title": "Providence Friars",
+              "image": "shopify:\/\/shop_images\/PROV.jpg",
+              "url": "shopify:\/\/collections\/providence-college"
+            }
+          },
+          "1594903406466": {
+            "type": "team",
+            "settings": {
+              "title": "Purdue Boilermakers",
+              "image": "shopify:\/\/shop_images\/PUR_1a510304-4ad6-404f-ae62-0c3ced60546a.jpg",
+              "url": "shopify:\/\/collections\/purdue-boilermakers"
+            }
+          },
+          "1594903428268": {
+            "type": "team",
+            "settings": {
+              "title": "Quinnipiac Bobcats",
+              "image": "shopify:\/\/shop_images\/QUIN.jpg",
+              "url": "shopify:\/\/collections\/quinnipiac-bobcats"
+            }
+          },
+          "1594903460419": {
+            "type": "team",
+            "settings": {
+              "title": "San Diego State Aztecs",
+              "image": "shopify:\/\/shop_images\/SDSU_eb8bd7ca-503e-440b-9613-97ef0a0551a2.jpg",
+              "url": "shopify:\/\/collections\/san-diego-state-aztecs"
+            }
+          },
+          "1594903491263": {
+            "type": "team",
+            "settings": {
+              "title": "SMU Mustangs",
+              "image": "shopify:\/\/shop_images\/SMU_d5c3e041-b993-484e-aa42-faf431ddfbfb.jpg",
+              "url": "shopify:\/\/collections\/smu-mustangs"
+            }
+          },
+          "1594903522614": {
+            "type": "team",
+            "settings": {
+              "title": "South Carolina Gamecocks",
+              "image": "shopify:\/\/shop_images\/SCAR_7566870e-794f-489f-8569-f7c5da974cdb.jpg",
+              "url": "shopify:\/\/collections\/south-carolina-gamecocks"
+            }
+          },
+          "1594903551728": {
+            "type": "team",
+            "settings": {
+              "title": "South Florida Bulls",
+              "image": "shopify:\/\/shop_images\/USF_fd308ef3-f35e-427a-8353-565ac7e1c928.jpg",
+              "url": "shopify:\/\/collections\/university-of-south-florida"
+            }
+          },
+          "1594904018292": {
+            "type": "team",
+            "settings": {
+              "title": "Southern Miss Golden Eagles",
+              "image": "shopify:\/\/shop_images\/USM.jpg",
+              "url": "shopify:\/\/collections\/southern-miss-golden-eagles-1"
+            }
+          },
+          "1594904036809": {
+            "type": "team",
+            "settings": {
+              "title": "Stanford Cardinal",
+              "image": "shopify:\/\/shop_images\/STAN.jpg",
+              "url": "shopify:\/\/collections\/stanford-cardinal"
+            }
+          },
+          "1594904054051": {
+            "type": "team",
+            "settings": {
+              "title": "Syracuse Orange",
+              "image": "shopify:\/\/shop_images\/SYR.jpg",
+              "url": "shopify:\/\/collections\/syracuse-university"
+            }
+          },
+          "1594904071667": {
+            "type": "team",
+            "settings": {
+              "title": "TCU Horned Frogs",
+              "image": "shopify:\/\/shop_images\/TCU_516c87f6-1dd9-4512-8409-193b9cb15e1a.jpg",
+              "url": "shopify:\/\/collections\/tcu-horned-frogs"
+            }
+          },
+          "1594904090942": {
+            "type": "team",
+            "settings": {
+              "title": "Tennessee Volunteers",
+              "image": "shopify:\/\/shop_images\/TENN_02a8003a-4976-4cac-83bc-4fc693ff137e.jpg",
+              "url": "shopify:\/\/collections\/tennessee-volunteers"
+            }
+          },
+          "1594904108559": {
+            "type": "team",
+            "settings": {
+              "title": "Texas Longhorns",
+              "image": "shopify:\/\/shop_images\/TEXAS.png",
+              "url": "shopify:\/\/collections\/university-of-texas"
+            }
+          },
+          "1594904138366": {
+            "type": "team",
+            "settings": {
+              "title": "Texas A&M Aggies",
+              "image": "shopify:\/\/shop_images\/TAMU_ecf1bc04-f10d-4cda-ba3f-3c7dfc34e89d.jpg",
+              "url": "shopify:\/\/collections\/texas-a-m-aggies"
+            }
+          },
+          "1594904168816": {
+            "type": "team",
+            "settings": {
+              "title": "Texas Tech Red Raiders",
+              "image": "shopify:\/\/shop_images\/TECH.jpg",
+              "url": "shopify:\/\/collections\/texas-tech-red-raiders"
+            }
+          },
+          "1594904187156": {
+            "type": "team",
+            "settings": {
+              "title": "Tulsa Golden Hurricane",
+              "image": "shopify:\/\/shop_images\/TU_be013aee-ea22-4ac9-b409-d271fcc77ebf.jpg",
+              "url": "shopify:\/\/collections\/tulsa-golden-hurricanes"
+            }
+          },
+          "1594904207139": {
+            "type": "team",
+            "settings": {
+              "title": "Vanderbilt Commodores",
+              "image": "shopify:\/\/shop_images\/VAN.jpg",
+              "url": "shopify:\/\/collections\/vanderbilt-commodores"
+            }
+          },
+          "1594904232148": {
+            "type": "team",
+            "settings": {
+              "title": "Utah Utes",
+              "image": "shopify:\/\/shop_images\/UTAH_cefc2988-01c2-4a2a-85f1-9668f525343e.jpg",
+              "url": "shopify:\/\/collections\/utah-utes"
+            }
+          },
+          "1594904248808": {
+            "type": "team",
+            "settings": {
+              "title": "Virginia Cavaliers",
+              "image": "shopify:\/\/shop_images\/VIRGINIA.png",
+              "url": "shopify:\/\/collections\/university-of-virginia-cavaliers"
+            }
+          },
+          "1594904267034": {
+            "type": "team",
+            "settings": {
+              "title": "Virginia Tech Hokies",
+              "image": "shopify:\/\/shop_images\/VTECH_0bdf1ad2-8ee2-4fd9-8f8f-87a28b4bb9f1.jpg",
+              "url": "shopify:\/\/collections\/virginia-tech-hokies"
+            }
+          },
+          "1594904319243": {
+            "type": "team",
+            "settings": {
+              "title": "Villanova Wildcats",
+              "image": "shopify:\/\/shop_images\/VIL.jpg",
+              "url": "shopify:\/\/collections\/villanova-wildcats"
+            }
+          },
+          "1594904336001": {
+            "type": "team",
+            "settings": {
+              "title": "Wake Forest Demon Deacons",
+              "image": "shopify:\/\/shop_images\/WF.jpg",
+              "url": "shopify:\/\/collections\/wake-forest-demon-deacons"
+            }
+          },
+          "1594904352701": {
+            "type": "team",
+            "settings": {
+              "title": "Washington Huskies",
+              "image": "shopify:\/\/shop_images\/UW.jpg",
+              "url": "shopify:\/\/collections\/university-of-washington"
+            }
+          },
+          "1594904396704": {
+            "type": "team",
+            "settings": {
+              "title": "Washington State Cougars",
+              "image": "shopify:\/\/shop_images\/WSU.jpg",
+              "url": "shopify:\/\/collections\/washington-state-cougars"
+            }
+          },
+          "1594904416427": {
+            "type": "team",
+            "settings": {
+              "title": "Western Kentucky Hilltoppers",
+              "image": "shopify:\/\/shop_images\/WKU.jpg",
+              "url": "shopify:\/\/collections\/western-kentucky-university-hilltoppers"
+            }
+          },
+          "1594904433691": {
+            "type": "team",
+            "settings": {
+              "title": "West Virginia Mountaineers",
+              "image": "shopify:\/\/shop_images\/WV.jpg",
+              "url": "shopify:\/\/collections\/west-virginia-mountaineers"
+            }
+          },
+          "1594904467675": {
+            "type": "team",
+            "settings": {
+              "title": "Wisconsin Badgers",
+              "image": "shopify:\/\/shop_images\/WISC.jpg",
+              "url": "shopify:\/\/collections\/wisconsin-badgers"
+            }
+          },
+          "1594904485279": {
+            "type": "team",
+            "settings": {
+              "title": "Wichita State Shockers",
+              "image": "shopify:\/\/shop_images\/WICH.jpg",
+              "url": "shopify:\/\/collections\/wichita-state-shockers"
+            }
+          },
+          "1594904501468": {
+            "type": "team",
+            "settings": {
+              "title": "Wyoming Cowboys",
+              "image": "shopify:\/\/shop_images\/WYO.jpg",
+              "url": "shopify:\/\/collections\/wyoming-cowboys"
+            }
+          },
+          "1594904522641": {
+            "type": "team",
+            "settings": {
+              "title": "Xavier Musketeers",
+              "image": "shopify:\/\/shop_images\/XAV.jpg",
+              "url": "shopify:\/\/collections\/xavier-musketeers"
+            }
+          }
+        },
+        "block_order": [
+          "1594898813991",
+          "1594900024775",
+          "1594900069258",
+          "1594900121603",
+          "1594900218558",
+          "1594900242552",
+          "1594900274365",
+          "1594900307302",
+          "1594900343213",
+          "1594900390110",
+          "1594900801257",
+          "1594901237872",
+          "1594901277289",
+          "1594901313507",
+          "1594901331261",
+          "1594901348812",
+          "1594901414361",
+          "1594901432831",
+          "1594901460717",
+          "1594901499198",
+          "1594901519291",
+          "1594901537432",
+          "1594901568317",
+          "1594901588481",
+          "1594901622177",
+          "1594901654905",
+          "1594901689118",
+          "1594901714368",
+          "1594901745896",
+          "1594901852454",
+          "1594901888876",
+          "1594901914173",
+          "1594901947643",
+          "1594901995300",
+          "1594902027729",
+          "1594902070968",
+          "1594902094823",
+          "1594902115812",
+          "1594902137918",
+          "1594902164607",
+          "1594902190892",
+          "1594902214644",
+          "1594902431871",
+          "1594902449011",
+          "1594902508751",
+          "1594902533186",
+          "1594902581843",
+          "1594902610118",
+          "1594902648144",
+          "1594902682759",
+          "1594902706242",
+          "1594902727296",
+          "1594902745414",
+          "1594902765058",
+          "1594902782536",
+          "1594902802698",
+          "1594902842414",
+          "1594902863756",
+          "1594902888936",
+          "1594902923885",
+          "1594902973058",
+          "1594903003340",
+          "1594903050133",
+          "1594903074203",
+          "1594903092508",
+          "1594903125284",
+          "1594903157069",
+          "1594903177315",
+          "1594903205445",
+          "1594903227282",
+          "1594903248904",
+          "1594903267756",
+          "1594903296794",
+          "1594903340467",
+          "1594903359112",
+          "1594903377224",
+          "1594903406466",
+          "1594903428268",
+          "1594903460419",
+          "1594903491263",
+          "1594903522614",
+          "1594903551728",
+          "1594904018292",
+          "1594904036809",
+          "1594904054051",
+          "1594904071667",
+          "1594904090942",
+          "1594904108559",
+          "1594904138366",
+          "1594904168816",
+          "1594904187156",
+          "1594904207139",
+          "1594904232148",
+          "1594904248808",
+          "1594904267034",
+          "1594904319243",
+          "1594904336001",
+          "1594904352701",
+          "1594904396704",
+          "1594904416427",
+          "1594904433691",
+          "1594904467675",
+          "1594904485279",
+          "1594904501468",
+          "1594904522641"
+        ],
+        "settings": {
+          "list_title": "CHOOSE YOUR TEAM",
+          "list_title_color": "#000000",
+          "list_item_color": "#000",
+          "team_name_color": "#000"
+        }
+      },
+      "collection-template-college": {
+        "type": "collection-template-college",
+        "blocks": {
+          "1595852773548": {
+            "type": "collection",
+            "settings": {
+              "collection": "alabama-crimson-tide",
+              "top_banner_background_color": "#b7a369",
+              "top_banner_text_color": "#000",
+              "desktop_banner": "shopify:\/\/shop_images\/background-brick-wall-bricks-brickwork-259915.jpg",
+              "tablet_banner": "shopify:\/\/shop_images\/white-sky-1040473.jpg",
+              "mobile_banner": "shopify:\/\/shop_images\/abstract-art-artificial-artistic-131634.jpg"
+            }
+          },
+          "1595919493078": {
+            "type": "filter_group",
+            "settings": {
+              "title": "Team",
+              "expanded": false,
+              "hide": true
+            }
+          },
+          "1595919513975": {
+            "type": "filter_group",
+            "settings": {
+              "title": "Color",
+              "expanded": true,
+              "hide": false
+            }
+          }
+        },
+        "block_order": [
+          "1595852773548",
+          "1595919493078",
+          "1595919513975"
+        ],
+        "settings": {
+          "show_collection_info": true,
+          "show_collection_image": true,
+          "apply_overlay": true,
+          "show_color_swatch": true,
+          "show_quickshop": true,
+          "show_vendor": false,
+          "collection_image_size": "normal",
+          "show_sort_by": false,
+          "show_layout_switch": false,
+          "toolbar_position": "top",
+          "filter_position": "sidebar",
+          "filter_mode": "group",
+          "show_filter_color_swatch": true,
+          "filter_menu": "",
+          "grid_items_per_page": 16,
+          "grid_mobile_items_per_row": "2",
+          "grid_desktop_items_per_row": 4,
+          "enable_infinite_scroll": true
         }
       }
     },

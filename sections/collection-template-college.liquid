@@ -16,6 +16,20 @@
   {%- assign tablet_items_per_row = 2 -%}
 {%- endif -%}
 
+{% assign collection_blocks = section.blocks | where: 'type', 'collection' %}
+
+{% assign use_collection_block = false %}
+{% for block in collection_blocks %}
+  {% if collection.handle == block.settings.collection %}
+    {% assign use_collection_block = true %}
+    {% assign desktop_banner = block.settings.desktop_banner %}
+    {% assign tablet_banner = block.settings.tablet_banner %}
+    {% assign mobile_banner = block.settings.mobile_banner %}
+    {% assign top_banner_background_color = block.settings.top_banner_background_color %}
+    {% assign top_banner_text_color = block.settings.top_banner_text_color %}
+  {% endif %}
+{% endfor %}
+
 {%- capture collection_inner -%}
   {%- comment -%}This is the common part to both template{%- endcomment -%}
 
@@ -27,11 +41,37 @@
             <div class="Grid__Cell 1/{{ mobile_items_per_row }}--phone 1/{{ tablet_items_per_row }}--tablet-and-up 1/{{ desktop_items_per_row }}--{% if section.settings.filter_position == 'drawer' %}lap-and-up{% else %}desk{% endif %}">
               {%- include 'product-item', product: product, show_product_info: true, show_vendor: section.settings.show_vendor, show_color_swatch: section.settings.show_color_swatch, show_labels: true, show_quickshop: section.settings.show_quickshop -%}
             </div>
+
+            {% if paginate.current_page == 1 and use_collection_block %}
+              {% if forloop.index == 4 %}
+                {% if desktop_banner != blank or mobile_banner != blank %}
+                  <div class="Grid__Cell CollegeCollectionBanner CollegeCollectionBanner--Desktop-and-Mobile">
+                    <div class="CollegeCollectionImageWrapper">
+                      <picture>
+                        {% if mobile_banner != blank %}
+                          <source srcset="{{ mobile_banner | img_url: 'master'}}" media="(max-width: 640px)">
+                        {% endif %}
+                        <img class="CollegeCollectionImage" src="{{ desktop_banner | img_url: 'master'}}">
+                      </picture>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+
+              {% if tablet_banner != blank and forloop.index == 3 %}
+              <div class="Grid__Cell CollegeCollectionBanner CollegeCollectionBanner--Tablet">
+                <div class="CollegeCollectionImageWrapper">
+                  <img class="CollegeCollectionImage" src="{{ tablet_banner | img_url: 'master'}}">
+                </div>
+              </div>
+              {% endif %}
+            {% endif %}
           {%- endfor -%}
 
           {% if paginate.next and section.settings.enable_infinite_scroll %}
             <div class="PaginateNextPage" data-href="{{ paginate.next.url }}"></div>
           {% endif %}
+
         </div>
       </div>
 
@@ -104,31 +144,40 @@
     {%- endcomment -%}
 
     {%- if section.settings.show_collection_info and collection.all_products_count > 0 -%}
-      {%- if section.settings.show_collection_image and collection.image and collection.template_suffix != 'no-image' -%}
-        <div class="FlexboxIeFix">
-        <header class="PageHeader PageHeader--withBackground {% if section.settings.collection_image_size != 'normal' %}PageHeader--{{ section.settings.collection_image_size }}{% endif %}" style="background: url({{ collection.image | img_url: '1x1', format: 'jpg' }})">
-          <div class="PageHeader__ImageWrapper Image--lazyLoad Image--fadeIn {% if section.settings.apply_overlay %}Image--contrast{% endif %}"
-               data-optimumx="1.2"
-               data-bgset="{{ collection.image | img_url: 'x600' }} 600w, {{ collection.image | img_url: '800x' }} 800w, {{ collection.image | img_url: '1200x' }} 1200w, {{ collection.image | img_url: '1400x' }} 1400w, {{ collection.image | img_url: '1600x' }} 1600w">
-          </div>
-
-          <noscript>
-            <div class="PageHeader__ImageWrapper {% if section.settings.apply_overlay %}Image--contrast{% endif %}" style="background-image: url({{ collection.image | img_url: '800x' }})"></div>
-          </noscript>
-
-          <div class="Container">
-            <div class="SectionHeader SectionHeader--center">
-              <h1 class="SectionHeader__Heading Heading u-h1">{{ collection.title }}</h1>
-
-              {%- if collection.description != blank -%}
-                <div class="SectionHeader__Description Rte">
-                  {{- collection.description -}}
-                </div>
-              {%- endif -%}
+      {%- if section.settings.show_collection_image and collection.image -%}
+        {% if use_collection_block %}
+          <header class="CollegeCollectionHeader" style="--background_color: {{ top_banner_background_color}};--color: {{ top_banner_text_color }};">
+            <img class="CollegeCollectionLogo" src="{{ collection.image | img_url: 'master' }}">
+            <div class="CollegeCollectionHeadingContainer">
+              <h1 class="Heading CollegeCollectionHeading">{{ collection.title }}</h1>
             </div>
+          </header>
+        {% else %}
+          <div class="FlexboxIeFix">
+          <header class="PageHeader PageHeader--withBackground {% if section.settings.collection_image_size != 'normal' %}PageHeader--{{ section.settings.collection_image_size }}{% endif %}" style="background: url({{ collection.image | img_url: '1x1', format: 'jpg' }})">
+            <div class="PageHeader__ImageWrapper Image--lazyLoad Image--fadeIn {% if section.settings.apply_overlay %}Image--contrast{% endif %}"
+                 data-optimumx="1.2"
+                 data-bgset="{{ collection.image | img_url: 'x600' }} 600w, {{ collection.image | img_url: '800x' }} 800w, {{ collection.image | img_url: '1200x' }} 1200w, {{ collection.image | img_url: '1400x' }} 1400w, {{ collection.image | img_url: '1600x' }} 1600w">
+            </div>
+
+            <noscript>
+              <div class="PageHeader__ImageWrapper {% if section.settings.apply_overlay %}Image--contrast{% endif %}" style="background-image: url({{ collection.image | img_url: '800x' }})"></div>
+            </noscript>
+
+            <div class="Container">
+              <div class="SectionHeader SectionHeader--center">
+                <h1 class="SectionHeader__Heading Heading u-h1">{{ collection.title }}</h1>
+
+                {%- if collection.description != blank -%}
+                  <div class="SectionHeader__Description Rte">
+                    {{- collection.description -}}
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+          </header>
           </div>
-        </header>
-        </div>
+        {% endif %}
       {%- else -%}
         <header class="PageHeader">
           <div class="Container">
@@ -437,7 +486,14 @@
           <div class="CollectionInner__Products">
             {{ collection_inner }}
           </div>
+
         </div>
+
+        {% if collection.description != blank and use_collection_block and section.settings.show_collection_info %}
+          <div class="CollectionDescription__Container {% if section.settings.filter_position == 'sidebar' %}MarginForSidebar{% endif %}">
+            {{ collection.description }}
+          </div>
+        {% endif %}
 
         {%- if section.settings.toolbar_position == 'bottom' -%}
           {{- collection_toolbar -}}
@@ -653,6 +709,52 @@
     }
   ],
   "blocks":[
+    {
+      "type":"collection",
+      "name":"Collection",
+      "settings":[
+        {
+          "type":"collection",
+          "id":"collection",
+          "label":"Collection"
+        },
+        {
+          "type":"header",
+          "content":"Top banner"
+        },
+        {
+          "type":"color",
+          "id":"top_banner_background_color",
+          "label":"Background color",
+          "default":"#B7A369"
+        },
+        {
+          "type":"color",
+          "id":"top_banner_text_color",
+          "label":"Text color",
+          "default":"#000"
+        },
+        {
+          "type":"header",
+          "content":"Mid products banner"
+        },
+        {
+          "type":"image_picker",
+          "id":"desktop_banner",
+          "label":"Desktop banner"
+        },
+        {
+          "type":"image_picker",
+          "id":"tablet_banner",
+          "label":"Tablet banner"
+        },
+        {
+          "type":"image_picker",
+          "id":"mobile_banner",
+          "label":"Mobile banner"
+        }
+      ]
+    },
     {
       "type":"filter_group",
       "name":"Filter group",

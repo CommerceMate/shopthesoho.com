@@ -26,7 +26,7 @@
             {%- if cart.total_price >= threshold_in_cents -%}
               <p>{{- 'cart.general.free_shipping' | t -}}</p>
             {%- else -%}
-              {%- capture remaining_amount -%}<span>{{ cart.total_price | minus: threshold_in_cents | abs | money_without_trailing_zeros }}</span>{%- endcapture -%}
+              {%- capture remaining_amount -%}<span><span class="wh-original-cart-total"><span class='wh-original-price'>{{ cart.total_price | minus: threshold_in_cents | abs | money_without_trailing_zeros }}</span></span><span class="wh-cart-total"></span><div class="additional-notes"><span class="wh-minimums-note"></span><span class="wh-extra-note"></span></div></span>{%- endcapture -%}
               <p>{{- 'cart.general.free_shipping_remaining_html' | t: remaining_amount: remaining_amount -}}</p>
             {%- endif -%}
           </div>
@@ -137,7 +137,7 @@
         <button type="submit" name="checkout" class="Cart__Checkout Button Button--primary Button--full">
           <span>{{- 'cart.general.checkout' | t -}}</span>
           <span class="Button__SeparatorDot"></span>
-          <span class=""><span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_total" style="display:none !important;"></span>{{ cart.total_price | money_without_trailing_zeros }}</span>
+          <span class=""><span class="Bold-theme-hook-DO-NOT-DELETE-comment-bold_cart_total" style="display:none !important;"></span><span class="wh-original-cart-total"><span class='wh-original-price'>{{ cart.total_price | money_without_trailing_zeros }}</span></span><span class="wh-cart-total"></span><div class="additional-notes"><span class="wh-minimums-note"></span><span class="wh-extra-note"></span></div></span>
         </button>
 
         {%- if settings.cart_enable_notes -%}

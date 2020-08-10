@@ -26,6 +26,7 @@
             {%- for link in main_menu.links -%}
               {%- assign downcased_link_title = link.title | downcase | strip -%}
               {%- assign use_image_instead_of_title = false -%}
+              {%- assign menu_item_block = '' -%}
 
               {%- if menu_names contains downcased_link_title -%}
                 {%- for block in section.blocks -%}
@@ -35,6 +36,8 @@
                     {%- continue -%}
                   {%- endif -%}
 
+                  {%- assign menu_item_block = block -%}
+                  
                   {%- if block.settings.menu_item_image != blank -%}
                     {%- assign use_image_instead_of_title = true -%}
                     {%- assign menu_item_image = block.settings.menu_item_image -%}
@@ -56,25 +59,37 @@
                     <div class="Collapsible__Content">
                       {%- for sub_link in link.links -%}
                         <div class="Collapsible">
-                          {%- if sub_link.links != blank -%}
-                            <button class="Collapsible__Button Heading Text--subdued Link--primary u-h7" data-action="toggle-collapsible" {% if sub_link.links != blank %}aria-expanded="false"{% endif %}>
-                              {{- sub_link.title | escape -}} <span class="Collapsible__Plus"></span>
-                            </button>
-
-                            <div class="Collapsible__Inner">
-                              <div class="Collapsible__Content">
-                                <ul class="Linklist Linklist--bordered Linklist--spacingLoose">
-                                  {%- for sub_sub_link in sub_link.links -%}
-                                    <li class="Linklist__Item">
-                                      <a href="{{ sub_sub_link.url }}" class="Text--subdued Link Link--primary">{{ sub_sub_link.title | escape }}</a>
-                                    </li>
-                                  {%- endfor -%}
-                                </ul>
+                          {%- if menu_item_block != blank and menu_item_block.settings.use_college_style -%}
+                            <a href="{{ sub_link.url }}" class="Collapsible__Button Heading Text--subdued Link Link--primary u-h7 CollegeStyle">
+                              <div class="Linklist__Item--ImageWrapper">
+                                {% if sub_link.object.image != blank %}
+                                  <img class="Linklist__Item--Image Image--lazyLoad" data-src="{{ sub_link.object.image | img_url: 'master'}}" src="{{ sub_link.object.image | img_url: '1x1' }}">
+                                {% endif %}
                               </div>
-                            </div>
-                          {%- else -%}
-                            <a href="{{ sub_link.url }}" class="Collapsible__Button Heading Text--subdued Link Link--primary u-h7">{{ sub_link.title | escape }}</a>
-                          {%- endif -%}
+                              <span>{{ sub_link.title | escape }}</span>
+                            </a>
+                          {% else %}
+                            {%- if sub_link.links != blank -%}
+                              <button class="Collapsible__Button Heading Text--subdued Link--primary u-h7" data-action="toggle-collapsible" {% if sub_link.links != blank %}aria-expanded="false"{% endif %}>
+                                {{- sub_link.title | escape -}} <span class="Collapsible__Plus"></span>
+                              </button>
+
+                              <div class="Collapsible__Inner">
+                                <div class="Collapsible__Content">
+                                  <ul class="Linklist Linklist--bordered Linklist--spacingLoose">
+                                    {%- for sub_sub_link in sub_link.links -%}
+                                      <li class="Linklist__Item">
+                                        <a href="{{ sub_sub_link.url }}" class="Text--subdued Link Link--primary">{{ sub_sub_link.title | escape }}</a>
+                                      </li>
+                                    {%- endfor -%}
+                                  </ul>
+                                </div>
+                              </div>
+                            {%- else -%}
+                              <a href="{{ sub_link.url }}" class="Collapsible__Button Heading Text--subdued Link Link--primary u-h7">{{ sub_link.title | escape }}</a>
+                            {%- endif -%}
+                          {% endif %}
+
                         </div>
                       {%- endfor -%}
                     </div>
@@ -167,6 +182,13 @@
           "id":"menu_item_image",
           "label":"Menu item image",
           "info":"If selected, menu item text will be replaced with selected image."
+        },
+        {
+          "type":"checkbox",
+          "id":"use_college_style",
+          "label":"Use college style nav?",
+          "default":false,
+          "info":"This style doesn't show 3rd level of links. But shows images of objects tied to links."
         }
       ]
     }

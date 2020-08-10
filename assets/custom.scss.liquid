@@ -79,7 +79,7 @@ $navigation-border-color    : rgba($navigation-text-color, 0.25);
     text-shadow: none;
 }
 
-.Header__MainNav .HorizontalList li:nth-child(7) > .Heading {
+.Header__MainNav .HorizontalList li:last-child > .Heading {
     color: #ff0055;
 }
 
@@ -533,4 +533,227 @@ i.icon-swym-wishlist:after {
 }
 .Drawer__UpsellColelction--AddToCart {
   padding: 5px 22px;
+}
+
+
+// Static tag based PDP message
+.ProductStaticMessageContainer {
+  color: var(--static_message_color);
+  margin: 0 0 24px;
+}
+
+// College page redesign
+.CollegePage-Container {
+  display: flex;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 50px;
+}
+.CollegePage-ListContainer {
+  max-width: 170px;
+  margin-right: 90px;
+}
+.CollegePage-GridContainer {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap: 50px 40px;
+}
+.CollegePage-GridItem {
+  position: relative;
+}
+.CollegePage-GridItem__Link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.CollegePage-GridItem__Title {
+  margin: 20px 0 0;
+  font-weight: bold;
+  color: var(--team_name_color);
+}
+.CollegePage-ListTitle {
+  font-weight: bold;
+  margin: 0 0 16px;
+  color: var(--list_title_color);
+}
+.CollegePage-ListItem {
+  margin: 0 0 16px;
+  text-decoration: underline;
+  color: var(--list_item_color);
+  &:last-child {
+    margin: 0 0 0;
+  }
+}
+.CollegePage-GridItem__Image {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 1140px) {
+  .CollegePage-GridContainer {
+    grid-template-columns: repeat(3, 1fr);
+
+  }
+  .CollegePage-Container {
+    padding: 0 30px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .CollegePage-GridContainer {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px 20px;
+  }
+  .CollegePage-ListContainer {
+    display: none;
+  }
+  .CollegePage-Container {
+    padding: 0 18px;
+  }
+}
+
+// College style nav
+.MegaMenu__Item--columns {
+  -webkit-column-count: var(--columns);
+  -moz-column-count: var(--columns);
+  column-count: var(--columns);
+  .Linklist__Item {
+    margin-bottom: 10px;
+
+  }
+  .Link {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    span {
+      flex: 1;
+    }
+  }
+}
+.MegaMenu__Item {
+  &.SplitIntoTwoColumns {
+    column-count: 2;
+    column-gap: 30px;
+  }
+}
+.Linklist__Item--ImageWrapper {
+  width: 22px;
+  height: 22px;
+  display: block;
+  margin-right: 15px;
+  position: relative;
+}
+.Linklist__Item--Image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.Collapsible__Button.CollegeStyle {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  span {
+    flex: 1;
+  }
+}
+
+
+// College collection template
+.CollegeCollectionBanner--Tablet {
+  display: none;
+}
+.CollegeCollectionImage {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+.CollegeCollectionHeader {
+  background-color: var(--background_color);
+  color: var(--color);
+  padding: 14px 50px;
+  margin: 0 0 -30px;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  align-items: center;
+  grid-gap: 12px;
+}
+.CollegeCollectionLogo {
+  display: block;
+  max-width: 135px;
+}
+.CollegeCollectionHeading {
+  color: inherit;
+  letter-spacing: 12px;
+  font-size: 22px;
+}
+.CollegeCollectionHeadingContainer {
+  text-align: center;
+}
+.CollectionDescription__Container {
+  padding: 50px;
+  &.MarginForSidebar {
+    margin-left: 260px;
+  }
+}
+
+@media only screen and (max-width: 1139px) {
+  .CollegeCollectionBanner--Tablet {
+    display: block;
+  }
+  .CollegeCollectionBanner--Desktop-and-Mobile {
+    display: none;
+  }
+  .CollectionDescription__Container {
+    &.MarginForSidebar {
+      margin-left: 216px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1007px) {
+  .CollegeCollectionHeader {
+    margin: 0;
+  }
+  .CollegeCollectionLogo {
+    max-width: 64px;
+  }
+  .CollegeCollectionHeading {
+    letter-spacing: 10px;
+    font-size: 18px;
+  }
+  .CollectionDescription__Container {
+    padding: 50px 24px;
+    &.MarginForSidebar {
+      margin-left: 0px;
+    }
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .CollegeCollectionBanner--Tablet {
+    display: none;
+  }
+  .CollegeCollectionBanner--Desktop-and-Mobile {
+    display: block;
+  }
+  .CollegeCollectionHeader {
+    padding: 24px 12px;
+    grid-template-columns: 1fr 5fr;
+  }
+  .CollegeCollectionHeadingContainer {
+    text-align: left;
+  }
+  .CollegeCollectionHeading {
+    font-size: 14px;
+    letter-spacing: 8px;
+  }
+  .CollectionDescription__Container {
+    padding: 50px 10px;
+  }
 }

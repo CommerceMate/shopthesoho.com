@@ -1,0 +1,110 @@
+<div class="CollegePage-Container">
+  <div class="CollegePage-ListContainer">
+    {% if section.settings.list_title != blank %}
+      <div class="CollegePage-ListTitle u-h5">
+        {{ section.settings.list_title }}
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="CollegePage-ListItemsContainer">
+        {% for block in section.blocks %}
+          {% if block.settings.title != blank and block.settings.url != blank %}
+            <div class="CollegePage-ListItem">
+              <a href="{{ block.settings.url }}" class="CollegePage-ListItemLink">{{ block.settings.title }}</a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+  <div class="CollegePage-GridContainer">
+    {% for block in section.blocks %}
+      {% if block.settings.image != blank %}
+        <div class="CollegePage-GridItem">
+          <div class="CollegePage-GridItem__ImageWrapper">
+            <img class="CollegePage-GridItem__Image Image--fadeIn Image--lazyLoad" src="{{ block.settings.image | img_url: '1x1'}}" data-src="{{ block.settings.image | img_url: 'master'}}">
+          </div>
+
+          {% if block.settings.title != blank %}
+            <div class="CollegePage-GridItem__Title u-h5">
+              {{ block.settings.title }}
+            </div>
+          {% endif %}
+
+          {% if block.settings.url != blank %}
+            <a href="{{ block.settings.url }}" class="CollegePage-GridItem__Link"></a>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --list_title_color: {{ section.settings.list_title_color }};
+    --list_item_color: {{ section.settings.list_item_color }};
+    --team_name_color: {{ section.settings.team_name_color }};
+  }
+</style>
+{% schema %}
+  {
+    "name":"College page",
+    "class":"college-page-section",
+    "settings":[
+      {
+        "type":"textarea",
+        "id":"list_title",
+        "label":"List title",
+        "default":"CHOOSE YOUR TEAM"
+      },
+      {
+        "type":"header",
+        "content":"Colors"
+      },
+      {
+        "type":"color",
+        "id":"list_title_color",
+        "label":"List title color",
+        "default":"#000000"
+      },
+      {
+        "type":"color",
+        "id":"list_item_color",
+        "label":"List item color",
+        "default":"#000"
+      },
+      {
+        "type":"color",
+        "id":"team_name_color",
+        "label":"Team name color",
+        "default":"#000"
+      }
+    ],
+    "blocks":[
+      {
+        "type":"team",
+        "name":"Team",
+        "settings":[
+          {
+            "type":"textarea",
+            "id":"title",
+            "label":"Team name",
+            "default":"Team name"
+          },
+          {
+            "type":"image_picker",
+            "id":"image",
+            "label":"Image"
+          },
+          {
+            "type":"url",
+            "id":"url",
+            "label":"Link"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

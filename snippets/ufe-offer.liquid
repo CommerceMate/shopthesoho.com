@@ -1,0 +1,20 @@
+{%comment%} UFE Code: Don't Delete {%endcomment%}
+    <script>
+    {% if product %}
+      {% assign cids = product.collections | map: 'id' | join: ',' %}
+      {% assign tids = product.tags | join: '", "' %}
+      {% assign ufeSelectedVariant = product.selected_or_first_available_variant | map: 'id' %}
+    {% endif %}
+    {% if cart %}
+      {% assign cart_total = cart.total_price %}
+    {% endif %}
+    window.ufeStore = {
+      collections: [{{ cids }}],
+      tags: ["{{ tids }}"],
+      selectedVariantId: {{ ufeSelectedVariant | default: 'null' }},
+      moneyFormat: {{ shop.money_format | json }},
+      moneyFormatWithCurrency: {{ shop.money_with_currency_format | json }},
+      currency: "{{ shop.currency }}",
+      cartTotal: {{ cart_total }}
+    }
+    </script>

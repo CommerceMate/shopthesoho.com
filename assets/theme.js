@@ -1347,6 +1347,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       });
 
+      if(this.element.querySelector('.SizeSwatchList')){
+        var swatch_lists = this.element.querySelectorAll('.SizeSwatchList')
+        swatch_lists.forEach((swatch_list) =>{
+          var swatch_list_items = swatch_list.querySelectorAll('.HorizontalList__Item');
+          this._sortSizes(swatch_list, swatch_list_items);
+        })
+      }
       this._attachListeners();
       this._createSelectors();
     }
@@ -1361,6 +1368,45 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.formVariantSelectors.forEach(function (selector) {
           return selector.destroy();
         });
+      }
+    }, {
+      key: '_sortSizes',
+      value: function _sortSizes(linklist, linklist_items){
+        var sizeOrder = [
+          /^OS$/,
+          /^[X/S]+S$/i,
+          /^S$/i,
+          /^M$/i,
+          /^L$/i,
+          /^[X]+L$/i,
+          /^[4-9]XL$/i,
+          /^[0-9.]+$/,
+        ];
+        var patternMap = new Map(sizeOrder.map(pattern => [pattern, []]));
+        linklist_items.forEach((item) =>{
+          var item_value = item.querySelector('input').value;
+          var matchingPattern = sizeOrder.find(pattern => pattern.test(item_value));
+          patternMap.get(matchingPattern).push(item);
+        });
+        var valuesArr = [...patternMap.values()];
+        valuesArr.forEach((arr) => {
+          if(arr.length){
+            arr.sort((a, b) =>{
+              b.querySelector('input').value.localeCompare(a.querySelector('input').value);
+            });
+          }
+        });
+
+        valuesArr[valuesArr.length - 1].sort(function(a,b){
+          var a_value = parseFloat(a.querySelector('input').value);
+          var b_value = parseFloat(b.querySelector('input').value);
+          return a_value - b_value;
+        })
+
+        valuesArr = valuesArr.flat();
+        valuesArr.forEach((item) => {
+          linklist.append(item)
+        })
       }
     }, {
       key: '_attachListeners',
@@ -1446,7 +1492,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: '_updateSaleMessage',
       value: function _updateSaleMessage(newVariant) {
         var saleMessageContainer = this.element.querySelector('.ProductMeta__SaleMessageContainer');
-        if (newVariant.compare_at_price > newVariant.price) {
+        if (newVariant && newVariant.compare_at_price > newVariant.price) {
           var saleMessageThreshold = this.options.saleMessageThreshold;
           var priceDifference = newVariant.compare_at_price - newVariant.price;
           var priceDifferenceInPercent = priceDifference * 100 / newVariant.compare_at_price;
@@ -4455,6 +4501,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       this.timeline = new TimelineLite({ delay: window.theme.showPageTransition ? 0.5 : 0 });
       this._setupAnimation();
 
+      if(this.element.querySelector('.track_size')){
+        var drawer_linklist = this.element.querySelector('.CollectionFilters.Drawer .track_size .Linklist');
+        var sidebar_linklist = this.element.querySelector('.CollectionInner__Sidebar .CollectionFilters .track_size .Linklist');
+        var drawer_linklist_items = this.element.querySelectorAll('.CollectionFilters.Drawer .track_size .Linklist__Item');
+        var sidebar_linklist_items = this.element.querySelectorAll('.CollectionInner__Sidebar .CollectionFilters .track_size .Linklist__Item');
+        if(sidebar_linklist){
+          this._sortSizes(sidebar_linklist, sidebar_linklist_items);
+        }
+        this._sortSizes(drawer_linklist, drawer_linklist_items);
+      }
+
       this._attachListeners();
     }
 
@@ -4483,6 +4540,47 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.intersectionObserver.disconnect();
           this.timeline.kill();
         }
+      }
+    }, {
+      key: '_sortSizes',
+      value: function _sortSizes(linklist, linklist_items){
+        var section = this;
+        var sizeOrder = [
+          /^OS$/,
+          /^[X/S]+S$/i,
+          /^S$/i,
+          /^M$/i,
+          /^L$/i,
+          /^[X]+L$/i,
+          /^[4-9]XL$/i,
+          /^[0-9.]+$/,
+        ];
+        var patternMap = new Map(sizeOrder.map(pattern => [pattern, []]));
+        linklist_items.forEach((item) =>{
+          var item_value = item.querySelector('[data-tag]').getAttribute('data-tag-value');
+          var matchingPattern = sizeOrder.find(pattern => pattern.test(item_value));
+          patternMap.get(matchingPattern).push(item);
+        })
+        var valuesArr = [...patternMap.values()];
+        valuesArr.forEach((arr) => {
+          if(arr.length){
+            arr.sort((a, b) =>{
+              b.querySelector('button').getAttribute('data-tag-value').localeCompare(a.querySelector('button').getAttribute('data-tag-value'));
+            });
+          }
+        });
+
+        valuesArr[valuesArr.length - 1].sort(function(a,b){
+          var a_value = parseFloat(a.querySelector('button').getAttribute('data-tag-value'));
+          var b_value = parseFloat(b.querySelector('button').getAttribute('data-tag-value'));
+          return a_value - b_value;
+        })
+
+        valuesArr = valuesArr.flat();
+        valuesArr.forEach((item) => {
+          linklist.append(item)
+        })
+
       }
     }, {
       key: '_openQuickshopModal',

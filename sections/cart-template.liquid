@@ -16,7 +16,7 @@
 
         {%- if settings.cart_show_free_shipping_threshold -%}
           {%- assign threshold_in_cents = settings.cart_free_shipping_threshold | times: 100 -%}
-          {%- capture remaining_amount -%}<span><span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_total" style="display:none !important;"></span>{{ cart.total_price | minus: threshold_in_cents | abs | money_without_trailing_zeros }}</span>{%- endcapture -%}
+          {%- capture remaining_amount -%}<span><span class="Bold-theme-hook-DO-NOT-DELETE-comment-bold_cart_total" style="display:none !important;"></span><span class="wh-original-cart-total"><span class='wh-original-price'>{{ cart.total_price | minus: threshold_in_cents | abs | money_without_trailing_zeros }}</span></span><span class="wh-cart-total"></span><div class="additional-notes"><span class="wh-minimums-note"></span><span class="wh-extra-note"></span></div></span>{%- endcapture -%}
 
           <p class="Text--subdued">{{- 'cart.general.free_shipping_remaining_html' | t: remaining_amount: remaining_amount -}}</p>
         {%- endif -%}
@@ -37,7 +37,7 @@
               {%- if cart.total_price >= threshold_in_cents -%}
                 {{- 'cart.general.free_shipping' | t -}}
               {%- else -%}
-                {%- capture remaining_amount -%}<span><span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_total" style="display:none !important;"></span>{{ cart.total_price | minus: threshold_in_cents | abs | money_without_trailing_zeros }}</span>{%- endcapture -%}
+                {%- capture remaining_amount -%}<span><span class="Bold-theme-hook-DO-NOT-DELETE-comment-bold_cart_total" style="display:none !important;"></span><span class="wh-original-cart-total"><span class='wh-original-price'>{{ cart.total_price | minus: threshold_in_cents | abs | money_without_trailing_zeros }}</span></span><span class="wh-cart-total"></span><div class="additional-notes"><span class="wh-minimums-note"></span><span class="wh-extra-note"></span></div></span>{%- endcapture -%}
                 {{- 'cart.general.free_shipping_remaining_html' | t: remaining_amount: remaining_amount -}}
               {%- endif -%}
             </p>
@@ -46,7 +46,9 @@
       </header>
 
       <div class="PageContent">
-        <form action="{{ routes.cart_url }}" method="POST" class="Cart Cart--expanded" novalidate>
+        
+{% render 'zoorix-cart-top' %}
+<form action="{{ routes.cart_url }}" method="POST" class="Cart Cart--expanded" novalidate>
           <input type="hidden" name="attributes[collection_mobile_items_per_row]" value="">
           <input type="hidden" name="attributes[collection_desktop_items_per_row]" value="">
 
@@ -69,7 +71,7 @@
                 {%- endfor -%}
               {%- endif -%}
 
-              <p class="Cart__Total Heading u-h6">{{ 'cart.general.total' | t }}: <span><span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_total" style="display:none !important;"></span>{{ cart.total_price | money_without_trailing_zeros }}</span></p>
+              <p class="Cart__Total Heading u-h6">{{ 'cart.general.total' | t }}: <span><span class="Bold-theme-hook-DO-NOT-DELETE-comment-bold_cart_total" style="display:none !important;"></span><span class="wh-original-cart-total"><span class='wh-original-price'>{{ cart.total_price | money_without_trailing_zeros }}</span></span><span class="wh-cart-total"></span><div class="additional-notes"><span class="wh-minimums-note"></span><span class="wh-extra-note"></span></div></span></p>
 
               {%- if shipping_and_taxes_notice != blank -%}
                 <p class="Cart__Taxes Text--subdued">{{ shipping_and_taxes_notice }}</p>
@@ -79,6 +81,8 @@
             </div>
           </footer>
         </form>
+{% render 'zoorix-cart-bottom' %}
+
 
         {%- if section.settings.show_shipping_estimator -%}
           <div class="Section Section--spacingExtraLarge">

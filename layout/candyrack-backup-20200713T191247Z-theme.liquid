@@ -3,14 +3,6 @@
 <html class="no-js" lang="{{ shop.locale }}">
   <head>
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WVBTFFZ');</script>
-    <!-- End Google Tag Manager -->
-    
     <!-- Yotpo Javascript -->
     <script type="text/javascript">(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/nap2dXlE4l9KFthJemgh23nFY56JJGkrzEpKfcXG/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();</script>
     <!-- Yotpo Javascript -->
@@ -23,6 +15,17 @@
     {{ 'yotpo-full-css.css' | asset_url | stylesheet_tag }}
     {%- endif -%}
 
+    <!-- Hotjar Tracking Code for https://www.shopthesoho.com/ -->
+  	<script>
+      (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:1808406,hjsv:6};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  	</script>
 
     <!-- BEGINNING Bing Tracking Code for https://www.shopthesoho.com/ -->
 <script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"17395925"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
@@ -53,8 +56,6 @@
     {% render 'social-meta-tags' %}
 
     {{ content_for_header }}
-
-	{% include 'vitals-loader' %}
 	{%- include 'bold-product' with product, hide_action: 'header' -%}
     {%- render 'bold-pr' -%}
  	{%- render 'bold-common' -%}
@@ -169,15 +170,8 @@
     {{ 'swell-rewards.scss.css' | asset_url | stylesheet_tag }}
 
   {% endif %}
-
 {% include 'ufe-offer' %}{% include 'booster-common' %}
-
-{% render 'digismoothie-candyrack' %}
-
-  {% render 'zoorix-cart-items' %}
-	<meta name="google-site-verification" content="PvtoBCu6z2vwrEz1FC3orgV4sJL5WO6LoWU7poMgOKM" />
 </head>
-
 
   <body class="prestige--v4 {% if template.directory %}template-{{ template.directory | handle }}{% endif %} template-{{ template.name | handle }}">
     <a class="PageSkipLink u-visually-hidden" href="#main">{{ 'header.navigation.skip_to_content' | t }}</a>
@@ -276,9 +270,6 @@ var afterpay_js_snippet_version = '1.0.6';
 </script>
 <script type="text/javascript" src="https://static.afterpay.com/shopify-afterpay-javascript.js"></script>
 <!-- End Shopify-Afterpay JavaScript Snippet (v1.0.6) -->
-{% comment %}
 {% include 'booster-discounts' %}
-{% endcomment %}
-{% include 'magisto' %}
 </body>
 </html>

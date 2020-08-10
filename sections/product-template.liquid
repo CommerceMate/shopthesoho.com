@@ -465,6 +465,13 @@ This is the root container for the zoom functionality. Must not be removed, as o
   </style>
 {% endif %}
 
+{% if section.settings.enable_static_message and section.settings.static_message_text != blank and section.settings.static_message_tag != blank %}
+  <style>
+    #shopify-section-{{ section.id }} {
+      --static_message_color: {{ section.settings.static_message_color }};
+    }
+  </style>
+{% endif %}
 <div id="ShopTheLook-section" class="Product Container"></div>
 
 {%- if section.settings.reviews_enabled -%}
@@ -488,6 +495,9 @@ This is the root container for the zoom functionality. Must not be removed, as o
 </div>
 <!-- end of Yotpo reviews widget product page -->
 {% endif %}
+
+{% render 'zoorix-product-bottom' %}
+
 {% schema %}
 {
   "name": "Product page",
@@ -541,6 +551,35 @@ This is the root container for the zoom functionality. Must not be removed, as o
       "id":"sale_message_color",
       "label":"Sale message color",
       "default":"#000"
+    },
+    {
+      "type":"header",
+      "content":"Tag based message"
+    },
+    {
+      "type":"checkbox",
+      "id":"enable_static_message",
+      "label":"Enable message?",
+      "default":true
+    },
+    {
+      "type":"text",
+      "id":"static_message_tag",
+      "label":"Tag",
+      "default":"TEAM_",
+      "info":"If one of product tags contains this text, then show the message"
+    },
+    {
+      "type":"richtext",
+      "id":"static_message_text",
+      "label":"Message",
+      "default":"<p>10% of this purchase goes to support this school!</p>"
+    },
+    {
+      "type":"color",
+      "id":"static_message_color",
+      "label":"Message color",
+      "default":"#ff0055"
     },
     {
       "type":"header",
